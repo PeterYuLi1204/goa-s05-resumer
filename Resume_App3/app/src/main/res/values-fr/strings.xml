@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_discussion">La discussion</string>
+    <string name="title_resume_builder">Creer un resume</string>
     <string name="title_profile">Votre profil</string>
-    <string name="title_your_resume">Votre résumé</string>
 </resources>

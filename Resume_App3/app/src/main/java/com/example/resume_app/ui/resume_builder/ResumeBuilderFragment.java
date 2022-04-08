@@ -1,4 +1,4 @@
-package com.example.resume_app.ui.your_resume;
+package com.example.resume_app.ui.resume_builder;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,23 +12,23 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.resume_app.databinding.FragmentYourResumeBinding;
+import com.example.resume_app.databinding.FragmentResumeBuilderBinding;
 
-public class YourResumeFragment extends Fragment {
+public class ResumeBuilderFragment extends Fragment {
 
-    private YourResumeViewModel yourResumeViewModel;
-    private FragmentYourResumeBinding binding;
+    private ResumeBuilderViewModel resumeBuilderViewModel;
+    private FragmentResumeBuilderBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        yourResumeViewModel =
-                new ViewModelProvider(this).get(YourResumeViewModel.class);
+        resumeBuilderViewModel =
+                new ViewModelProvider(this).get(ResumeBuilderViewModel.class);
 
-        binding = FragmentYourResumeBinding.inflate(inflater, container, false);
+        binding = FragmentResumeBuilderBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textYourResume;
-        yourResumeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        final TextView textView = binding.textResumeBuilder;
+        resumeBuilderViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

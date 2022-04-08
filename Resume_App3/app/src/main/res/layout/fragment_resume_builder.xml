@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.your_resume.YourResumeFragment">
+    tools:context=".ui.resume_builder.ResumeBuilderFragment">
 
     <TextView
-        android:id="@+id/text_your_resume"
+        android:id="@+id/text_resume_builder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

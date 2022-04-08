@@ -1,16 +1,16 @@
-package com.example.resume_app.ui.your_resume;
+package com.example.resume_app.ui.resume_builder;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class YourResumeViewModel extends ViewModel {
+public class ResumeBuilderViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public YourResumeViewModel() {
+    public ResumeBuilderViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is your resume fragment");
+        mText.setValue("This is resume builder fragment");
     }
 
     public LiveData<String> getText() {
