@@ -3,4 +3,5 @@
     <string name="title_discussion">La discussion</string>
     <string name="title_resume_builder">Creer un resume</string>
     <string name="title_profile">Votre profil</string>
+    <string name="button_preview">Preview</string>
 </resources>
