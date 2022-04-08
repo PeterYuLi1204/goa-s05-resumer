@@ -4,4 +4,6 @@
     <string name="title_discussion">Discussion</string>
     <string name="title_resume_builder">Resume Builder</string>
     <string name="title_profile">Profile</string>
+    <string name="title_info_button">Info</string>
+    <string name="title_posts_comments_button">Posts/Comments</string>
 </resources>

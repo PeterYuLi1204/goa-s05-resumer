@@ -1,9 +1,14 @@
 package com.example.resume_app.ui.profile;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,26 +21,21 @@ import com.example.resume_app.databinding.FragmentProfileBinding;
 
 public class ProfileFragment extends Fragment {
 
-    private ProfileViewModel profileViewModel;
     private FragmentProfileBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        profileViewModel =
-                new ViewModelProvider(this).get(ProfileViewModel.class);
 
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textProfile;
-        profileViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        RadioGroup radioGroup = binding.radioGroup;
+        RadioButton infoButton = binding.infoButton;
+        RadioButton postsCommentsButton = binding.postsCommentsButton;
+
         return root;
     }
+
 
     @Override
     public void onDestroyView() {
