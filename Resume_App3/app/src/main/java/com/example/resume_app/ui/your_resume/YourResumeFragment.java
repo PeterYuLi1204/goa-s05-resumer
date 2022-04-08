@@ -1,4 +1,4 @@
-package com.example.resume_app.ui.dashboard;
+package com.example.resume_app.ui.your_resume;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,24 +12,23 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.resume_app.R;
-import com.example.resume_app.databinding.FragmentDashboardBinding;
+import com.example.resume_app.databinding.FragmentYourResumeBinding;
 
-public class DashboardFragment extends Fragment {
+public class YourResumeFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
-    private FragmentDashboardBinding binding;
+    private YourResumeViewModel yourResumeViewModel;
+    private FragmentYourResumeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        yourResumeViewModel =
+                new ViewModelProvider(this).get(YourResumeViewModel.class);
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentYourResumeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        final TextView textView = binding.textYourResume;
+        yourResumeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

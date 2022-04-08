@@ -1,16 +1,16 @@
-package com.example.resume_app.ui.dashboard;
+package com.example.resume_app.ui.discussion;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
+public class DiscussionViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public DashboardViewModel() {
+    public DiscussionViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is discussion fragment");
     }
 
     public LiveData<String> getText() {

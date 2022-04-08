@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Resume_App</string>
-    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name" translatable="false">Resume App</string>
+    <string name="title_activity_bottom_navigation" translatable="false">BottomNavigationActivity</string>
+    <string name="title_discussion">Discussion</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_your_resume">Your Resume</string>
 </resources>
