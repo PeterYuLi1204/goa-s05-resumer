@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.resume_app.R;
 
+/**
+ * Takes user input for resume creation.
+ */
 public class ResumeEditorActivity extends AppCompatActivity {
 
     @Override
@@ -19,9 +22,9 @@ public class ResumeEditorActivity extends AppCompatActivity {
     }
 
     void connectXml() {
-        Button buttonPreview = findViewById(R.id.button_resume_editor_preview);
+        Button buttonPreview = findViewById(R.id.button_preview);
         buttonPreview.setOnClickListener(view -> {
-            // TODO: render pdf from input
+            // TODO: pass user input for render
             startActivity(new Intent(this, ResumePreviewActivity.class));
         });
     }

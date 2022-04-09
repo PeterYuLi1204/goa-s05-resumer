@@ -10,4 +10,9 @@
 
     <string name="button_plus" translatable="false">+</string>
     <string name="button_preview">Preview</string>
+    <string name="button_info">Info</string>
+    <string name="button_posts_comments">Posts &amp; Comments</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>

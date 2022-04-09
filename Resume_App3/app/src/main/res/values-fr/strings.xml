@@ -3,5 +3,8 @@
     <string name="title_discussion">La discussion</string>
     <string name="title_resume_builder">Creer un resume</string>
     <string name="title_profile">Votre profil</string>
-    <string name="button_preview">Preview</string>
+
+    <string name="button_preview">L\'apercu</string>
+    <string name="button_info">Les infos</string>
+    <string name="button_posts_comments">Les messages</string>
 </resources>
