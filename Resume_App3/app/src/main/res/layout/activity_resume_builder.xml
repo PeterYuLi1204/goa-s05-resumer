@@ -38,6 +38,6 @@
         layout="@layout/item_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
