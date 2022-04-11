@@ -1,4 +1,4 @@
-package com.example.resume_app.ui.resume_builder;
+package com.example.resume_app.resume_builder;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.resume_app.R;
@@ -14,24 +15,26 @@ import java.util.ArrayList;
 
 public class ResumeBuilderRecyclerAdapter extends RecyclerView.Adapter<ResumeBuilderRecyclerAdapter.ViewHolder> {
 
-    private final ArrayList<String> data;
-    private final LayoutInflater inflater;
-    private IClickListener clickListener;
+    LayoutInflater inflater;
+    ArrayList<String> data;
+    IClickListener clickListener;
 
-    ResumeBuilderRecyclerAdapter(Context context, ArrayList<String> data) {
+    ResumeBuilderRecyclerAdapter(Context context, ArrayList<String> data, IClickListener clickListener) {
         this.inflater = LayoutInflater.from(context);
         this.data = data;
+        this.clickListener = clickListener;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.item_recycler_container, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.name.setText(data.get(position));
+        holder.textName.setText(data.get(position));
     }
 
     @Override
@@ -39,26 +42,23 @@ public class ResumeBuilderRecyclerAdapter extends RecyclerView.Adapter<ResumeBui
         return data.size();
     }
 
-    void setClickListener(IClickListener clickListener) {
-        this.clickListener = clickListener;
-    }
-
     public interface IClickListener {
         void onItemClick(View view, int position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView name;
+
+        TextView textName;
 
         ViewHolder(View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.name);
+            textName = itemView.findViewById(R.id.name);
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            if (clickListener != null) clickListener.onItemClick(view, getAdapterPosition());
+            clickListener.onItemClick(view, getAdapterPosition());
         }
     }
 }

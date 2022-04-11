@@ -1,4 +1,4 @@
-package com.example.resume_app.ui.resume_builder.resume_editor;
+package com.example.resume_app.resume_builder.resume_editor;
 
 public class Experience {
     String jobPosition;

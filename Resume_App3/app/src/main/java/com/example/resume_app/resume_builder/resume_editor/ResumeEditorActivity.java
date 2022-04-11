@@ -1,4 +1,4 @@
-package com.example.resume_app.ui.resume_builder.resume_editor;
+package com.example.resume_app.resume_builder.resume_editor;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.resume_app.R;
-import com.example.resume_app.ui.resume_builder.ResumePreviewActivity;
+import com.example.resume_app.resume_builder.ResumePreviewActivity;
 
 import java.util.ArrayList;
 
@@ -28,19 +28,19 @@ public class ResumeEditorActivity extends AppCompatActivity {
 
     void connectXml() {
         ArrayList<Experience> experiences = new ArrayList<>();
-        experiences.add(new Experience("Cashier", "Starbucks","Worked from 9 to 5 doing stuff","May 4, 2012","Jan 30, 2020"));
+        experiences.add(new Experience("Cashier", "Starbucks", "Worked from 9 to 5 doing stuff", "May 4, 2012", "Jan 30, 2020"));
 
         ArrayList<Education> education = new ArrayList<>();
-        education.add(new Education("McMath", "No, we don't only learn math","2018","2023"));
+        education.add(new Education("McMath", "No, we don't only learn math", "2018", "2023"));
 
-        ArrayList<Certifications> certifications = new ArrayList<>();
-        certifications.add(new Certifications("Certified awesome","me, myself, and I","everyday","never"));
+        ArrayList<Certification> certifications = new ArrayList<>();
+        certifications.add(new Certification("Certified awesome", "me, myself, and I", "everyday", "never"));
 
-        ArrayList<Awards> awards = new ArrayList<>();
-        awards.add(new Awards("Honour roll","McMath","I get da good grades","every year"));
+        ArrayList<Award> awards = new ArrayList<>();
+        awards.add(new Award("Honour roll", "McMath", "I get da good grades", "every year"));
 
-        ArrayList<Skills> skills = new ArrayList<>();
-        skills.add(new Skills("determination"));
+        ArrayList<Skill> skills = new ArrayList<>();
+        skills.add(new Skill("determination"));
 
         RecyclerView experienceRecyclerView = findViewById(R.id.experience_recyclerview);
         experienceRecyclerView.setLayoutManager(new LinearLayoutManager(this));

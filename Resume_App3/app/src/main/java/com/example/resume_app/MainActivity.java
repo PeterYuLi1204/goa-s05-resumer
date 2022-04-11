@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.resume_app.ui.resume_builder.ResumeBuilderActivity;
+import com.example.resume_app.resume_builder.ResumeBuilderActivity;
 
 public class MainActivity extends AppCompatActivity {
 

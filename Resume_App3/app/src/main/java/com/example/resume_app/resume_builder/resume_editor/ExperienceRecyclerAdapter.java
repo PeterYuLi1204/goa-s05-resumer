@@ -1,4 +1,4 @@
-package com.example.resume_app.ui.resume_builder.resume_editor;
+package com.example.resume_app.resume_builder.resume_editor;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +16,7 @@ public class ExperienceRecyclerAdapter extends RecyclerView.Adapter<ExperienceRe
     static ArrayList<Experience> experiences;
 
     ExperienceRecyclerAdapter(ArrayList<Experience> experiences) {
-        this.experiences = experiences;
+        ExperienceRecyclerAdapter.experiences = experiences;
 
     }
 

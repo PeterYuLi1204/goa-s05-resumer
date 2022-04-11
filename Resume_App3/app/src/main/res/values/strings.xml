@@ -2,7 +2,6 @@
     <string name="placeholder_text" translatable="false">PLACEHOLDER TEXT</string>
 
     <string name="app_name" translatable="false">Resume App</string>
-    <string name="title_activity_bottom_navigation" translatable="false">Bottom Navigation Activity</string>
 
     <string name="title_discussion">Discussion</string>
     <string name="title_resume_builder">Resume Builder</string>
@@ -10,9 +9,7 @@
 
     <string name="button_plus" translatable="false">+</string>
     <string name="button_preview">Preview</string>
-    <string name="title_activity_profile">ProfileActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+
     <string name="tab_info">Info</string>
     <string name="tab_posts_comments">Posts/Comments</string>
 </resources>

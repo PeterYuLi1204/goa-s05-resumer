@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.discussion.DiscussionActivity">
+    tools:context=".discussion.DiscussionActivity">
 
     <TextView
         android:id="@+id/title"
@@ -20,6 +20,6 @@
         layout="@layout/item_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

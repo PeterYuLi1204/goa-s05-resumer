@@ -1,4 +1,4 @@
-package com.example.resume_app.ui.resume_builder.resume_editor;
+package com.example.resume_app.resume_builder.resume_editor;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,24 +12,22 @@ import com.example.resume_app.R;
 
 import java.util.ArrayList;
 
-public class EducationRecyclerAdapter extends RecyclerView.Adapter<EducationRecyclerAdapter.ViewHolder> {
-    static ArrayList<Education> education;
+public class SkillsRecyclerViewAdapter extends RecyclerView.Adapter<SkillsRecyclerViewAdapter.ViewHolder> {
+    static ArrayList<Skill> skills;
 
-    EducationRecyclerAdapter(ArrayList<Education> education) {
-        this.education = education;
+    SkillsRecyclerViewAdapter(ArrayList<Skill> skills) {
+        SkillsRecyclerViewAdapter.skills = skills;
     }
 
     @Override
-    public EducationRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SkillsRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_experience_recycler_container, parent, false);
-        return new EducationRecyclerAdapter.ViewHolder(view);
+        return new SkillsRecyclerViewAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(EducationRecyclerAdapter.ViewHolder holder, int position) {
-        holder.positionTitle.setText(education.get(position).schoolName);
-        //the description
-//        holder.description.setText(experiences.get(position).jobPosition);
+    public void onBindViewHolder(SkillsRecyclerViewAdapter.ViewHolder holder, int position) {
+        holder.positionTitle.setText(skills.get(position).skillName);
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +46,7 @@ public class EducationRecyclerAdapter extends RecyclerView.Adapter<EducationRecy
 
     @Override
     public int getItemCount() {
-        return education.size();
+        return skills.size();
     }
 
 

@@ -1,15 +1,15 @@
-package com.example.resume_app.ui.discussion;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.resume_app.discussion;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.resume_app.R;
-import com.example.resume_app.ui.profile.ProfileActivity;
-import com.example.resume_app.ui.resume_builder.ResumeBuilderActivity;
+import com.example.resume_app.profile.ProfileActivity;
+import com.example.resume_app.resume_builder.ResumeBuilderActivity;
 
 /**
  * Home for discussion-related actions including making, viewing, and replying to posts.

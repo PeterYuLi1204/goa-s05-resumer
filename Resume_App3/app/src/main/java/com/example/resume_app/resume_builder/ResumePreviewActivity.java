@@ -1,4 +1,4 @@
-package com.example.resume_app.ui.resume_builder;
+package com.example.resume_app.resume_builder;
 
 import android.os.Bundle;
 

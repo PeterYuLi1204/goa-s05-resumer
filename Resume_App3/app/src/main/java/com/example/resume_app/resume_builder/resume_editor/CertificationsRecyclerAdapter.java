@@ -1,4 +1,4 @@
-package com.example.resume_app.ui.resume_builder.resume_editor;
+package com.example.resume_app.resume_builder.resume_editor;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +13,10 @@ import com.example.resume_app.R;
 import java.util.ArrayList;
 
 public class CertificationsRecyclerAdapter extends RecyclerView.Adapter<CertificationsRecyclerAdapter.ViewHolder> {
-    static ArrayList<Certifications> certifications;
+    static ArrayList<Certification> certifications;
 
-    CertificationsRecyclerAdapter(ArrayList<Certifications> certifications) {
-        this.certifications = certifications;
+    CertificationsRecyclerAdapter(ArrayList<Certification> certifications) {
+        CertificationsRecyclerAdapter.certifications = certifications;
 
     }
 

@@ -10,21 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Resume_App">
         <activity
-            android:name=".ui.profile.ProfileActivity"
-            android:exported="false"
-            android:label="@string/title_activity_profile"
-            android:theme="@style/Theme.Resume_App.NoActionBar" />
-        <activity
-            android:name=".ui.discussion.DiscussionActivity"
+            android:name=".profile.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.resume_builder.ResumeBuilderActivity"
+            android:name=".discussion.DiscussionActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.resume_builder.ResumePreviewActivity"
+            android:name=".resume_builder.ResumeBuilderActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.resume_builder.resume_editor.ResumeEditorActivity"
+            android:name=".resume_builder.ResumePreviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".resume_builder.resume_editor.ResumeEditorActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

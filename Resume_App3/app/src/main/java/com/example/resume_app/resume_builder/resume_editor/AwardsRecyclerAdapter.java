@@ -1,4 +1,4 @@
-package com.example.resume_app.ui.resume_builder.resume_editor;
+package com.example.resume_app.resume_builder.resume_editor;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,22 +12,24 @@ import com.example.resume_app.R;
 
 import java.util.ArrayList;
 
-public class SkillsRecyclerViewAdapter extends RecyclerView.Adapter<SkillsRecyclerViewAdapter.ViewHolder> {
-    static ArrayList<Skills> skills;
+public class AwardsRecyclerAdapter extends RecyclerView.Adapter<AwardsRecyclerAdapter.ViewHolder> {
+    static ArrayList<Award> awards;
 
-    SkillsRecyclerViewAdapter(ArrayList<Skills> skills) {
-        this.skills = skills;
+    AwardsRecyclerAdapter(ArrayList<Award> awards) {
+        AwardsRecyclerAdapter.awards = awards;
     }
 
     @Override
-    public SkillsRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AwardsRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_experience_recycler_container, parent, false);
-        return new SkillsRecyclerViewAdapter.ViewHolder(view);
+        return new AwardsRecyclerAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(SkillsRecyclerViewAdapter.ViewHolder holder, int position) {
-        holder.positionTitle.setText(skills.get(position).skillName);
+    public void onBindViewHolder(AwardsRecyclerAdapter.ViewHolder holder, int position) {
+        holder.positionTitle.setText(awards.get(position).awardName);
+        //the description
+//        holder.description.setText(experiences.get(position).jobPosition);
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +48,7 @@ public class SkillsRecyclerViewAdapter extends RecyclerView.Adapter<SkillsRecycl
 
     @Override
     public int getItemCount() {
-        return skills.size();
+        return awards.size();
     }
 
 

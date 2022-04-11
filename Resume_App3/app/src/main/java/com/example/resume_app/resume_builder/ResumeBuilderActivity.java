@@ -1,18 +1,18 @@
-package com.example.resume_app.ui.resume_builder;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+package com.example.resume_app.resume_builder;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.resume_app.R;
-import com.example.resume_app.ui.discussion.DiscussionActivity;
-import com.example.resume_app.ui.profile.ProfileActivity;
-import com.example.resume_app.ui.resume_builder.resume_editor.ResumeEditorActivity;
+import com.example.resume_app.discussion.DiscussionActivity;
+import com.example.resume_app.profile.ProfileActivity;
+import com.example.resume_app.resume_builder.resume_editor.ResumeEditorActivity;
 
 import java.util.ArrayList;
 
@@ -20,8 +20,6 @@ import java.util.ArrayList;
  * Home for resume-related actions including creating and downloading resumes.
  */
 public class ResumeBuilderActivity extends AppCompatActivity implements ResumeBuilderRecyclerAdapter.IClickListener {
-
-    ResumeBuilderRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +38,7 @@ public class ResumeBuilderActivity extends AppCompatActivity implements ResumeBu
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        adapter = new ResumeBuilderRecyclerAdapter(this, data);
-        adapter.setClickListener(this);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(new ResumeBuilderRecyclerAdapter(this, data, this));
 
         Button buttonPlus = findViewById(R.id.button_plus);
         buttonPlus.setOnClickListener(view -> {

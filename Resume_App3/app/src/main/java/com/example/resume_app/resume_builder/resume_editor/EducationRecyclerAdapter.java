@@ -1,4 +1,4 @@
-package com.example.resume_app.ui.resume_builder.resume_editor;
+package com.example.resume_app.resume_builder.resume_editor;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,22 +12,22 @@ import com.example.resume_app.R;
 
 import java.util.ArrayList;
 
-public class AwardsRecyclerAdapter extends RecyclerView.Adapter<AwardsRecyclerAdapter.ViewHolder> {
-    static ArrayList<Awards> awards;
+public class EducationRecyclerAdapter extends RecyclerView.Adapter<EducationRecyclerAdapter.ViewHolder> {
+    static ArrayList<Education> education;
 
-    AwardsRecyclerAdapter(ArrayList<Awards> awards) {
-        this.awards = awards;
+    EducationRecyclerAdapter(ArrayList<Education> education) {
+        EducationRecyclerAdapter.education = education;
     }
 
     @Override
-    public AwardsRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public EducationRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_experience_recycler_container, parent, false);
-        return new AwardsRecyclerAdapter.ViewHolder(view);
+        return new EducationRecyclerAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(AwardsRecyclerAdapter.ViewHolder holder, int position) {
-        holder.positionTitle.setText(awards.get(position).awardName);
+    public void onBindViewHolder(EducationRecyclerAdapter.ViewHolder holder, int position) {
+        holder.positionTitle.setText(education.get(position).schoolName);
         //the description
 //        holder.description.setText(experiences.get(position).jobPosition);
         holder.editButton.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +48,7 @@ public class AwardsRecyclerAdapter extends RecyclerView.Adapter<AwardsRecyclerAd
 
     @Override
     public int getItemCount() {
-        return awards.size();
+        return education.size();
     }
 
 
