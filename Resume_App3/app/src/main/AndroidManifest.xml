@@ -24,7 +24,7 @@
             android:name=".ui.resume_builder.ResumePreviewActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.resume_builder.ResumeEditorActivity"
+            android:name=".ui.resume_builder.resume_editor.ResumeEditorActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

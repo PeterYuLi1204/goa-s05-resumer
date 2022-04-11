@@ -12,6 +12,7 @@ import android.widget.Button;
 import com.example.resume_app.R;
 import com.example.resume_app.ui.discussion.DiscussionActivity;
 import com.example.resume_app.ui.profile.ProfileActivity;
+import com.example.resume_app.ui.resume_builder.resume_editor.ResumeEditorActivity;
 
 import java.util.ArrayList;
 
