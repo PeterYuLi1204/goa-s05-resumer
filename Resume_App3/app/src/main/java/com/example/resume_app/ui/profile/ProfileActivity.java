@@ -10,6 +10,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,15 +33,12 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     void connectXml() {
-        RadioButton radioButtonInfo = findViewById(R.id.button_info);
-        radioButtonInfo.setOnClickListener(view -> {
-            // TODO
-        });
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        CustomPagerAdapter customPagerAdapter = new CustomPagerAdapter(this);
+        viewPager.setAdapter(customPagerAdapter);
 
-        RadioButton radioButtonPostsComments = findViewById(R.id.button_posts_comments);
-        radioButtonPostsComments.setOnClickListener(view -> {
-            // TODO
-        });
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
 
         View bottomNavigation = findViewById(R.id.bottom_navigation);
 
