@@ -1,189 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_launcher_background"
     tools:context=".resume_builder.ResumePreviewActivity">
 
-    <!--This layout is LETTER SIZE (8.5" 11")-->
-    <LinearLayout
-        android:id="@+id/template"
-        android:layout_width="612pt"
-        android:layout_height="792pt"
-        android:layout_gravity="center"
-        android:background="@color/white"
-        android:padding="40pt">
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/button_download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:text="@string/button_download" />
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_launcher_background">
+
+        <!--This layout is LETTER SIZE (8.5" 11")-->
         <LinearLayout
-            android:layout_width="320pt"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/resume_header_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:text="@string/app_name"
-                android:textSize="36pt" />
+            android:id="@+id/template"
+            android:layout_width="612px"
+            android:layout_height="792px"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:padding="40px">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12pt">
+                android:layout_width="320px"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/resume_email"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/resume_header_name"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:text="@string/app_name"
+                    android:textSize="36px" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12px">
+
+                    <TextView
+                        android:id="@+id/resume_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/placeholder_text"
+                        android:textSize="10px" />
+
+                    <Space
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/resume_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/placeholder_text"
+                        android:textSize="10px" />
+
+                    <Space
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/resume_website"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/placeholder_text"
+                        android:textSize="10px" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/resume_introduction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12px"
                     android:text="@string/placeholder_text"
-                    android:textSize="10pt" />
+                    android:textSize="10px" />
 
                 <Space
-                    android:layout_width="0pt"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
                     android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/resume_phone"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/resume_header_experience"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:text="@string/header_experience"
+                    android:textSize="16px" />
+
+                <TextView
+                    android:id="@+id/resume_experience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12px"
                     android:text="@string/placeholder_text"
-                    android:textSize="10pt" />
+                    android:textSize="10px" />
 
                 <Space
-                    android:layout_width="0pt"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
                     android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/resume_website"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/resume_header_education"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:text="@string/header_education"
+                    android:textSize="16px" />
+
+                <TextView
+                    android:id="@+id/resume_education"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12px"
                     android:text="@string/placeholder_text"
-                    android:textSize="10pt" />
+                    android:textSize="10px" />
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/resume_introduction"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12pt"
-                android:text="@string/placeholder_text"
-                android:textSize="10pt" />
+            <LinearLayout
+                android:layout_width="172px"
+                android:layout_height="match_parent"
+                android:layout_marginStart="40px"
+                android:orientation="vertical">
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0pt"
-                android:layout_weight="1" />
+                <TextView
+                    android:id="@+id/resume_header_certifications"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:text="@string/header_certifications"
+                    android:textSize="16px" />
 
-            <TextView
-                android:id="@+id/resume_header_experience"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:text="@string/header_experience"
-                android:textSize="16pt" />
+                <TextView
+                    android:id="@+id/resume_certifications"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12px"
+                    android:text="@string/placeholder_text"
+                    android:textSize="10px" />
 
-            <TextView
-                android:id="@+id/resume_experience"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12pt"
-                android:text="@string/placeholder_text"
-                android:textSize="10pt" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0pt"
-                android:layout_weight="1" />
+                <TextView
+                    android:id="@+id/resume_header_awards"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:text="@string/header_awards"
+                    android:textSize="16px" />
 
-            <TextView
-                android:id="@+id/resume_header_education"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:text="@string/header_education"
-                android:textSize="16pt" />
+                <TextView
+                    android:id="@+id/resume_awards"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12px"
+                    android:text="@string/placeholder_text"
+                    android:textSize="10px" />
 
-            <TextView
-                android:id="@+id/resume_education"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12pt"
-                android:text="@string/placeholder_text"
-                android:textSize="10pt" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/resume_header_skills"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:text="@string/header_skills"
+                    android:textSize="16px" />
 
-        <LinearLayout
-            android:layout_width="172pt"
-            android:layout_height="match_parent"
-            android:layout_marginStart="40pt"
-            android:orientation="vertical">
+                <TextView
+                    android:id="@+id/resume_skills"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12px"
+                    android:text="@string/placeholder_text"
+                    android:textSize="10px" />
 
-            <TextView
-                android:id="@+id/resume_header_certifications"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:text="@string/header_certifications"
-                android:textSize="16pt" />
-
-            <TextView
-                android:id="@+id/resume_certifications"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12pt"
-                android:text="@string/placeholder_text"
-                android:textSize="10pt" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0pt"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/resume_header_awards"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:text="@string/header_awards"
-                android:textSize="16pt" />
-
-            <TextView
-                android:id="@+id/resume_awards"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12pt"
-                android:text="@string/placeholder_text"
-                android:textSize="10pt" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0pt"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/resume_header_skills"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:text="@string/header_skills"
-                android:textSize="16pt" />
-
-            <TextView
-                android:id="@+id/resume_skills"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12pt"
-                android:text="@string/placeholder_text"
-                android:textSize="10pt" />
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </FrameLayout>
 
-</FrameLayout>
+
+</RelativeLayout>
