@@ -1,11 +1,14 @@
 package com.example.resume_app.resume_builder;
 
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.Html;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,8 +19,14 @@ import com.example.resume_app.resume_builder.resume_editor.Certification;
 import com.example.resume_app.resume_builder.resume_editor.Education;
 import com.example.resume_app.resume_builder.resume_editor.Experience;
 import com.example.resume_app.resume_builder.resume_editor.Skill;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +35,10 @@ import java.util.ArrayList;
  */
 public class ResumePreviewActivity extends AppCompatActivity {
 
+    DisplayMetrics display = Resources.getSystem().getDisplayMetrics();
+
     ResumeData resumeData;
+    View template;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +49,12 @@ public class ResumePreviewActivity extends AppCompatActivity {
         // resumeData = ResumeData.loadFrom(getIntent().getStringExtra("FILE_NAME"));
 
         connectTemplate();
-        scaleTemplate();
+        connectXml();
     }
 
     void connectTemplate() {
         // Regrettable...
+        template = findViewById(R.id.template);
         TextView textHeaderName = findViewById(R.id.resume_header_name);
         TextView textIntroduction = findViewById(R.id.resume_introduction);
         TextView textEmail = findViewById(R.id.resume_email);
@@ -118,17 +131,35 @@ public class ResumePreviewActivity extends AppCompatActivity {
             textHeaderSkills.setVisibility(View.GONE);
             textSkills.setVisibility(View.GONE);
         }
+
+        float scaleFactor = display.widthPixels / 612f;
+        template.setScaleX(scaleFactor);
+        template.setScaleY(scaleFactor);
     }
 
-    void scaleTemplate() {
-        DisplayMetrics display = Resources.getSystem().getDisplayMetrics();
-        LinearLayout template = findViewById(R.id.template);
+    void connectXml() {
+        ExtendedFloatingActionButton buttonDownload = findViewById(R.id.button_download);
+        buttonDownload.setOnClickListener(view -> {
+            renderToPdf();
+        });
+    }
 
-        float scale = display.widthPixels / display.xdpi * 72 / 612;
-        // float scaleY = display.widthPixels / display.ydpi * 72 / 792;
+    void renderToPdf() {
+        PdfDocument pdfDoc = new PdfDocument();
+        PdfDocument.PageInfo pdfInfo = new PdfDocument.PageInfo.Builder(612, 792, 1).create();
+        PdfDocument.Page pdf = pdfDoc.startPage(pdfInfo);
+        template.draw(pdf.getCanvas());
+        pdfDoc.finishPage(pdf);
 
-        template.setScaleX(scale);
-        template.setScaleY(scale);
+        try {
+            File file = new File(getExternalFilesDir(null), "testfile.pdf");
+            pdfDoc.writeTo(new FileOutputStream(file));
+            pdfDoc.close();
+            System.out.println(file);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("FAILED");
+        }
     }
 
     // 7 years bad luck for this

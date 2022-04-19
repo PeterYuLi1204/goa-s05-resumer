@@ -5,6 +5,7 @@
     <string name="title_profile">Votre profil</string>
 
     <string name="button_preview">L\'apercu</string>
+    <string name="button_download">Telecharger</string>
 
     <string name="tab_info">Les infos</string>
     <string name="tab_posts_comments">Les messages</string>

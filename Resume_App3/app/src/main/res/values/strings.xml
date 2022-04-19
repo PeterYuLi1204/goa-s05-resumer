@@ -9,6 +9,7 @@
 
     <string name="button_plus" translatable="false">+</string>
     <string name="button_preview">Preview</string>
+    <string name="button_download">Download</string>
 
     <string name="tab_info">Info</string>
     <string name="tab_posts_comments">Posts/Comments</string>
