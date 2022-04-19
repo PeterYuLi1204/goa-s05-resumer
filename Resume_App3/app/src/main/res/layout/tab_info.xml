@@ -33,17 +33,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/header_introduction"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/introduction_edit_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="edit" />
+                    android:backgroundTint="@color/transparent"
+                    android:src="@drawable/ic_baseline_edit_24" />
             </LinearLayout>
 
             <LinearLayout
@@ -57,17 +58,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/header_experience"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/experience_add_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="add" />
+                    android:backgroundTint="@color/transparent"
+                    android:src="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
             <LinearLayout
@@ -87,17 +89,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/header_awards"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/awards_add_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="add" />
+                    android:backgroundTint="@color/transparent"
+                    android:src="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
             <LinearLayout
@@ -117,17 +120,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/header_education"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/education_add_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="add" />
+                    android:backgroundTint="@color/transparent"
+                    android:src="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
             <LinearLayout
@@ -147,17 +151,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/header_certifications"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/certifications_add_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="add" />
+                    android:backgroundTint="@color/transparent"
+                    android:src="@drawable/ic_baseline_add_24"/>
             </LinearLayout>
 
             <LinearLayout
@@ -177,17 +182,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/header_skills"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/skills_add_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="add" />
+                    android:backgroundTint="@color/transparent"
+                    android:src="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
             <LinearLayout
