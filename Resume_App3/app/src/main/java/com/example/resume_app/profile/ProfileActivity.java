@@ -4,8 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.resume_app.R;
@@ -29,13 +33,11 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     void connectXml() {
-        ArrayList<ModelObject> tabs = new ArrayList<>();
-
-        tabs.add(ModelObject.INFO);
-        tabs.add(ModelObject.POSTS_COMMENTS);
 
         ViewPager viewPager = findViewById(R.id.view_pager);
-        viewPager.setAdapter(new ProfilePagerAdapter(this, tabs));
+        ProfilePagerAdapter profilePagerAdapter = new ProfilePagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        ProfilePagerAdapter.addFragment(new InfoFragment(), "Info");
+        ProfilePagerAdapter.addFragment(new InfoFragment(), "Posts/Comments");
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
