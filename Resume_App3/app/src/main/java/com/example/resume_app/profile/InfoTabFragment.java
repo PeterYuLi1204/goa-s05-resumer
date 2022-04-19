@@ -11,14 +11,13 @@ import android.widget.ImageButton;
 
 import com.example.resume_app.R;
 
-public class InfoFragment extends Fragment {
+public class InfoTabFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        View view = inflater.inflate(R.layout.fragment_info, container, false);
+        View view = inflater.inflate(R.layout.fragment_info_tab, container, false);
 
         connectXml(view);
 
@@ -77,3 +76,4 @@ public class InfoFragment extends Fragment {
     }
 
 }
+

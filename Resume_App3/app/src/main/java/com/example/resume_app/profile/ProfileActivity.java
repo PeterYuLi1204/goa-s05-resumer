@@ -6,16 +6,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.resume_app.R;
 import com.example.resume_app.discussion.DiscussionActivity;
 import com.example.resume_app.resume_builder.ResumeBuilderActivity;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
 
@@ -34,13 +37,21 @@ public class ProfileActivity extends AppCompatActivity {
 
     void connectXml() {
 
-        ViewPager viewPager = findViewById(R.id.view_pager);
-        ProfilePagerAdapter profilePagerAdapter = new ProfilePagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        ProfilePagerAdapter.addFragment(new InfoFragment(), "Info");
-        ProfilePagerAdapter.addFragment(new InfoFragment(), "Posts/Comments");
+        ViewPager2 viewPager2 = findViewById(R.id.view_pager);
+        TabLayout tabLayout = findViewById(R.id.tablayout);
 
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-        tabLayout.setupWithViewPager(viewPager);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(this);
+        viewPager2.setAdapter(adapter);
+
+        String[] tabtitles = {"Info", "Posts/Comments"};
+
+        new TabLayoutMediator(tabLayout, viewPager2,
+                new TabLayoutMediator.TabConfigurationStrategy() {
+                    @Override
+                    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                        tab.setText(tabtitles[position]);
+                    }
+                }).attach();
 
         View bottomNavigation = findViewById(R.id.bottom_navigation);
 
