@@ -1,50 +1,42 @@
 package com.example.resume_app.profile;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
-import androidx.viewpager.widget.PagerAdapter;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 
-public class ProfilePagerAdapter extends PagerAdapter {
+public class ProfilePagerAdapter extends FragmentStatePagerAdapter {
 
-    LayoutInflater inflater;
-    ArrayList<ModelObject> tabs;
+    private static final ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
+    private static final ArrayList<String> fragmentTitle = new ArrayList<>();
 
-    public ProfilePagerAdapter(Context context, ArrayList<ModelObject> tabs) {
-        this.inflater = LayoutInflater.from(context);
-        this.tabs = tabs;
+    public ProfilePagerAdapter(@NonNull FragmentManager fm, int behavior) {
+        super(fm, behavior);
     }
 
     @NonNull
     @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        ViewGroup view = (ViewGroup) inflater.inflate(tabs.get(position).getLayoutResId(), container, false);
-        container.addView(view);
-        return view;
-    }
-
-    @Override
-    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        container.removeView((ViewGroup) object);
+    public Fragment getItem(int position) {
+        return fragmentArrayList.get(position);
     }
 
     @Override
     public int getCount() {
-        return tabs.size();
+        return fragmentArrayList.size();
     }
 
-    @Override
-    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view == object;
+    public static void addFragment(Fragment fragment, String title){
+
+        fragmentArrayList.add(fragment);
+        fragmentTitle.add(title);
     }
 
+    @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return inflater.getContext().getString(tabs.get(position).getTitleResId());
+        return fragmentTitle.get(position);
     }
 }

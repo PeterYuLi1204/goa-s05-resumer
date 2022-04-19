@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -31,64 +33,14 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     void connectXml() {
-        ArrayList<ModelObject> tabs = new ArrayList<>();
-
-        tabs.add(ModelObject.INFO);
-        tabs.add(ModelObject.POSTS_COMMENTS);
 
         ViewPager viewPager = findViewById(R.id.view_pager);
-        viewPager.setAdapter(new ProfilePagerAdapter(this, tabs));
+        ProfilePagerAdapter profilePagerAdapter = new ProfilePagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        ProfilePagerAdapter.addFragment(new InfoFragment(), "Info");
+        ProfilePagerAdapter.addFragment(new InfoFragment(), "Posts/Comments");
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
-
-        ImageButton introductionEditButton = findViewById(R.id.introduction_edit_button);
-        introductionEditButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        ImageButton experienceAddButton = findViewById(R.id.experience_add_button);
-        experienceAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        ImageButton awardsAddButton = findViewById(R.id.awards_add_button);
-        awardsAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        ImageButton educationAddButton = findViewById(R.id.education_add_button);
-        educationAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        ImageButton certificationsAddButton = findViewById(R.id.certifications_add_button);
-        certificationsAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        ImageButton skillsAddButton = findViewById(R.id.skills_add_button);
-        skillsAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         View bottomNavigation = findViewById(R.id.bottom_navigation);
 
