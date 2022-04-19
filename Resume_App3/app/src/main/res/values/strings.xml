@@ -13,10 +13,9 @@
     <string name="tab_info">Info</string>
     <string name="tab_posts_comments">Posts/Comments</string>
 
-    <string name="introduction_title">Introduction</string>
-    <string name="experience_title">Experience</string>
-    <string name="awards_title">Awards and Honours</string>
-    <string name="education_title">Education</string>
-    <string name="certifications_title">Certifications</string>
-    <string name="skills_title">Skills</string>
+    <string name="header_experience">Experience</string>
+    <string name="header_education">Education</string>
+    <string name="header_certifications">Certifications</string>
+    <string name="header_awards">Awards and Honours</string>
+    <string name="header_skills">Skills</string>
 </resources>

@@ -1,6 +1,10 @@
 package com.example.resume_app.resume_builder.resume_editor;
 
-public class Award {
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
+
+public class Award implements Serializable {
     String awardName;
     String issuer;
     String description;
@@ -11,5 +15,10 @@ public class Award {
         this.issuer = issuer;
         this.description = description;
         this.dateAwarded = dateAwarded;
+    }
+
+    @NonNull
+    public String toString() {
+        return "<p><b>" + awardName + "</b><br>" + description + "<br>" + issuer + " • " + dateAwarded + "</p>";
     }
 }
