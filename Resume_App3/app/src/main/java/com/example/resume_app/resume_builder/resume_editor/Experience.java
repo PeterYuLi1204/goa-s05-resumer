@@ -1,6 +1,10 @@
 package com.example.resume_app.resume_builder.resume_editor;
 
-public class Experience {
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
+
+public class Experience implements Serializable {
     String jobPosition;
     String companyName;
     String description;
@@ -15,5 +19,10 @@ public class Experience {
         this.startDate = startDate;
         this.endDate = endDate;
         selected = false;
+    }
+
+    @NonNull
+    public String toString() {
+        return "<p><b>" + jobPosition + " • " + companyName + "</b><br>" + description + "<br>" + startDate + " - " + endDate + "</p>";
     }
 }

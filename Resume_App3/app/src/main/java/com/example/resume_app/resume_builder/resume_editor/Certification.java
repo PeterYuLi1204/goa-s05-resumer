@@ -1,6 +1,10 @@
 package com.example.resume_app.resume_builder.resume_editor;
 
-public class Certification {
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
+
+public class Certification implements Serializable {
     String certificationTitle;
     String issuer;
     String issuedOn;
@@ -11,5 +15,10 @@ public class Certification {
         this.issuer = issuer;
         this.issuedOn = issuedOn;
         this.expiryDate = expiryDate;
+    }
+
+    @NonNull
+    public String toString() {
+        return "<p>" + certificationTitle + " • " + issuer + "<br>" + issuedOn + " - " + expiryDate + "</p>";
     }
 }

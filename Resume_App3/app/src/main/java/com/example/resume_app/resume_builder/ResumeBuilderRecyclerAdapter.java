@@ -28,7 +28,7 @@ public class ResumeBuilderRecyclerAdapter extends RecyclerView.Adapter<ResumeBui
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.item_recycler_container, parent, false);
+        View view = inflater.inflate(R.layout.item_resume_builder_recycler_container, parent, false);
         return new ViewHolder(view);
     }
 

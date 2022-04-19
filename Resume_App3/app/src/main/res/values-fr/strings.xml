@@ -8,4 +8,10 @@
 
     <string name="tab_info">Les infos</string>
     <string name="tab_posts_comments">Les messages</string>
+
+    <string name="header_experience">Mes experiences</string>
+    <string name="header_education">Mon education</string>
+    <string name="header_certifications">Mes certifications</string>
+    <string name="header_awards">Mes distinctions</string>
+    <string name="header_skills">Mes competences</string>
 </resources>
