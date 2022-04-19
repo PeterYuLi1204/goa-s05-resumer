@@ -18,4 +18,5 @@
     <string name="header_certifications">Certifications</string>
     <string name="header_awards">Awards and Honours</string>
     <string name="header_skills">Skills</string>
+    <string name="header_introduction">Introduction</string>
 </resources>
