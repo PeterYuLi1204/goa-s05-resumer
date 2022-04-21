@@ -1,14 +1,14 @@
-package com.example.resume_app.resume_builder.resume_editor;
+package com.example.resume_app.data_model;
 
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
 public class Certification implements Serializable {
-    String certificationTitle;
-    String issuer;
-    String issuedOn;
-    String expiryDate;
+    public String certificationTitle;
+    public String issuer;
+    public String issuedOn;
+    public String expiryDate;
 
     public Certification(String certificationTitle, String issuer, String issuedOn, String expiryDate) {
         this.certificationTitle = certificationTitle;

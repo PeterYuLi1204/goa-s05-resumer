@@ -1,14 +1,14 @@
-package com.example.resume_app.resume_builder.resume_editor;
+package com.example.resume_app.data_model;
 
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
 public class Award implements Serializable {
-    String awardName;
-    String issuer;
-    String description;
-    String dateAwarded;
+    public String awardName;
+    public String issuer;
+    public String description;
+    public String dateAwarded;
 
     public Award(String awardName, String issuer, String description, String dateAwarded) {
         this.awardName = awardName;

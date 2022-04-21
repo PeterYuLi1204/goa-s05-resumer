@@ -1,15 +1,22 @@
 package com.example.resume_app.profile;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import androidx.fragment.app.Fragment;
+
+import com.example.resume_app.ExampleDataGeneratorThrowaway;
 import com.example.resume_app.R;
+import com.example.resume_app.data_model.UserData;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Objects;
 
 public class InfoTabFragment extends Fragment {
 
@@ -22,6 +29,22 @@ public class InfoTabFragment extends Fragment {
         connectXml(view);
 
         return view;
+    }
+
+    /*
+    TODO:
+        once user input is confirmed, use it to create a [UserData] object.
+        then, write the [UserData] to a JSON file like this. --arthur
+     */
+    void saveToJson(UserData data, String fileName) {
+        File file = new File(Objects.requireNonNull(getContext()).getExternalFilesDir(null), fileName + ".json");
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        try (FileWriter writer = new FileWriter(file)) {
+            gson.toJson(data, writer);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     void connectXml(View view) {
@@ -74,6 +97,5 @@ public class InfoTabFragment extends Fragment {
             }
         });
     }
-
 }
 

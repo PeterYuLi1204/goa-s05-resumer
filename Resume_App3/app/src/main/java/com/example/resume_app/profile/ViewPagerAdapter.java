@@ -7,8 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
 
-    public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity)
-    {
+    public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
 
@@ -16,13 +15,14 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
 
-        switch (position) {
-            case 0:
-                return  new InfoTabFragment();
-            default:
-                return  new PostsCommentsTabFragment();
+        if (position == 0) {
+            return new InfoTabFragment();
         }
+        return new PostsCommentsTabFragment();
     }
+
     @Override
-    public int getItemCount() {return 2; }
+    public int getItemCount() {
+        return 2;
+    }
 }
