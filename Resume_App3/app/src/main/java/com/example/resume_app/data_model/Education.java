@@ -1,14 +1,14 @@
-package com.example.resume_app.resume_builder.resume_editor;
+package com.example.resume_app.data_model;
 
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
 public class Education implements Serializable {
-    String schoolName;
-    String description;
-    String startDate;
-    String endDate;
+    public String schoolName;
+    public String description;
+    public String startDate;
+    public String endDate;
 
     public Education(String schoolName, String description, String startDate, String endDate) {
         this.schoolName = schoolName;

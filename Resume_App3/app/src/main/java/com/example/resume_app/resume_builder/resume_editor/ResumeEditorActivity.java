@@ -9,6 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.resume_app.R;
+import com.example.resume_app.data_model.Award;
+import com.example.resume_app.data_model.Certification;
+import com.example.resume_app.data_model.Education;
+import com.example.resume_app.data_model.Experience;
+import com.example.resume_app.data_model.Skill;
 import com.example.resume_app.resume_builder.ResumePreviewActivity;
 
 import java.util.ArrayList;

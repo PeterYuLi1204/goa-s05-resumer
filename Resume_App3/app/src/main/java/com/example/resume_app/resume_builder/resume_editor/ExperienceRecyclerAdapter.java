@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.resume_app.R;
+import com.example.resume_app.data_model.Experience;
 
 import java.util.ArrayList;
 

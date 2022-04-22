@@ -4,14 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.resume_app.R;
@@ -19,8 +14,6 @@ import com.example.resume_app.discussion.DiscussionActivity;
 import com.example.resume_app.resume_builder.ResumeBuilderActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
-import java.util.ArrayList;
 
 /**
  * Home for profile-related actions including editing information and viewing post history.
@@ -43,13 +36,13 @@ public class ProfileActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(this);
         viewPager2.setAdapter(adapter);
 
-        String[] tabtitles = {"Info", "Posts/Comments"};
+        String[] tabTitles = {"Info", "Posts/Comments"};
 
         new TabLayoutMediator(tabLayout, viewPager2,
                 new TabLayoutMediator.TabConfigurationStrategy() {
                     @Override
                     public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                        tab.setText(tabtitles[position]);
+                        tab.setText(tabTitles[position]);
                     }
                 }).attach();
 

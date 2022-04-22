@@ -1,16 +1,16 @@
-package com.example.resume_app.resume_builder.resume_editor;
+package com.example.resume_app.data_model;
 
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
 public class Experience implements Serializable {
-    String jobPosition;
-    String companyName;
-    String description;
-    String startDate;
-    String endDate;
-    Boolean selected;
+    public String jobPosition;
+    public String companyName;
+    public String description;
+    public String startDate;
+    public String endDate;
+    public Boolean selected;
 
     public Experience(String jobPosition, String companyName, String description, String startDate, String endDate) {
         this.jobPosition = jobPosition;
