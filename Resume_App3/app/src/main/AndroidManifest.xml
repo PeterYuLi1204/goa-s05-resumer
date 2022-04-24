@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ResumeApp">
         <activity
+            android:name=".profile.popups.IntroductionPopup"
+            android:exported="false" />
+        <activity
             android:name=".profile.ProfileActivity"
             android:exported="false" />
         <activity
@@ -44,4 +47,5 @@
                 android:resource="@xml/provider_paths" />
         </provider>
     </application>
+
 </manifest>

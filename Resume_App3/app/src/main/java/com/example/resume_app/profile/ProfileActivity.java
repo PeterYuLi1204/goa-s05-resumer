@@ -36,7 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(this);
         viewPager2.setAdapter(adapter);
 
-        String[] tabTitles = {"Info", "Posts/Comments"};
+        String[] tabTitles = {getString(R.string.tab_info), getString(R.string.tab_posts_comments)};
 
         new TabLayoutMediator(tabLayout, viewPager2,
                 new TabLayoutMediator.TabConfigurationStrategy() {
