@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class Education implements Serializable {
+public class Education {
     public String schoolName;
     public String description;
     public String startDate;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_discussion">La discussion</string>
-    <string name="title_resume_builder">Creer un resume</string>
+    <string name="title_your_resumes">Creer un resume</string>
     <string name="title_profile">Votre profil</string>
 
     <string name="button_preview">L\'apercu</string>
@@ -15,4 +15,5 @@
     <string name="header_certifications">Mes certifications</string>
     <string name="header_awards">Mes distinctions</string>
     <string name="header_skills">Mes competences</string>
+    <string name="header_introduction">L\'introduction</string>
 </resources>

@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class Experience implements Serializable {
+public class Experience {
     public String jobPosition;
     public String companyName;
     public String description;

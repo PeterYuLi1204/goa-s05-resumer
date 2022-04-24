@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class Skill implements Serializable {
+public class Skill {
     public String skillName;
 
     public Skill(String skillName) {

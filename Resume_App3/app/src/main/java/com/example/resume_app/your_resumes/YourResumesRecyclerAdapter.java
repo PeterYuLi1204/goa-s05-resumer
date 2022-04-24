@@ -1,4 +1,4 @@
-package com.example.resume_app.resume_builder;
+package com.example.resume_app.your_resumes;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,13 +13,13 @@ import com.example.resume_app.R;
 
 import java.util.ArrayList;
 
-public class ResumeBuilderRecyclerAdapter extends RecyclerView.Adapter<ResumeBuilderRecyclerAdapter.ViewHolder> {
+public class YourResumesRecyclerAdapter extends RecyclerView.Adapter<YourResumesRecyclerAdapter.ViewHolder> {
 
     LayoutInflater inflater;
     ArrayList<String> data;
     IClickListener clickListener;
 
-    ResumeBuilderRecyclerAdapter(Context context, ArrayList<String> data, IClickListener clickListener) {
+    YourResumesRecyclerAdapter(Context context, ArrayList<String> data, IClickListener clickListener) {
         this.inflater = LayoutInflater.from(context);
         this.data = data;
         this.clickListener = clickListener;

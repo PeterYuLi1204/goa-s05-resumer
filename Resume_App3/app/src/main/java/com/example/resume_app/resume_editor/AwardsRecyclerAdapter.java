@@ -1,4 +1,4 @@
-package com.example.resume_app.resume_builder.resume_editor;
+package com.example.resume_app.resume_editor;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,27 +9,26 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.resume_app.R;
-import com.example.resume_app.data_model.Certification;
+import com.example.resume_app.data_model.Award;
 
 import java.util.ArrayList;
 
-public class CertificationsRecyclerAdapter extends RecyclerView.Adapter<CertificationsRecyclerAdapter.ViewHolder> {
-    static ArrayList<Certification> certifications;
+public class AwardsRecyclerAdapter extends RecyclerView.Adapter<AwardsRecyclerAdapter.ViewHolder> {
+    static ArrayList<Award> awards;
 
-    CertificationsRecyclerAdapter(ArrayList<Certification> certifications) {
-        CertificationsRecyclerAdapter.certifications = certifications;
-
+    AwardsRecyclerAdapter(ArrayList<Award> awards) {
+        AwardsRecyclerAdapter.awards = awards;
     }
 
     @Override
-    public CertificationsRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AwardsRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_experience_recycler_container, parent, false);
-        return new CertificationsRecyclerAdapter.ViewHolder(view);
+        return new AwardsRecyclerAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(CertificationsRecyclerAdapter.ViewHolder holder, int position) {
-        holder.positionTitle.setText(certifications.get(position).certificationTitle);
+    public void onBindViewHolder(AwardsRecyclerAdapter.ViewHolder holder, int position) {
+        holder.positionTitle.setText(awards.get(position).awardName);
         //the description
 //        holder.description.setText(experiences.get(position).jobPosition);
         holder.editButton.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +49,7 @@ public class CertificationsRecyclerAdapter extends RecyclerView.Adapter<Certific
 
     @Override
     public int getItemCount() {
-        return certifications.size();
+        return awards.size();
     }
 
 

@@ -1,4 +1,4 @@
-package com.example.resume_app.resume_builder;
+package com.example.resume_app.resume_editor;
 
 import android.content.Intent;
 import android.content.res.Resources;

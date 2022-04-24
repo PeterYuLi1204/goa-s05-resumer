@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class Award implements Serializable {
+public class Award {
     public String awardName;
     public String issuer;
     public String description;

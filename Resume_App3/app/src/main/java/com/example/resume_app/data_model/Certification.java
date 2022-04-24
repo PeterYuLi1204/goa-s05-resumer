@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class Certification implements Serializable {
+public class Certification {
     public String certificationTitle;
     public String issuer;
     public String issuedOn;

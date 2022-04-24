@@ -11,7 +11,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.resume_app.R;
 import com.example.resume_app.discussion.DiscussionActivity;
-import com.example.resume_app.resume_builder.ResumeBuilderActivity;
+import com.example.resume_app.your_resumes.YourResumesActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -55,7 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         Button buttonResumeBuilder = bottomNavigation.findViewById(R.id.button_resume_builder);
         buttonResumeBuilder.setOnClickListener(view -> {
-            startActivity(new Intent(this, ResumeBuilderActivity.class));
+            startActivity(new Intent(this, YourResumesActivity.class));
         });
     }
 }
