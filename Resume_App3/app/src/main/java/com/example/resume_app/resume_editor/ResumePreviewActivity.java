@@ -202,6 +202,6 @@ public class ResumePreviewActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        pdfDoc.close();
+        pdfDoc.close(); //testing testing
     }
-}//test test
+}
