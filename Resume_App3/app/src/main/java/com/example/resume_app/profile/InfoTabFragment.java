@@ -1,10 +1,16 @@
 package com.example.resume_app.profile;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 
@@ -15,16 +21,21 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Objects;
 
 public class InfoTabFragment extends Fragment {
+
+    UserData userData;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_info_tab, container, false);
+
+        userData = loadFromJson("test_user_data");
 
         connectXml(view);
 
@@ -37,7 +48,7 @@ public class InfoTabFragment extends Fragment {
         then, write the [UserData] to a JSON file like this. --arthur
      */
     void saveToJson(UserData data, String fileName) {
-        File file = new File(Objects.requireNonNull(getContext()).getExternalFilesDir(null), fileName + ".json");
+        File file = new File(requireContext().getExternalFilesDir(null), fileName + ".json");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try (FileWriter writer = new FileWriter(file)) {
@@ -47,15 +58,32 @@ public class InfoTabFragment extends Fragment {
         }
     }
 
+    UserData loadFromJson(String fileName) {
+        File file = new File(requireContext().getExternalFilesDir(null), fileName + ".json");
+        Gson gson = new Gson();
+        UserData data = null;
+
+        try (FileReader reader = new FileReader(file)) {
+            data = gson.fromJson(reader, UserData.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return data;
+    }
+
+
     void connectXml(View view) {
 
-        ImageButton introductionEditButton = view.findViewById(R.id.introduction_edit_button);
-        introductionEditButton.setOnClickListener(new View.OnClickListener() {
+        ImageButton informationtionEditButton = view.findViewById(R.id.information_edit_button);
+        informationtionEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                openEditInformationDialog();
             }
         });
+
+        editInformationDialog = new Dialog(getContext());
 
         ImageButton experienceAddButton = view.findViewById(R.id.experience_add_button);
         experienceAddButton.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +124,46 @@ public class InfoTabFragment extends Fragment {
 
             }
         });
+
+        LinearLayout awardsLinearLayout = view.findViewById(R.id.awards_linear_layout);
+
+
+    }
+
+    Dialog editInformationDialog;
+
+    private void openEditInformationDialog() {
+        editInformationDialog.setContentView(R.layout.dialog_edit_information);
+        editInformationDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        ImageButton closeEditInformation = editInformationDialog.findViewById(R.id.close_edit_information_button);
+
+        closeEditInformation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editInformationDialog.dismiss();
+            }
+        });
+
+        Button saveButton = editInformationDialog.findViewById(R.id.information_save_button);
+
+        EditText editTextName = editInformationDialog.findViewById(R.id.edittext_name);
+        EditText editTextJobPosition = editInformationDialog.findViewById(R.id.edittext_job_position);
+        EditText editTextPhoneNumber = editInformationDialog.findViewById(R.id.edittext_phone_number);
+        EditText editTextEmail = editInformationDialog.findViewById(R.id.edittext_email);
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userData.username = editTextName.getText().toString();
+                saveToJson(userData, "test_user_data");
+                editInformationDialog.dismiss();
+            }
+        });
+
+        editTextName.setText(userData.username);
+
+        editInformationDialog.show();
     }
 }
 

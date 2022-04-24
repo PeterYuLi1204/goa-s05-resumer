@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Resume_App">
         <activity
+            android:name=".profile.popups.IntroductionPopup"
+            android:exported="false" />
+        <activity
             android:name=".profile.ProfileActivity"
             android:exported="false" />
         <activity
@@ -35,4 +38,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

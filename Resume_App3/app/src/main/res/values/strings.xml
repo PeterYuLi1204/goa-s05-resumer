@@ -20,6 +20,16 @@
     <string name="header_awards">Awards and Honours</string>
     <string name="header_skills">Skills</string>
     <string name="header_introduction">Introduction</string>
+
+    <string name="save">SAVE</string>
+
+    <string name="edit_information">Edit Information</string>
+
+    <string name="edit_name">Edit Name</string>
+    <string name="edit_job_position">Edit Job Position</string>
+    <string name="edit_phone_number">Edit Phone Number</string>
+    <string name="edit_email">Edit Email</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 </resources>
