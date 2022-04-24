@@ -1,28 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/ResumeApp.Toolbar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/dark_blue"
     android:orientation="horizontal">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_discussion"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/title_discussion" />
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:paddingVertical="16dp"
+        android:text="@string/title_discussion"
+        android:textSize="12sp"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/message_circle"
+        app:iconGravity="top"
+        app:iconPadding="2dp"
+        app:iconSize="16dp" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_resume_builder"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/title_your_resumes" />
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:paddingVertical="16dp"
+        android:text="@string/title_your_resumes"
+        android:textSize="12sp"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/file_text"
+        app:iconGravity="top"
+        app:iconPadding="2dp"
+        app:iconSize="16dp" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_profile"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/title_profile" />
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:paddingVertical="16dp"
+        android:text="@string/title_profile"
+        android:textSize="12sp"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/user"
+        app:iconGravity="top"
+        app:iconPadding="2dp"
+        app:iconSize="16dp" />
 
 </LinearLayout>

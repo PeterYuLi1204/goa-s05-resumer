@@ -31,7 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
     void connectXml() {
 
         ViewPager2 viewPager2 = findViewById(R.id.view_pager);
-        TabLayout tabLayout = findViewById(R.id.tablayout);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(this);
         viewPager2.setAdapter(adapter);

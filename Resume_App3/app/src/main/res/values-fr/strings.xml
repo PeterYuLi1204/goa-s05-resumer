@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_discussion">La discussion</string>
-    <string name="title_your_resumes">Creer un resume</string>
-    <string name="title_profile">Votre profil</string>
+    <string name="title_discussion">Discussion</string>
+    <string name="title_your_resumes">Vos resumes</string>
+    <string name="title_profile">Profil</string>
 
-    <string name="button_preview">L\'apercu</string>
+    <string name="button_create_resume">Creer un resume</string>
+    <string name="button_preview">Apercu</string>
     <string name="button_download">Telecharger</string>
 
-    <string name="tab_info">Les infos</string>
-    <string name="tab_posts_comments">Les messages</string>
+    <string name="tab_info">Infos</string>
+    <string name="tab_posts_comments">Messages</string>
 
-    <string name="header_experience">Mes experiences</string>
-    <string name="header_education">Mon education</string>
-    <string name="header_certifications">Mes certifications</string>
-    <string name="header_awards">Mes distinctions</string>
-    <string name="header_skills">Mes competences</string>
-    <string name="header_introduction">L\'introduction</string>
+    <string name="header_experience">Experiences</string>
+    <string name="header_education">Education</string>
+    <string name="header_certifications">Certifications</string>
+    <string name="header_awards">Distinctions</string>
+    <string name="header_skills">Competences</string>
+    <string name="header_introduction">Introduction</string>
 </resources>

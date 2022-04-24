@@ -1,43 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_blue"
     tools:context=".your_resumes.YourResumesActivity">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+    <LinearLayout
+        android:id="@+id/top_navigation"
+        style="@style/ResumeApp.Toolbar"
         android:layout_alignParentTop="true"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="16dp">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/ResumeApp.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_profile"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_create_resume"
+        style="@style/ResumeApp.FloatingButton"
+        android:layout_above="@id/bottom_navigation"
         android:layout_alignParentEnd="true"
-        android:text="@string/title_your_resumes" />
+        android:text="@string/button_create_resume"
+        app:icon="@drawable/edit"
+        app:iconPadding="8dp"
+        app:iconSize="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_above="@id/bottom_navigation"
-        android:layout_below="@id/title"
+        android:layout_below="@id/top_navigation"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         tools:listitem="@layout/item_resume_builder_recycler_container" />
 
-    <Button
-        android:id="@+id/button_plus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/bottom_navigation"
-        android:layout_alignParentEnd="true"
-        android:text="@string/button_plus" />
-
-    <!--bottom nav bar-->
     <include
         android:id="@+id/bottom_navigation"
         layout="@layout/item_bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

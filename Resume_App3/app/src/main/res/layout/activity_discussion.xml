@@ -3,23 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_blue"
     tools:context=".discussion.DiscussionActivity">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+    <LinearLayout
+        android:id="@+id/top_navigation"
+        style="@style/ResumeApp.Toolbar"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:text="@string/title_discussion" />
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="16dp">
 
-    <!--bottom nav bar-->
+        <TextView
+            android:id="@+id/title"
+            style="@style/ResumeApp.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_discussion"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
     <include
         android:id="@+id/bottom_navigation"
         layout="@layout/item_bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

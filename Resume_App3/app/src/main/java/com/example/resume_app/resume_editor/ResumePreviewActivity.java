@@ -3,12 +3,16 @@ package com.example.resume_app.resume_editor;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.pdf.PdfDocument;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import com.example.resume_app.ExampleDataGeneratorThrowaway;
 import com.example.resume_app.R;
@@ -19,15 +23,11 @@ import com.example.resume_app.data_model.Experience;
 import com.example.resume_app.data_model.ResumeData;
 import com.example.resume_app.data_model.Skill;
 import com.example.resume_app.data_model.UserData;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
-import java.util.Objects;
 
 /**
  * Displays a print preview of the resume given the appropriate data via Intent:
@@ -74,7 +74,6 @@ public class ResumePreviewActivity extends AppCompatActivity {
 
         return data;
     }
-
 
     void connectTemplate() {
         // Regrettable...
@@ -162,23 +161,47 @@ public class ResumePreviewActivity extends AppCompatActivity {
     }
 
     void connectXml() {
-        ExtendedFloatingActionButton buttonDownload = findViewById(R.id.button_download);
-        buttonDownload.setOnClickListener(view -> {
-            File file = new File(getExternalFilesDir(null), resumeData.fileName + ".pdf");
+        ImageButton buttonShare = findViewById(R.id.button_share);
+        buttonShare.setOnClickListener(view -> {
+            // create a hidden temporary file
+            File file = new File(getCacheDir(), resumeData.fileName + ".pdf");
+            renderToPdf(file);
+            Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".provider", file);
 
-            PdfDocument pdfDoc = new PdfDocument();
-            PdfDocument.PageInfo pdfInfo = new PdfDocument.PageInfo.Builder(612, 792, 1).create();
-            PdfDocument.Page pdf = pdfDoc.startPage(pdfInfo);
-            template.draw(pdf.getCanvas());
-            pdfDoc.finishPage(pdf);
-
-            try {
-                pdfDoc.writeTo(new FileOutputStream(file));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            pdfDoc.close();
+            // open the android share sheet
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+            shareIntent.setType("application/pdf");
+            startActivity(Intent.createChooser(shareIntent, null));
         });
+
+        ImageButton buttonDownload = findViewById(R.id.button_download);
+        buttonDownload.setOnClickListener(view -> {
+            // create a permanent file
+            File file = new File(getExternalFilesDir(null), resumeData.fileName + ".pdf");
+            renderToPdf(file);
+        });
+
+        ImageButton buttonBack = findViewById(R.id.button_back);
+        buttonBack.setOnClickListener(view -> {
+            onBackPressed();
+        });
+    }
+
+    void renderToPdf(File file) {
+        PdfDocument pdfDoc = new PdfDocument();
+        PdfDocument.PageInfo pdfInfo = new PdfDocument.PageInfo.Builder(612, 792, 1).create();
+        PdfDocument.Page pdf = pdfDoc.startPage(pdfInfo);
+        template.draw(pdf.getCanvas());
+        pdfDoc.finishPage(pdf);
+
+        try {
+            pdfDoc.writeTo(new FileOutputStream(file));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        pdfDoc.close();
     }
 }

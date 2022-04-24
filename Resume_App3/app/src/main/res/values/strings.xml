@@ -7,7 +7,7 @@
     <string name="title_your_resumes">Your Resumes</string>
     <string name="title_profile">Profile</string>
 
-    <string name="button_plus" translatable="false">+</string>
+    <string name="button_create_resume">Create Resume</string>
     <string name="button_preview">Preview</string>
     <string name="button_download">Download</string>
 

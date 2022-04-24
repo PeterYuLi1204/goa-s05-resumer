@@ -40,7 +40,7 @@ public class YourResumesActivity extends AppCompatActivity implements YourResume
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new YourResumesRecyclerAdapter(this, data, this));
 
-        Button buttonPlus = findViewById(R.id.button_plus);
+        Button buttonPlus = findViewById(R.id.button_create_resume);
         buttonPlus.setOnClickListener(view -> {
             startActivity(new Intent(this, ResumeEditorActivity.class));
         });
