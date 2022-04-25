@@ -3,7 +3,7 @@ package com.example.resume_app.data_model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ResumeData implements Serializable {
+public class ResumeData {
     public String fileName;
     public String name;
     public String introduction;
@@ -60,5 +60,5 @@ public class ResumeData implements Serializable {
         this.education = userData.education;
         this.experience = userData.experience;
         this.skills = userData.skills;
-    }
+    } //even even more test
 }

@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class Award implements Serializable {
+public class Award {
     public String awardName;
     public String issuer;
     public String description;
@@ -20,5 +20,5 @@ public class Award implements Serializable {
     @NonNull
     public String toString() {
         return "<p><b>" + awardName + "</b><br>" + description + "<br>" + issuer + " • " + dateAwarded + "</p>";
-    }
+    }//testingtesteijesef
 }

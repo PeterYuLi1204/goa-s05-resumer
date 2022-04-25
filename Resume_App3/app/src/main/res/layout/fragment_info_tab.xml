@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".profile.InfoTabFragment">
 
     <ScrollView
@@ -21,30 +22,7 @@
             android:layout_marginHorizontal="24dp"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/introduction_title_linear_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/introduction_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/header_introduction"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <ImageButton
-                    android:id="@+id/introduction_edit_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/transparent"
-                    android:src="@drawable/ic_baseline_edit_24" />
-            </LinearLayout>
+            <include layout="@layout/item_introduction_cardview" />
 
             <LinearLayout
                 android:id="@+id/experience_title_linear_layout"
@@ -60,7 +38,7 @@
                     android:layout_gravity="center_vertical"
                     android:text="@string/header_experience"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <ImageButton
@@ -91,7 +69,7 @@
                     android:layout_gravity="center_vertical"
                     android:text="@string/header_awards"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <ImageButton
@@ -122,7 +100,7 @@
                     android:layout_gravity="center_vertical"
                     android:text="@string/header_education"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <ImageButton
@@ -153,7 +131,7 @@
                     android:layout_gravity="center_vertical"
                     android:text="@string/header_certifications"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <ImageButton
@@ -184,7 +162,7 @@
                     android:layout_gravity="center_vertical"
                     android:text="@string/header_skills"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <ImageButton

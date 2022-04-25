@@ -1,4 +1,4 @@
-package com.example.resume_app.resume_builder.resume_editor;
+package com.example.resume_app.resume_editor;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,6 @@ import com.example.resume_app.data_model.Certification;
 import com.example.resume_app.data_model.Education;
 import com.example.resume_app.data_model.Experience;
 import com.example.resume_app.data_model.Skill;
-import com.example.resume_app.resume_builder.ResumePreviewActivity;
 
 import java.util.ArrayList;
 

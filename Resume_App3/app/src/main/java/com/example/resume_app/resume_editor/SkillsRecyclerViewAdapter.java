@@ -1,4 +1,4 @@
-package com.example.resume_app.resume_builder.resume_editor;
+package com.example.resume_app.resume_editor;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,28 +9,26 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.resume_app.R;
-import com.example.resume_app.data_model.Award;
+import com.example.resume_app.data_model.Skill;
 
 import java.util.ArrayList;
 
-public class AwardsRecyclerAdapter extends RecyclerView.Adapter<AwardsRecyclerAdapter.ViewHolder> {
-    static ArrayList<Award> awards;
+public class SkillsRecyclerViewAdapter extends RecyclerView.Adapter<SkillsRecyclerViewAdapter.ViewHolder> {
+    static ArrayList<Skill> skills;
 
-    AwardsRecyclerAdapter(ArrayList<Award> awards) {
-        AwardsRecyclerAdapter.awards = awards;
+    SkillsRecyclerViewAdapter(ArrayList<Skill> skills) {
+        SkillsRecyclerViewAdapter.skills = skills;
     }
 
     @Override
-    public AwardsRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SkillsRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_experience_recycler_container, parent, false);
-        return new AwardsRecyclerAdapter.ViewHolder(view);
+        return new SkillsRecyclerViewAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(AwardsRecyclerAdapter.ViewHolder holder, int position) {
-        holder.positionTitle.setText(awards.get(position).awardName);
-        //the description
-//        holder.description.setText(experiences.get(position).jobPosition);
+    public void onBindViewHolder(SkillsRecyclerViewAdapter.ViewHolder holder, int position) {
+        holder.positionTitle.setText(skills.get(position).skillName);
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +47,7 @@ public class AwardsRecyclerAdapter extends RecyclerView.Adapter<AwardsRecyclerAd
 
     @Override
     public int getItemCount() {
-        return awards.size();
+        return skills.size();
     }
 
 

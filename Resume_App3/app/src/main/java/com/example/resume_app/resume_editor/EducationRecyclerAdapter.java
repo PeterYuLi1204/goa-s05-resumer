@@ -1,4 +1,4 @@
-package com.example.resume_app.resume_builder.resume_editor;
+package com.example.resume_app.resume_editor;
 
 import android.view.LayoutInflater;
 import android.view.View;

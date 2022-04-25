@@ -1,4 +1,4 @@
-package com.example.resume_app.resume_builder.resume_editor;
+package com.example.resume_app.resume_editor;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,27 +9,27 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.resume_app.R;
-import com.example.resume_app.data_model.Experience;
+import com.example.resume_app.data_model.Certification;
 
 import java.util.ArrayList;
 
-public class ExperienceRecyclerAdapter extends RecyclerView.Adapter<ExperienceRecyclerAdapter.ViewHolder> {
-    static ArrayList<Experience> experiences;
+public class CertificationsRecyclerAdapter extends RecyclerView.Adapter<CertificationsRecyclerAdapter.ViewHolder> {
+    static ArrayList<Certification> certifications;
 
-    ExperienceRecyclerAdapter(ArrayList<Experience> experiences) {
-        ExperienceRecyclerAdapter.experiences = experiences;
+    CertificationsRecyclerAdapter(ArrayList<Certification> certifications) {
+        CertificationsRecyclerAdapter.certifications = certifications;
 
     }
 
     @Override
-    public ExperienceRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CertificationsRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_experience_recycler_container, parent, false);
-        return new ExperienceRecyclerAdapter.ViewHolder(view);
+        return new CertificationsRecyclerAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ExperienceRecyclerAdapter.ViewHolder holder, int position) {
-        holder.positionTitle.setText(experiences.get(position).jobPosition);
+    public void onBindViewHolder(CertificationsRecyclerAdapter.ViewHolder holder, int position) {
+        holder.positionTitle.setText(certifications.get(position).certificationTitle);
         //the description
 //        holder.description.setText(experiences.get(position).jobPosition);
         holder.editButton.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +50,7 @@ public class ExperienceRecyclerAdapter extends RecyclerView.Adapter<ExperienceRe
 
     @Override
     public int getItemCount() {
-        return experiences.size();
+        return certifications.size();
     }
 
 

@@ -1,4 +1,4 @@
-package com.example.resume_app.resume_builder.resume_editor;
+package com.example.resume_app.resume_editor;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,26 +9,29 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.resume_app.R;
-import com.example.resume_app.data_model.Skill;
+import com.example.resume_app.data_model.Experience;
 
 import java.util.ArrayList;
 
-public class SkillsRecyclerViewAdapter extends RecyclerView.Adapter<SkillsRecyclerViewAdapter.ViewHolder> {
-    static ArrayList<Skill> skills;
+public class ExperienceRecyclerAdapter extends RecyclerView.Adapter<ExperienceRecyclerAdapter.ViewHolder> {
+    static ArrayList<Experience> experiences;
 
-    SkillsRecyclerViewAdapter(ArrayList<Skill> skills) {
-        SkillsRecyclerViewAdapter.skills = skills;
+    ExperienceRecyclerAdapter(ArrayList<Experience> experiences) {
+        ExperienceRecyclerAdapter.experiences = experiences;
+
     }
 
     @Override
-    public SkillsRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ExperienceRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_experience_recycler_container, parent, false);
-        return new SkillsRecyclerViewAdapter.ViewHolder(view);
+        return new ExperienceRecyclerAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(SkillsRecyclerViewAdapter.ViewHolder holder, int position) {
-        holder.positionTitle.setText(skills.get(position).skillName);
+    public void onBindViewHolder(ExperienceRecyclerAdapter.ViewHolder holder, int position) {
+        holder.positionTitle.setText(experiences.get(position).jobPosition);
+        //the description
+//        holder.description.setText(experiences.get(position).jobPosition);
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +50,7 @@ public class SkillsRecyclerViewAdapter extends RecyclerView.Adapter<SkillsRecycl
 
     @Override
     public int getItemCount() {
-        return skills.size();
+        return experiences.size();
     }
 
 

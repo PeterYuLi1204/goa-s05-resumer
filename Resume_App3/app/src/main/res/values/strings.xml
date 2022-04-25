@@ -4,10 +4,10 @@
     <string name="app_name" translatable="false">Resume App</string>
 
     <string name="title_discussion">Discussion</string>
-    <string name="title_resume_builder">Resume Builder</string>
+    <string name="title_your_resumes">Your Resumes</string>
     <string name="title_profile">Profile</string>
 
-    <string name="button_plus" translatable="false">+</string>
+    <string name="button_create_resume">Create Resume</string>
     <string name="button_preview">Preview</string>
     <string name="button_download">Download</string>
 
@@ -20,6 +20,16 @@
     <string name="header_awards">Awards and Honours</string>
     <string name="header_skills">Skills</string>
     <string name="header_introduction">Introduction</string>
+
+    <string name="save">SAVE</string>
+
+    <string name="edit_information">Edit Information</string>
+
+    <string name="edit_name">Edit Name</string>
+    <string name="edit_job_position">Edit Job Position</string>
+    <string name="edit_phone_number">Edit Phone Number</string>
+    <string name="edit_email">Edit Email</string>
+
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 </resources>
