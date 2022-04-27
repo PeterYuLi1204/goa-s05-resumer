@@ -28,14 +28,16 @@
                 android:id="@+id/experience_title_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/experience_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:text="@string/header_experience"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -45,7 +47,7 @@
                     android:id="@+id/experience_add_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/transparent"
+                    android:background="@color/transparent"
                     android:src="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
@@ -53,20 +55,23 @@
                 android:id="@+id/experience_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical" />
+                android:orientation="vertical" >
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/awards_title_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/awards_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:text="@string/header_awards"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -76,7 +81,7 @@
                     android:id="@+id/awards_add_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/transparent"
+                    android:background="@color/transparent"
                     android:src="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
@@ -90,14 +95,15 @@
                 android:id="@+id/education_title_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/education_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:text="@string/header_education"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -107,7 +113,7 @@
                     android:id="@+id/education_add_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/transparent"
+                    android:background="@color/transparent"
                     android:src="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
@@ -121,14 +127,15 @@
                 android:id="@+id/certifications_title_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/certifications_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:text="@string/header_certifications"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -138,8 +145,8 @@
                     android:id="@+id/certifications_add_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/transparent"
-                    android:src="@drawable/ic_baseline_add_24"/>
+                    android:background="@color/transparent"
+                    android:src="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
             <LinearLayout
@@ -152,14 +159,15 @@
                 android:id="@+id/skills_title_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/skills_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:text="@string/header_skills"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -169,7 +177,7 @@
                     android:id="@+id/skills_add_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/transparent"
+                    android:background="@color/transparent"
                     android:src="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 

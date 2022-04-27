@@ -22,13 +22,21 @@
     <string name="header_introduction">Introduction</string>
 
     <string name="save">SAVE</string>
+    <string name="description">Tincidunt nibh malesuada et gravida tristique lacus diam, magna amet. Mi sed sit morbi id gravida integer aenean senectus mi.</string>
 
     <string name="edit_information">Edit Information</string>
-
     <string name="edit_name">Edit Name</string>
     <string name="edit_job_position">Edit Job Position</string>
     <string name="edit_phone_number">Edit Phone Number</string>
     <string name="edit_email">Edit Email</string>
+
+    <string name="position_title">Position Title</string>
+    <string name="organization_name">Organization Name</string>
+    <string name="job_start_end_date">Job Start Date - Job End Date (Length)</string>
+
+    <string name="education_title">Position Title</string>
+    <string name="education_start_end_date">Education Period Start Date - End Date (Length)</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>

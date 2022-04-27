@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -75,8 +76,11 @@ public class InfoTabFragment extends Fragment {
 
     void connectXml(View view) {
 
-        ImageButton informationtionEditButton = view.findViewById(R.id.information_edit_button);
-        informationtionEditButton.setOnClickListener(new View.OnClickListener() {
+        nameTextView = view.findViewById(R.id.name_textview);
+        nameTextView.setText(userData.username);
+
+        ImageButton informationEditButton = view.findViewById(R.id.information_edit_button);
+        informationEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openEditInformationDialog();
@@ -131,12 +135,19 @@ public class InfoTabFragment extends Fragment {
     }
 
     Dialog editInformationDialog;
+    TextView nameTextView;
 
     private void openEditInformationDialog() {
         editInformationDialog.setContentView(R.layout.dialog_edit_information);
         editInformationDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         ImageButton closeEditInformation = editInformationDialog.findViewById(R.id.close_edit_information_button);
+        Button saveButton = editInformationDialog.findViewById(R.id.information_save_button);
+
+        EditText editTextName = editInformationDialog.findViewById(R.id.edittext_name);
+        EditText editTextJobPosition = editInformationDialog.findViewById(R.id.edittext_job_position);
+        EditText editTextPhoneNumber = editInformationDialog.findViewById(R.id.edittext_phone_number);
+        EditText editTextEmail = editInformationDialog.findViewById(R.id.edittext_email);
 
         closeEditInformation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,17 +156,13 @@ public class InfoTabFragment extends Fragment {
             }
         });
 
-        Button saveButton = editInformationDialog.findViewById(R.id.information_save_button);
-
-        EditText editTextName = editInformationDialog.findViewById(R.id.edittext_name);
-        EditText editTextJobPosition = editInformationDialog.findViewById(R.id.edittext_job_position);
-        EditText editTextPhoneNumber = editInformationDialog.findViewById(R.id.edittext_phone_number);
-        EditText editTextEmail = editInformationDialog.findViewById(R.id.edittext_email);
-
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nameTextView.setText(userData.username);
+
                 userData.username = editTextName.getText().toString();
+
                 saveToJson(userData, "test_user_data");
                 editInformationDialog.dismiss();
             }
