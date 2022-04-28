@@ -13,21 +13,21 @@ import com.example.resume_app.data_model.Skill;
 
 import java.util.ArrayList;
 
-public class SkillsRecyclerViewAdapter extends RecyclerView.Adapter<SkillsRecyclerViewAdapter.ViewHolder> {
+public class SkillsRecyclerAdapter extends RecyclerView.Adapter<SkillsRecyclerAdapter.ViewHolder> {
     static ArrayList<Skill> skills;
 
-    SkillsRecyclerViewAdapter(ArrayList<Skill> skills) {
-        SkillsRecyclerViewAdapter.skills = skills;
+    SkillsRecyclerAdapter(ArrayList<Skill> skills) {
+        SkillsRecyclerAdapter.skills = skills;
     }
 
     @Override
-    public SkillsRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SkillsRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_experience_recycler_container, parent, false);
-        return new SkillsRecyclerViewAdapter.ViewHolder(view);
+        return new SkillsRecyclerAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(SkillsRecyclerViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(SkillsRecyclerAdapter.ViewHolder holder, int position) {
         holder.positionTitle.setText(skills.get(position).skillName);
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
