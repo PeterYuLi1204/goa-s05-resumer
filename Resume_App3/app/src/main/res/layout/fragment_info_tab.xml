@@ -55,7 +55,8 @@
                 android:id="@+id/experience_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical" >
+                android:orientation="vertical">
+
 
             </LinearLayout>
 
@@ -89,7 +90,10 @@
                 android:id="@+id/awards_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical" />
+                android:orientation="vertical">
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/education_title_linear_layout"
@@ -121,7 +125,10 @@
                 android:id="@+id/education_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical" />
+                android:orientation="vertical">
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/certifications_title_linear_layout"
@@ -153,7 +160,10 @@
                 android:id="@+id/certifications_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical" />
+                android:orientation="vertical">
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/skills_title_linear_layout"
@@ -185,7 +195,10 @@
                 android:id="@+id/skills_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical" />
+                android:orientation="vertical">
+
+
+            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
