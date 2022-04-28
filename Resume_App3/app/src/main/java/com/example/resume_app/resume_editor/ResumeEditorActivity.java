@@ -84,6 +84,11 @@ public class ResumeEditorActivity extends AppCompatActivity {
             startActivity(new Intent(this, YourResumesActivity.class));
         });
 
+        Button addExperienceButton = findViewById(R.id.add_experience_button);
+        addExperienceButton.setOnClickListener(view -> {
+            startActivity(new Intent(this, AddStuffActivity.class));
+        });
+
         Button buttonPreview = findViewById(R.id.button_preview);
         buttonPreview.setOnClickListener(view -> {
             // TODO: pass user input for render

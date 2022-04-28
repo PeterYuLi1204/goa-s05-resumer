@@ -82,11 +82,11 @@
                     android:text="Experience" />
 
                 <Button
-                    android:id="@+id/edit_experience_button"
+                    android:id="@+id/add_experience_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="edit" />
+                    android:text="+" />
 
             </LinearLayout>
 
