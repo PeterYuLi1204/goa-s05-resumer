@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="0dp"
-        android:layout_marginVertical="16dp"
-        android:padding="16dp">
+        android:layout_marginTop="24dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,14 +22,25 @@
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="16dp"
+                android:layout_weight="0"
                 app:srcCompat="@drawable/ic_baseline_account_circle_96" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_weight="3">
+                android:layout_weight="1">
+
+                <ImageButton
+                    android:id="@+id/information_edit_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:layout_gravity="right"
+                    android:background="@color/transparent"
+                    app:srcCompat="@drawable/ic_baseline_edit_24" />
 
                 <TextView
                     android:id="@+id/name_textview"
@@ -61,13 +72,6 @@
                     android:text="@string/edit_email" />
             </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/information_edit_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:backgroundTint="@color/transparent"
-                app:srcCompat="@drawable/ic_baseline_edit_24" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

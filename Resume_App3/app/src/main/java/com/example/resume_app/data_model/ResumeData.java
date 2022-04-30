@@ -1,11 +1,10 @@
 package com.example.resume_app.data_model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ResumeData {
     public String fileName;
-    public String name;
+    public String username;
     public String introduction;
     public String email;
     public String phone;
@@ -29,7 +28,7 @@ public class ResumeData {
             ArrayList<Experience> experience,
             ArrayList<Skill> skills) {
         this.fileName = fileName;
-        this.name = name;
+        this.username = name;
         this.introduction = introduction;
         this.email = email;
         this.phone = phone;
@@ -43,18 +42,14 @@ public class ResumeData {
 
     public ResumeData(
             String fileName,
-            String name,
             String introduction,
-            String email,
-            String phone,
-            String website,
             UserData userData) {
         this.fileName = fileName;
-        this.name = name;
+        this.username = userData.username;
         this.introduction = introduction;
-        this.email = email;
-        this.phone = phone;
-        this.website = website;
+        this.email = userData.email;
+        this.phone = userData.phone;
+        this.website = userData.website;
         this.awards = userData.awards;
         this.certifications = userData.certifications;
         this.education = userData.education;

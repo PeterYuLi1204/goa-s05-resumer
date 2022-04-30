@@ -3,6 +3,7 @@
     <string name="title_discussion">Discussion</string>
     <string name="title_your_resumes">Vos resumes</string>
     <string name="title_profile">Profil</string>
+    <string name="title_resume_preview">Apercu de PDF</string>
 
     <string name="button_create_resume">Creer un resume</string>
     <string name="button_preview">Apercu</string>
@@ -17,4 +18,6 @@
     <string name="header_awards">Distinctions</string>
     <string name="header_skills">Competences</string>
     <string name="header_introduction">Introduction</string>
+
+    <string name="toast_file_saved">Document telecharge !</string>
 </resources>
