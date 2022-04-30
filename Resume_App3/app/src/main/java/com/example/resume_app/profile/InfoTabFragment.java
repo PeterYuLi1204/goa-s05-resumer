@@ -39,9 +39,11 @@ public class InfoTabFragment extends Fragment {
     UserData userData;
 
     LinearLayout experienceLinearLayout;
+    LinearLayout awardsLinearLayout;
 
-    Dialog editExperienceDialog;
     Dialog editInformationDialog;
+    Dialog editExperienceDialog;
+    Dialog editAwardDialog;
 
     TextView nameTextView;
 
@@ -98,9 +100,14 @@ public class InfoTabFragment extends Fragment {
 
     void connectXml(View view) {
         experienceLinearLayout = view.findViewById(R.id.experience_linear_layout);
+        awardsLinearLayout = view.findViewById(R.id.awards_linear_layout);
 
         for (Experience experience: userData.experience) {
             createExperienceCard(experience);
+        }
+
+        for (Award award : userData.awards) {
+            createAwardCard(award);
         }
 
         // Information section of the profile
@@ -122,7 +129,6 @@ public class InfoTabFragment extends Fragment {
         // Experience section of the profile
 
         ImageButton experienceAddButton = view.findViewById(R.id.experience_add_button);
-
         experienceAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,16 +143,18 @@ public class InfoTabFragment extends Fragment {
 
         // Awards section of the profile
 
-        LinearLayout awardsLinearLayout = view.findViewById(R.id.awards_linear_layout);
-
         ImageButton awardsAddButton = view.findViewById(R.id.awards_add_button);
         awardsAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                View card = getLayoutInflater().inflate(R.layout.item_awards_cardview, awardsLinearLayout, false);
-                awardsLinearLayout.addView(card);
+                userData.awards.add(new Award());
+                createAwardCard(userData.awards.get(userData.awards.size() - 1));
+                openEditAwardDialog(awardsLinearLayout.getChildAt(awardsLinearLayout.getChildCount() - 1), userData.awards.get(userData.awards.size() - 1));
             }
         });
+
+        editAwardDialog = new Dialog(getContext());
+
 
         // Education section of the profile
 
@@ -218,6 +226,37 @@ public class InfoTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 openEditExperienceDialog(card, experience);
+            }
+        });
+    }
+
+    private void createAwardCard(Award award) {
+        View card = getLayoutInflater().inflate(R.layout.item_awards_cardview, awardsLinearLayout, false);
+        awardsLinearLayout.addView(card);
+
+        TextView awardTitleTextview = card.findViewById(R.id.award_title_textview);
+        TextView awardIssuerNameTextview = card.findViewById(R.id.award_issuer_name_textview);
+        TextView awardDescriptionTextview = card.findViewById(R.id.award_description_textview);
+        TextView awardedDateTextview = card.findViewById(R.id.awarded_date_textview);
+
+        awardTitleTextview.setText(award.awardName);
+        awardIssuerNameTextview.setText(award.issuer);
+        awardDescriptionTextview.setText(award.description);
+        awardedDateTextview.setText(award.dateAwarded);
+
+        ImageButton awardDeleteButton = card.findViewById(R.id.award_delete_button);
+        awardDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userData.awards.remove(award);
+                awardsLinearLayout.removeView(card);
+            }
+        });
+
+        card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openEditAwardDialog(card, award);
             }
         });
     }
@@ -330,6 +369,73 @@ public class InfoTabFragment extends Fragment {
 
         editExperienceDialog.show();
     }
+
+    private void openEditAwardDialog(View card, Award award) {
+        editAwardDialog.setContentView(R.layout.dialog_edit_award);
+        editAwardDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        TextView awardTitleTextview = card.findViewById(R.id.award_title_textview);
+        TextView awardIssuerNameTextview = card.findViewById(R.id.award_issuer_name_textview);
+        TextView awardDescriptionTextview = card.findViewById(R.id.award_description_textview);
+        TextView awardedDateTextview = card.findViewById(R.id.awarded_date_textview);
+
+        EditText editTextAwardTitle = editAwardDialog.findViewById(R.id.edittext_award_title);
+        EditText editTextAwardIssuerName = editAwardDialog.findViewById(R.id.edittext_award_issuer_name);
+        EditText editTextAwardDescription = editAwardDialog.findViewById(R.id.edittext_award_description);
+        EditText editTextAwardedDate = editAwardDialog.findViewById(R.id.edittext_awarded_date);
+
+        ImageButton closeEditAward = editAwardDialog.findViewById(R.id.close_edit_award_button);
+        Button saveButton = editAwardDialog.findViewById(R.id.award_save_button);
+
+        closeEditAward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editAwardDialog.dismiss();
+            }
+        });
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                award.awardName = editTextAwardTitle.getText().toString();
+                award.issuer = editTextAwardIssuerName.getText().toString();
+                award.description = editTextAwardDescription.getText().toString();
+                award.dateAwarded = editTextAwardedDate.getText().toString();
+
+
+                if(TextUtils.isEmpty(award.awardName)) {
+                    editTextAwardTitle.setError("Please type in the award or honour title");
+                    return;
+                }
+
+                if(TextUtils.isEmpty(award.issuer)) {
+                    editTextAwardIssuerName.setError("Please type in the award or honour issuer's name");
+                    return;
+                }
+
+                if(TextUtils.isEmpty(award.description)) {
+                    editTextAwardDescription.setError("Please type in a short description");
+                    return;
+                }
+
+                if(TextUtils.isEmpty(award.dateAwarded)) {
+                    editTextAwardedDate.setError("Please type in the date the award or honour was issued");
+                    return;
+                }
+
+                awardTitleTextview.setText(award.awardName);
+                awardIssuerNameTextview.setText(award.issuer);
+                awardDescriptionTextview.setText(award.description);
+                awardedDateTextview.setText(award.dateAwarded);
+
+                editAwardDialog.dismiss();
+            }
+        });
+
+        editAwardDialog.show();
+    }
+
 }
 
 

@@ -39,10 +39,11 @@
     <string name="end_date">End Date</string>
     <string name="add_experience">Add Experience</string>
 
-
     <string name="award_honour_title">Award/Honour Title</string>
     <string name="awarded">Awarded:</string>
     <string name="awarded_date_placeholder">Awarded: MM/YYYY</string>
+    <string name="add_award">Add Award</string>
+    <string name="date_awarded">Date Awarded</string>
 
     <string name="education_title">Education Title</string>
     <string name="education_start_end_date">Education Period Start Date - End Date (Length)</string>
