@@ -1,10 +1,13 @@
 package com.example.resume_app.profile;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.resume_app.ExampleDataGeneratorThrowaway;
 import com.example.resume_app.R;
+import com.example.resume_app.data_model.Award;
+import com.example.resume_app.data_model.Experience;
 import com.example.resume_app.data_model.UserData;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -33,6 +38,13 @@ public class InfoTabFragment extends Fragment {
 
     UserData userData;
 
+    LinearLayout experienceLinearLayout;
+
+    Dialog editExperienceDialog;
+    Dialog editInformationDialog;
+
+    TextView nameTextView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,11 +58,18 @@ public class InfoTabFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        saveToJson(userData, "test_user_data");
+    }
+
     /*
-    TODO:
-        once user input is confirmed, use it to create a [UserData] object.
-        then, write the [UserData] to a JSON file like this. --arthur
-     */
+        TODO:
+            once user input is confirmed, use it to create a [UserData] object.
+            then, write the [UserData] to a JSON file like this. --arthur
+         */
     void saveToJson(UserData data, String fileName) {
         File file = new File(requireContext().getExternalFilesDir(null), fileName + ".json");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -76,7 +95,13 @@ public class InfoTabFragment extends Fragment {
         return data;
     }
 
+
     void connectXml(View view) {
+        experienceLinearLayout = view.findViewById(R.id.experience_linear_layout);
+
+        for (Experience experience: userData.experience) {
+            createExperienceCard(experience);
+        }
 
         // Information section of the profile
 
@@ -93,36 +118,22 @@ public class InfoTabFragment extends Fragment {
 
         editInformationDialog = new Dialog(getContext());
 
+
         // Experience section of the profile
 
-        LinearLayout experienceLinearLayout = view.findViewById(R.id.experience_linear_layout);
-
         ImageButton experienceAddButton = view.findViewById(R.id.experience_add_button);
+
         experienceAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                View card = getLayoutInflater().inflate(R.layout.item_experience_cardview, experienceLinearLayout, false);
-                experienceLinearLayout.addView(card);
-
-                ImageButton experienceDeleteButton = card.findViewById(R.id.experience_delete_button);
-                TextView positionTitleTextview = card.findViewById(R.id.position_title_textview);
-
-                experienceDeleteButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        experienceLinearLayout.removeView(card);
-                    }
-                });
-
-                card.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        positionTitleTextview.setText("Hi");
-                    }
-                });
-
+                userData.experience.add(new Experience());
+                createExperienceCard(userData.experience.get(userData.experience.size() - 1));
+                openEditExperienceDialog(experienceLinearLayout.getChildAt(experienceLinearLayout.getChildCount() - 1), userData.experience.get(userData.experience.size() - 1));
             }
         });
+
+        editExperienceDialog = new Dialog(getContext());
+
 
         // Awards section of the profile
 
@@ -133,7 +144,6 @@ public class InfoTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 View card = getLayoutInflater().inflate(R.layout.item_awards_cardview, awardsLinearLayout, false);
-
                 awardsLinearLayout.addView(card);
             }
         });
@@ -179,14 +189,40 @@ public class InfoTabFragment extends Fragment {
                 skillsLinearLayout.addView(card);
             }
         });
+    }
 
+    private void createExperienceCard(Experience experience) {
+        View card = getLayoutInflater().inflate(R.layout.item_experience_cardview, experienceLinearLayout, false);
+        experienceLinearLayout.addView(card);
 
+        TextView positionTitleTextview = card.findViewById(R.id.position_title_textview);
+        TextView organizationNameTextview = card.findViewById(R.id.organization_name_textview);
+        TextView experienceDescriptionTextview = card.findViewById(R.id.experience_description_textview);
+        TextView jobStartEndDateTextview = card.findViewById(R.id.job_start_end_date_textview);
+
+        positionTitleTextview.setText(experience.jobPosition);
+        organizationNameTextview.setText(experience.companyName);
+        experienceDescriptionTextview.setText(experience.description);
+        jobStartEndDateTextview.setText(experience.startDate + " - " + experience.endDate);
+
+        ImageButton experienceDeleteButton = card.findViewById(R.id.experience_delete_button);
+        experienceDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userData.experience.remove(experience);
+                experienceLinearLayout.removeView(card);
+            }
+        });
+
+        card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openEditExperienceDialog(card, experience);
+            }
+        });
     }
 
     // Dialog to edit the information section of the profile
-
-    Dialog editInformationDialog;
-    TextView nameTextView;
 
     private void openEditInformationDialog() {
         editInformationDialog.setContentView(R.layout.dialog_edit_information);
@@ -214,7 +250,6 @@ public class InfoTabFragment extends Fragment {
 
                 userData.username = editTextName.getText().toString();
 
-                saveToJson(userData, "test_user_data");
                 editInformationDialog.dismiss();
             }
         });
@@ -223,5 +258,80 @@ public class InfoTabFragment extends Fragment {
 
         editInformationDialog.show();
     }
+
+    private void openEditExperienceDialog(View card, Experience experience) {
+        editExperienceDialog.setContentView(R.layout.dialog_edit_experience);
+        editExperienceDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        TextView positionTitleTextView = card.findViewById(R.id.position_title_textview);
+        TextView organizationNameTextview = card.findViewById(R.id.organization_name_textview);
+        TextView experienceDescriptionTextview = card.findViewById(R.id.experience_description_textview);
+        TextView jobStartEndDateTextview = card.findViewById(R.id.job_start_end_date_textview);
+
+        EditText editTextPositionTitle = editExperienceDialog.findViewById(R.id.edittext_position_title);
+        EditText editTextOrganizationName = editExperienceDialog.findViewById(R.id.edittext_organization_name);
+        EditText editExperienceDescription = editExperienceDialog.findViewById(R.id.edittext_experience_description);
+        EditText editTextExperienceStartDate = editExperienceDialog.findViewById(R.id.edittext_experience_start_date);
+        EditText editTextExperienceEndDate = editExperienceDialog.findViewById(R.id.edittext_experience_end_date);
+
+        ImageButton closeEditExperience = editExperienceDialog.findViewById(R.id.close_edit_experience_button);
+        Button saveButton = editExperienceDialog.findViewById(R.id.experience_save_button);
+
+        closeEditExperience.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editExperienceDialog.dismiss();
+            }
+        });
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                experience.jobPosition = editTextPositionTitle.getText().toString();
+                experience.companyName = editTextOrganizationName.getText().toString();
+                experience.description = editExperienceDescription.getText().toString();
+                experience.startDate = editTextExperienceStartDate.getText().toString();
+                experience.endDate = editTextExperienceEndDate.getText().toString();
+
+                if(TextUtils.isEmpty(experience.jobPosition)) {
+                    editTextPositionTitle.setError("Please type in the position title");
+                    return;
+                }
+
+                if(TextUtils.isEmpty(experience.companyName)) {
+                    editTextOrganizationName.setError("Please type in the organization name");
+                    return;
+                }
+
+                if(TextUtils.isEmpty(experience.description)) {
+                    editExperienceDescription.setError("Please type in a short description");
+                    return;
+                }
+
+                if(TextUtils.isEmpty(experience.startDate)) {
+                    editTextExperienceStartDate.setError("Please type in the start date");
+                    return;
+                }
+
+                if(TextUtils.isEmpty(experience.endDate)) {
+                    editTextExperienceEndDate.setError("Please type in the end date");
+                    return;
+                }
+
+                positionTitleTextView.setText(experience.jobPosition);
+                organizationNameTextview.setText(experience.companyName);
+                experienceDescriptionTextview.setText(experience.description);
+                jobStartEndDateTextview.setText(experience.startDate + " - " + experience.endDate);
+
+                editExperienceDialog.dismiss();
+            }
+        });
+
+        editExperienceDialog.show();
+    }
 }
+
+
+
 

@@ -24,6 +24,7 @@
     <string name="save">SAVE</string>
     <string name="description">Tincidunt nibh malesuada et gravida tristique lacus diam, magna amet. Mi sed sit morbi id gravida integer aenean senectus mi.</string>
     <string name="issuer_name">Issuer Name</string>
+    <string name="short_description">Short Description</string>
 
     <string name="edit_information">Edit Information</string>
     <string name="edit_name">Edit Name</string>
@@ -34,6 +35,10 @@
     <string name="position_title">Position Title</string>
     <string name="organization_name">Organization Name</string>
     <string name="job_start_end_date">Job Start Date - Job End Date (Length)</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="add_experience">Add Experience</string>
+
 
     <string name="award_honour_title">Award/Honour Title</string>
     <string name="awarded">Awarded:</string>
