@@ -1,15 +1,18 @@
 package com.example.resume_app.resume_editor;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.graphics.pdf.PdfDocument;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
@@ -28,13 +31,14 @@ import com.google.gson.Gson;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.util.List;
 
 /**
  * Displays a print preview of the resume given the appropriate data via Intent:
- *
+ * <p>
  * - An int corresponding to the XML template to use,
  * - A String corresponding to the JSON file to load resume data from.
- *
+ * <p>
  * Currently NOT null-safe! Incomplete ResumeData will cause a CRASH!
  */
 public class ResumePreviewActivity extends AppCompatActivity {
@@ -47,13 +51,16 @@ public class ResumePreviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        setContentView(intent.getIntExtra("TEMPLATE_ID", R.layout.activity_resume_preview));
+        setContentView(R.layout.activity_resume_preview);
+
+        FrameLayout frame = findViewById(R.id.frame);
+        frame.addView(getLayoutInflater().inflate(intent.getIntExtra("TEMPLATE_ID", R.layout.template_resume_classic), frame, false));
 
         // an experiment
         resumeData = ExampleDataGeneratorThrowaway.exampleResumeData(loadFromJson("test_user_data"));
 
-        connectTemplate();
         connectXml();
+        connectTemplate();
     }
 
     /*
@@ -105,7 +112,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
             for (Experience e : resumeData.experience) {
                 s.append(e.toString());
             }
-            textExperience.setText(Html.fromHtml(s.toString()));
+            textExperience.setText(Html.fromHtml(s.toString(), 0));
         } else {
             textHeaderExperience.setVisibility(View.GONE);
             textExperience.setVisibility(View.GONE);
@@ -116,7 +123,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
             for (Education e : resumeData.education) {
                 s.append(e.toString());
             }
-            textEducation.setText(Html.fromHtml(s.toString()));
+            textEducation.setText(Html.fromHtml(s.toString(), 0));
         } else {
             textHeaderEducation.setVisibility(View.GONE);
             textEducation.setVisibility(View.GONE);
@@ -127,7 +134,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
             for (Certification e : resumeData.certifications) {
                 s.append(e.toString());
             }
-            textCertifications.setText(Html.fromHtml(s.toString()));
+            textCertifications.setText(Html.fromHtml(s.toString(), 0));
         } else {
             textHeaderCertifications.setVisibility(View.GONE);
             textCertifications.setVisibility(View.GONE);
@@ -138,7 +145,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
             for (Award e : resumeData.awards) {
                 s.append(e.toString());
             }
-            textAwards.setText(Html.fromHtml(s.toString()));
+            textAwards.setText(Html.fromHtml(s.toString(), 0));
         } else {
             textHeaderAwards.setVisibility(View.GONE);
             textAwards.setVisibility(View.GONE);
@@ -149,7 +156,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
             for (Skill e : resumeData.skills) {
                 s.append(e.toString());
             }
-            textSkills.setText(Html.fromHtml(s.toString()));
+            textSkills.setText(Html.fromHtml(s.toString(), 0));
         } else {
             textHeaderSkills.setVisibility(View.GONE);
             textSkills.setVisibility(View.GONE);
@@ -173,6 +180,9 @@ public class ResumePreviewActivity extends AppCompatActivity {
             shareIntent.setAction(Intent.ACTION_SEND);
             shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
             shareIntent.setType("application/pdf");
+
+            // the default files app should show up here... why doesn't it?
+            // my best guess is that it's an emulator restriction --arthur
             startActivity(Intent.createChooser(shareIntent, null));
         });
 
@@ -181,6 +191,8 @@ public class ResumePreviewActivity extends AppCompatActivity {
             // create a permanent file
             File file = new File(getExternalFilesDir(null), resumeData.fileName + ".pdf");
             renderToPdf(file);
+
+            Toast.makeText(this, R.string.toast_file_saved, Toast.LENGTH_LONG).show();
         });
 
         ImageButton buttonBack = findViewById(R.id.button_back);

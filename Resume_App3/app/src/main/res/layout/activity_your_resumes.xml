@@ -19,7 +19,7 @@
             style="@style/ResumeApp.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title_profile"
+            android:text="@string/title_your_resumes"
             android:textColor="@color/white" />
 
     </LinearLayout>
@@ -42,6 +42,8 @@
         android:layout_below="@id/top_navigation"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
+        android:clipToPadding="false"
+        android:paddingTop="16dp"
         tools:listitem="@layout/item_resume_builder_recycler_container" />
 
     <include

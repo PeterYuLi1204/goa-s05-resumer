@@ -6,6 +6,7 @@
     <string name="title_discussion">Discussion</string>
     <string name="title_your_resumes">Your Resumes</string>
     <string name="title_profile">Profile</string>
+    <string name="title_resume_preview">PDF Preview</string>
 
     <string name="button_create_resume">Create Resume</string>
     <string name="button_preview">Preview</string>
@@ -20,6 +21,8 @@
     <string name="header_awards">Awards and Honours</string>
     <string name="header_skills">Skills</string>
     <string name="header_introduction">Introduction</string>
+
+    <string name="toast_file_saved">File downloaded successfully!</string>
 
     <string name="save">SAVE</string>
     <string name="description">Tincidunt nibh malesuada et gravida tristique lacus diam, magna amet. Mi sed sit morbi id gravida integer aenean senectus mi.</string>
@@ -50,7 +53,4 @@
 
     <string name="skill">Skill</string>
 
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 </resources>
