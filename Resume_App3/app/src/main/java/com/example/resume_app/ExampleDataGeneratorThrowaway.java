@@ -45,13 +45,10 @@ public class ExampleDataGeneratorThrowaway {
         skills.add(new Skill("determination3"));
         skills.add(new Skill("determination4"));
 
-        return new UserData("Arthur", awards, certifications, education, experience, skills);
+        return new UserData("Arthur", "email@email.com", "123572384", "", awards, certifications, education, experience, skills);
     }
 
     public static ResumeData exampleResumeData(UserData userData) {
-        if (userData == null) {
-            userData = exampleUserData();
-        }
-        return new ResumeData("test_file", "User Name", "Full stack developer at Telus. Full stack developer at Telus. Full stack developer at Telus. Full stack developer at Telus. Full stack developer at Telus. Full stack developer at Telus. Full stack developer at Telus. Full stack developer at Telus.", "user@name.com", "123-456-7890", "www.username.com", userData);
+        return new ResumeData("test_file", "Full stack developer at Telus. Full stack developer at Telus. Full stack developer at Telus. Full stack developer at Telus. Full stack developer at Telus. Full stack developer at Telus. Full stack developer at Telus. Full stack developer at Telus.", userData);
     }
 }

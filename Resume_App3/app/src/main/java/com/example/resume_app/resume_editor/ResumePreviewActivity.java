@@ -101,7 +101,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
         TextView textHeaderSkills = findViewById(R.id.resume_header_skills);
         TextView textSkills = findViewById(R.id.resume_skills);
 
-        textHeaderName.setText(resumeData.name);
+        textHeaderName.setText(resumeData.username);
         textIntroduction.setText(resumeData.introduction);
         textEmail.setText(resumeData.email);
         textPhone.setText(resumeData.phone);

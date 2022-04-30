@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--This layout is LETTER SIZE (8.5" 11")-->
+<?xml version="1.0" encoding="utf-8"?><!--This layout is LETTER SIZE (8.5" 11")-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/template"
@@ -20,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="serif"
-            android:text="@string/app_name"
+            android:text="@string/placeholder_text"
+            android:textColor="#488BA8"
             android:textSize="36px" />
 
         <LinearLayout
@@ -33,7 +33,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/placeholder_text"
-                android:textSize="10px" />
+                android:textColor="#000000"
+                android:textSize="12px" />
 
             <Space
                 android:layout_width="0px"
@@ -45,7 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/placeholder_text"
-                android:textSize="10px" />
+                android:textColor="#000000"
+                android:textSize="12px" />
 
             <Space
                 android:layout_width="0px"
@@ -57,7 +59,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/placeholder_text"
-                android:textSize="10px" />
+                android:textColor="#000000"
+                android:textSize="12px" />
 
         </LinearLayout>
 
@@ -67,7 +70,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12px"
             android:text="@string/placeholder_text"
-            android:textSize="10px" />
+            android:textColor="#000000"
+            android:textSize="12px" />
 
         <Space
             android:layout_width="match_parent"
@@ -80,6 +84,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="serif"
             android:text="@string/header_experience"
+            android:textColor="#488BA8"
             android:textSize="16px" />
 
         <TextView
@@ -88,7 +93,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12px"
             android:text="@string/placeholder_text"
-            android:textSize="10px" />
+            android:textColor="#000000"
+            android:textSize="12px" />
 
         <Space
             android:layout_width="match_parent"
@@ -101,6 +107,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="serif"
             android:text="@string/header_education"
+            android:textColor="#488BA8"
             android:textSize="16px" />
 
         <TextView
@@ -109,7 +116,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12px"
             android:text="@string/placeholder_text"
-            android:textSize="10px" />
+            android:textColor="#000000"
+            android:textSize="12px" />
 
     </LinearLayout>
 
@@ -125,6 +133,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="serif"
             android:text="@string/header_certifications"
+            android:textColor="#488BA8"
             android:textSize="16px" />
 
         <TextView
@@ -133,7 +142,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12px"
             android:text="@string/placeholder_text"
-            android:textSize="10px" />
+            android:textColor="#000000"
+            android:textSize="12px" />
 
         <Space
             android:layout_width="match_parent"
@@ -146,6 +156,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="serif"
             android:text="@string/header_awards"
+            android:textColor="#488BA8"
             android:textSize="16px" />
 
         <TextView
@@ -154,7 +165,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12px"
             android:text="@string/placeholder_text"
-            android:textSize="10px" />
+            android:textColor="#000000"
+            android:textSize="12px" />
 
         <Space
             android:layout_width="match_parent"
@@ -167,6 +179,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="serif"
             android:text="@string/header_skills"
+            android:textColor="#488BA8"
             android:textSize="16px" />
 
         <TextView
@@ -175,7 +188,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12px"
             android:text="@string/placeholder_text"
-            android:textSize="10px" />
+            android:textColor="#000000"
+            android:textSize="12px" />
 
     </LinearLayout>
 
