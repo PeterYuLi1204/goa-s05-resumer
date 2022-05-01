@@ -181,6 +181,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
             // the default files app should show up here... why doesn't it?
             // my best guess is that it's an emulator restriction --arthur
             startActivity(Intent.createChooser(shareIntent, null));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
 
         ImageButton buttonDownload = findViewById(R.id.button_download);

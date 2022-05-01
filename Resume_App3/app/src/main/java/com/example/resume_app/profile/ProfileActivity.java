@@ -56,6 +56,7 @@ public class ProfileActivity extends AppCompatActivity {
         Button buttonResumeBuilder = bottomNavigation.findViewById(R.id.button_resume_builder);
         buttonResumeBuilder.setOnClickListener(view -> {
             startActivity(new Intent(this, YourResumesActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
     }
 }
