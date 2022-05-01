@@ -53,7 +53,8 @@
                     android:ems="10"
                     android:hint="@string/position_title"
                     android:layout_marginVertical="16dp"
-                    android:text="" />
+                    android:text=""
+                    android:background="@drawable/edittext_rounded_rectangle"/>
 
                 <EditText
                     android:id="@+id/edittext_organization_name"
@@ -62,7 +63,8 @@
                     android:ems="10"
                     android:hint="@string/organization_name"
                     android:layout_marginVertical="16dp"
-                    android:text="" />
+                    android:text=""
+                    android:background="@drawable/edittext_rounded_rectangle"/>
 
                 <EditText
                     android:id="@+id/edittext_experience_description"
@@ -71,7 +73,8 @@
                     android:ems="10"
                     android:hint="@string/short_description"
                     android:layout_marginVertical="16dp"
-                    android:text=""/>
+                    android:text=""
+                    android:background="@drawable/edittext_rounded_rectangle"/>
 
                 <EditText
                     android:id="@+id/edittext_experience_start_date"
@@ -80,7 +83,8 @@
                     android:ems="10"
                     android:hint="@string/start_date"
                     android:layout_marginVertical="16dp"
-                    android:text=""/>
+                    android:text=""
+                    android:background="@drawable/edittext_rounded_rectangle"/>
 
                 <EditText
                     android:id="@+id/edittext_experience_end_date"
@@ -89,7 +93,8 @@
                     android:ems="10"
                     android:hint="@string/end_date"
                     android:layout_marginVertical="16dp"
-                    android:text=""/>
+                    android:text=""
+                    android:background="@drawable/edittext_rounded_rectangle"/>
 
                 <Button
                     android:id="@+id/experience_save_button"
