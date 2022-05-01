@@ -53,7 +53,8 @@
                     android:ems="10"
                     android:hint="@string/certification_license_title"
                     android:layout_marginVertical="16dp"
-                    android:text="" />
+                    android:text=""
+                    android:background="@drawable/edittext_rounded_rectangle"/>
 
                 <EditText
                     android:id="@+id/edittext_certification_issuer_name"
@@ -62,7 +63,8 @@
                     android:ems="10"
                     android:hint="@string/issuer_name"
                     android:layout_marginVertical="16dp"
-                    android:text="" />
+                    android:text=""
+                    android:background="@drawable/edittext_rounded_rectangle"/>
 
                 <EditText
                     android:id="@+id/edittext_issued_date"
@@ -71,7 +73,8 @@
                     android:ems="10"
                     android:hint="@string/issued_date"
                     android:layout_marginVertical="16dp"
-                    android:text=""/>
+                    android:text=""
+                    android:background="@drawable/edittext_rounded_rectangle"/>
 
                 <EditText
                     android:id="@+id/edittext_expiry_date"
@@ -80,7 +83,8 @@
                     android:ems="10"
                     android:hint="@string/expiry_date"
                     android:layout_marginVertical="16dp"
-                    android:text=""/>
+                    android:text=""
+                    android:background="@drawable/edittext_rounded_rectangle"/>
 
                 <Button
                     android:id="@+id/certification_save_button"
