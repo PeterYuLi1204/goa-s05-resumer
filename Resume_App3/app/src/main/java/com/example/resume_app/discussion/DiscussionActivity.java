@@ -30,11 +30,13 @@ public class DiscussionActivity extends AppCompatActivity {
         Button buttonResumeBuilder = bottomNavigation.findViewById(R.id.button_resume_builder);
         buttonResumeBuilder.setOnClickListener(view -> {
             startActivity(new Intent(this, YourResumesActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
 
         Button buttonProfile = bottomNavigation.findViewById(R.id.button_profile);
         buttonProfile.setOnClickListener(view -> {
             startActivity(new Intent(this, ProfileActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
     }
 }
