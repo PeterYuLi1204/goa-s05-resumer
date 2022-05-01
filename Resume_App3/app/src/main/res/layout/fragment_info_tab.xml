@@ -15,7 +15,7 @@
         android:layout_marginHorizontal="24dp"
         android:orientation="vertical">
 
-        <include layout="@layout/item_introduction_cardview" />
+        <include layout="@layout/item_information_cardview" />
 
         <LinearLayout
             android:id="@+id/experience_title_linear_layout"
