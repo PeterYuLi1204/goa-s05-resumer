@@ -1,8 +1,6 @@
 package com.example.resume_app.resume_editor;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
@@ -31,7 +29,6 @@ import com.google.gson.Gson;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.util.List;
 
 /**
  * Displays a print preview of the resume given the appropriate data via Intent:
@@ -89,7 +86,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
         TextView textIntroduction = findViewById(R.id.resume_introduction);
         TextView textEmail = findViewById(R.id.resume_email);
         TextView textPhone = findViewById(R.id.resume_phone);
-        TextView textWebsite = findViewById(R.id.resume_website);
+        TextView textCurrentJob = findViewById(R.id.resume_current_job);
         TextView textHeaderExperience = findViewById(R.id.resume_header_experience);
         TextView textExperience = findViewById(R.id.resume_experience);
         TextView textHeaderEducation = findViewById(R.id.resume_header_education);
@@ -105,7 +102,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
         textIntroduction.setText(resumeData.introduction);
         textEmail.setText(resumeData.email);
         textPhone.setText(resumeData.phone);
-        textWebsite.setText(resumeData.website);
+        textCurrentJob.setText(resumeData.currentJob);
 
         if (resumeData.experience.size() > 0) {
             StringBuilder s = new StringBuilder();

@@ -45,7 +45,7 @@ public class ExampleDataGeneratorThrowaway {
         skills.add(new Skill("determination3"));
         skills.add(new Skill("determination4"));
 
-        return new UserData("Arthur", "email@email.com", "123572384", "", awards, certifications, education, experience, skills);
+        return new UserData("Arthur", "email@email.com", "123572384", "fullstack dev @telus", awards, certifications, education, experience, skills);
     }
 
     public static ResumeData exampleResumeData(UserData userData) {

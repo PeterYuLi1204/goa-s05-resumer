@@ -6,7 +6,7 @@ public class UserData {
     public String username;
     public String email;
     public String phone;
-    public String website;
+    public String currentJob;
     public ArrayList<Award> awards;
     public ArrayList<Certification> certifications;
     public ArrayList<Education> education;
@@ -17,7 +17,7 @@ public class UserData {
             String username,
             String email,
             String phone,
-            String website,
+            String currentJob,
             ArrayList<Award> awards,
             ArrayList<Certification> certifications,
             ArrayList<Education> education,
@@ -26,7 +26,7 @@ public class UserData {
         this.username = username;
         this.email = email;
         this.phone = phone;
-        this.website = website;
+        this.currentJob = currentJob;
         this.awards = awards;
         this.certifications = certifications;
         this.education = education;
