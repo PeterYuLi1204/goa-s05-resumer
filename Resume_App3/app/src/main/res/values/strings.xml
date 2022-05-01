@@ -11,6 +11,7 @@
     <string name="button_create_resume">Create Resume</string>
     <string name="button_preview">Preview</string>
     <string name="button_download">Download</string>
+    <string name="button_save">Save</string>
 
     <string name="tab_info">Info</string>
     <string name="tab_posts_comments">Posts/Comments</string>
@@ -24,8 +25,8 @@
 
     <string name="toast_file_saved">File downloaded successfully!</string>
 
-    <string name="save">SAVE</string>
-    <string name="description">Tincidunt nibh malesuada et gravida tristique lacus diam, magna amet. Mi sed sit morbi id gravida integer aenean senectus mi.</string>
+    <!--INPUT-RELATED-->
+
     <string name="issuer_name">Issuer Name</string>
     <string name="short_description">Short Description</string>
     <string name="start_date">Start Date</string>
@@ -37,31 +38,29 @@
     <string name="phone_number">Phone Number</string>
     <string name="email">Email</string>
 
+    <string name="add_experience">Add Experience</string>
+    <string name="edit_experience">Edit Experience</string>
     <string name="position_title">Position Title</string>
     <string name="organization_name">Organization Name</string>
-    <string name="job_start_end_date">Job Start Date - Job End Date (Length)</string>
-    <string name="add_experience">Add Experience</string>
 
-    <string name="award_honour_title">Award/Honour Title</string>
-    <string name="awarded">Awarded:</string>
-    <string name="awarded_date_placeholder">Awarded: MM/YYYY</string>
     <string name="add_award">Add Award</string>
+    <string name="edit_award">Edit Award</string>
+    <string name="award_honour_title">Award/Honour Title</string>
     <string name="date_awarded">Date Awarded</string>
 
-    <string name="school_name">School Name</string>
-    <string name="education_start_end_date">Education Period Start Date - End Date (Length)</string>
     <string name="add_education">Add Education</string>
+    <string name="edit_education">Edit Education</string>
+    <string name="school_name">School Name</string>
 
-    <string name="certification_license_title">Certification/License Title</string>
-    <string name="issued_date_placeholder">Issued: MM/YYYY</string>
-    <string name="expires_date_placeholder">Expires: MM/YYYY</string>
     <string name="add_certification">Add Certification</string>
+    <string name="edit_certification">Edit Certification</string>
+    <string name="certification_license_title">Certification/License Title</string>
     <string name="issued_date">Issued Date</string>
     <string name="expiry_date">Expiry Date</string>
 
-
-    <string name="skill">Skill</string>
+    <string name="edit_skill">Edit Skill</string>
     <string name="add_skill">Add Skill</string>
+    <string name="skill">Skill</string>
 
     <string name="lose_progress_warning">You will lose all your progress if you exit now.</string>
     <string name="continue_working">Continue working</string>

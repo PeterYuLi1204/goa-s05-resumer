@@ -54,7 +54,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
         frame.addView(getLayoutInflater().inflate(intent.getIntExtra("TEMPLATE_ID", R.layout.template_resume_classic), frame, false));
 
         // an experiment
-        resumeData = ExampleDataGeneratorThrowaway.exampleResumeData(loadFromJson("test_user_data"));
+        resumeData = ExampleDataGeneratorThrowaway.exampleResumeData(loadFromJson("user_data"));
 
         connectXml();
         connectTemplate();

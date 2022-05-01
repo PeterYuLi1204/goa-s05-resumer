@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="title_discussion">Discussion</string>
     <string name="title_your_resumes">Vos resumes</string>
     <string name="title_profile">Profil</string>
@@ -8,6 +9,7 @@
     <string name="button_create_resume">Creer un resume</string>
     <string name="button_preview">Apercu</string>
     <string name="button_download">Telecharger</string>
+    <string name="button_save">Confirmer</string>
 
     <string name="tab_info">Infos</string>
     <string name="tab_posts_comments">Messages</string>
@@ -20,4 +22,46 @@
     <string name="header_introduction">Introduction</string>
 
     <string name="toast_file_saved">Document telecharge !</string>
+
+    <!--INPUT-RELATED-->
+
+    <string name="issuer_name">Nom d\'emetteur</string>
+    <string name="short_description">Description courte</string>
+    <string name="start_date">Date de debut</string>
+    <string name="end_date">Date de fin</string>
+
+    <string name="edit_information">Modifier l\'information</string>
+    <string name="name">Nom</string>
+    <string name="current_job">Travail actuel</string>
+    <string name="phone_number">Numero de telephone</string>
+    <string name="email">Email</string>
+
+    <string name="add_experience">Ajouter une experience</string>
+    <string name="edit_experience">Modifier une xperience</string>
+    <string name="position_title">Titre de travail</string>
+    <string name="organization_name">Nom d\'organization</string>
+
+    <string name="add_award">Ajouter une distinction</string>
+    <string name="edit_award">Modifier une distinction</string>
+    <string name="award_honour_title">Titre de distinction</string>
+    <string name="date_awarded">Date d\'attribution</string>
+
+    <string name="add_education">Ajouter une education</string>
+    <string name="edit_education">Modifier une education</string>
+    <string name="school_name">Nom d\'ecole</string>
+
+    <string name="add_certification">Ajouter une certification</string>
+    <string name="edit_certification">Modifier une certification</string>
+    <string name="certification_license_title">Titre de certification</string>
+    <string name="issued_date">Date d\'attribution</string>
+    <string name="expiry_date">Date d\'expiration</string>
+
+    <string name="edit_skill">Modifier une competence</string>
+    <string name="add_skill">Ajouter une competence</string>
+    <string name="skill">Competence</string>
+
+    <string name="lose_progress_warning">Vous perdrez tous vos progres si vous quittez maintenant.</string>
+    <string name="continue_working">Continuer</string>
+    <string name="erase_progress">Quittez</string>
+
 </resources>

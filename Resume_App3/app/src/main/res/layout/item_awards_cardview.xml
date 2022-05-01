@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="4dp"
                     android:textColor="@color/black"
-                    android:text="@string/description" />
+                    android:text="@string/placeholder_text" />
 
                 <TextView
                     android:id="@+id/awarded_date_textview"
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textSize="10dp"
-                    android:text="@string/awarded_date_placeholder" />
+                    android:text="@string/date_awarded" />
             </LinearLayout>
 
         </LinearLayout>

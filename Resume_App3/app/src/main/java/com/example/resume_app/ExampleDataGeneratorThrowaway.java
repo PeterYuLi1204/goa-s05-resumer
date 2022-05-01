@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class ExampleDataGeneratorThrowaway {
 
     public static UserData exampleUserData() {
+
         ArrayList<Award> awards = new ArrayList<>();
         awards.add(new Award("Honour roll", "McMath", "I get da good grades", "every year"));
         awards.add(new Award("Honour roll1", "McMath", "I get da good grades", "every year"));

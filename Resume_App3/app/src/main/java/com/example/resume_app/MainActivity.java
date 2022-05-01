@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         // permanently affecting the save while testing
         // TODO: delete this before submission! --arthur
         UserData data = ExampleDataGeneratorThrowaway.exampleUserData();
-        File file = new File(getExternalFilesDir(null), "test_user_data.json");
+        File file = new File(getExternalFilesDir(null), "user_data.json");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try (FileWriter writer = new FileWriter(file)) {
             gson.toJson(data, writer);

@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textSize="10dp"
-                    android:text="@string/issued_date_placeholder" />
+                    android:text="@string/issued_date" />
 
                 <TextView
                     android:id="@+id/certification_expiry_date_textview"
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textSize="10dp"
-                    android:text="@string/expires_date_placeholder" />
+                    android:text="@string/expiry_date" />
             </LinearLayout>
 
         </LinearLayout>
