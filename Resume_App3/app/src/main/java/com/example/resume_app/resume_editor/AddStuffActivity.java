@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.resume_app.R;
 import com.example.resume_app.data_model.ResumeData;
 import com.example.resume_app.data_model.UserData;
+import com.example.resume_app.discussion.DiscussionActivity;
 import com.example.resume_app.your_resumes.YourResumesActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,10 +27,8 @@ public class AddStuffActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_stuff);
 
-        Button temporary = findViewById(R.id.temporary);
-        temporary.setOnClickListener(view -> {
-            saveToJson(new ResumeData("hello"), "thing");
-        });
+        connectXml();
+
     }
     void saveToJson(ResumeData data, String fileName) {
         File file = new File(getApplicationContext().getExternalFilesDir(null), fileName + ".json");
@@ -54,5 +53,17 @@ public class AddStuffActivity extends AppCompatActivity {
         }
 
         return data;
+    }
+
+    void connectXml() {
+        Button temporary = findViewById(R.id.temporary);
+        temporary.setOnClickListener(view -> {
+            saveToJson(new ResumeData("hello"), "thing");
+        });
+
+        Button backButton = findViewById(R.id.back_button);
+        backButton.setOnClickListener(view -> {
+            startActivity(new Intent(this, ResumeEditorActivity.class));
+        });
     }
 }
