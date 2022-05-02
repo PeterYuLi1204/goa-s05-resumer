@@ -36,13 +36,13 @@ public class SkillsRecyclerAdapter extends RecyclerView.Adapter<SkillsRecyclerAd
                 //make edit pop-up pop up
             }
         });
-        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO
-                //make are you sure pop-up pop up
-            }
-        });
+//        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //TODO
+//                //make are you sure pop-up pop up
+//            }
+//        });
     }
 
     @Override
@@ -62,7 +62,7 @@ public class SkillsRecyclerAdapter extends RecyclerView.Adapter<SkillsRecyclerAd
             positionTitle = itemView.findViewById(R.id.position_title);
             description = itemView.findViewById(R.id.description);
             editButton = itemView.findViewById(R.id.edit_button);
-            deleteButton = itemView.findViewById(R.id.delete_button);
+         // deleteButton = itemView.findViewById(R.id.delete_button);
         }
 
     }

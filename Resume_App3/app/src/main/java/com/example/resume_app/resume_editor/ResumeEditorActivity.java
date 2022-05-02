@@ -93,6 +93,7 @@ public class ResumeEditorActivity extends AppCompatActivity {
         buttonPreview.setOnClickListener(view -> {
             // TODO: pass user input for render
             startActivity(new Intent(this, ResumePreviewActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
     }
 }

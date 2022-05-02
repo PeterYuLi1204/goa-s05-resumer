@@ -51,11 +51,13 @@ public class ProfileActivity extends AppCompatActivity {
         Button buttonDiscussion = bottomNavigation.findViewById(R.id.button_discussion);
         buttonDiscussion.setOnClickListener(view -> {
             startActivity(new Intent(this, DiscussionActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
 
         Button buttonResumeBuilder = bottomNavigation.findViewById(R.id.button_resume_builder);
         buttonResumeBuilder.setOnClickListener(view -> {
             startActivity(new Intent(this, YourResumesActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
     }
 }

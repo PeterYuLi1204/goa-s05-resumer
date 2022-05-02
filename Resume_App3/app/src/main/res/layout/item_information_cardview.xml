@@ -48,28 +48,28 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:textColor="@color/black"
-                    android:text="@string/edit_name" />
+                    android:text="@string/name" />
 
                 <TextView
-                    android:id="@+id/job_position_textview"
+                    android:id="@+id/current_job_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="@string/edit_job_position" />
+                    android:text="@string/current_job" />
 
                 <TextView
                     android:id="@+id/phone_number_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="@string/edit_phone_number" />
+                    android:text="@string/phone_number" />
 
                 <TextView
                     android:id="@+id/email_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="@string/edit_email" />
+                    android:text="@string/email" />
             </LinearLayout>
 
         </LinearLayout>

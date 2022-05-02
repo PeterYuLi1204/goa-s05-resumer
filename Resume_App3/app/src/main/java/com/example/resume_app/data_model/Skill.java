@@ -11,6 +11,10 @@ public class Skill {
         this.skillName = skillName;
     }
 
+    public Skill() {
+        this.skillName = skillName;
+    }
+
     @NonNull
     public String toString() {
         return "<p>" + skillName + "</p>";

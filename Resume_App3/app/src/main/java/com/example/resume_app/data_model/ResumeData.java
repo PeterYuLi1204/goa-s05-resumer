@@ -1,15 +1,14 @@
 package com.example.resume_app.data_model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ResumeData {
     public String fileName;
-    public String name;
+    public String username;
     public String introduction;
     public String email;
     public String phone;
-    public String website;
+    public String currentJob;
     public ArrayList<Award> awards;
     public ArrayList<Certification> certifications;
     public ArrayList<Education> education;
@@ -22,18 +21,18 @@ public class ResumeData {
             String introduction,
             String email,
             String phone,
-            String website,
+            String currentJob,
             ArrayList<Award> awards,
             ArrayList<Certification> certifications,
             ArrayList<Education> education,
             ArrayList<Experience> experience,
             ArrayList<Skill> skills) {
         this.fileName = fileName;
-        this.name = name;
+        this.username = name;
         this.introduction = introduction;
         this.email = email;
         this.phone = phone;
-        this.website = website;
+        this.currentJob = currentJob;
         this.awards = awards;
         this.certifications = certifications;
         this.education = education;
@@ -43,18 +42,14 @@ public class ResumeData {
 
     public ResumeData(
             String fileName,
-            String name,
             String introduction,
-            String email,
-            String phone,
-            String website,
             UserData userData) {
         this.fileName = fileName;
-        this.name = name;
+        this.username = userData.username;
         this.introduction = introduction;
-        this.email = email;
-        this.phone = phone;
-        this.website = website;
+        this.email = userData.email;
+        this.phone = userData.phone;
+        this.currentJob = userData.currentJob;
         this.awards = userData.awards;
         this.certifications = userData.certifications;
         this.education = userData.education;

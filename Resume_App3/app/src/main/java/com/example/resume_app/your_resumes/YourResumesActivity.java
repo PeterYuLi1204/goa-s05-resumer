@@ -25,6 +25,7 @@ public class YourResumesActivity extends AppCompatActivity implements YourResume
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_your_resumes);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         connectXml();
     }
@@ -43,6 +44,7 @@ public class YourResumesActivity extends AppCompatActivity implements YourResume
         Button buttonPlus = findViewById(R.id.button_create_resume);
         buttonPlus.setOnClickListener(view -> {
             startActivity(new Intent(this, ResumeEditorActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);;
         });
 
         View bottomNavigation = findViewById(R.id.bottom_navigation);
@@ -50,11 +52,13 @@ public class YourResumesActivity extends AppCompatActivity implements YourResume
         Button buttonDiscussion = bottomNavigation.findViewById(R.id.button_discussion);
         buttonDiscussion.setOnClickListener(view -> {
             startActivity(new Intent(this, DiscussionActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);;
         });
 
         Button buttonProfile = bottomNavigation.findViewById(R.id.button_profile);
         buttonProfile.setOnClickListener(view -> {
             startActivity(new Intent(this, ProfileActivity.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);;
         });
     }
 

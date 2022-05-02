@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="0dp"
         android:layout_marginBottom="16dp"
@@ -34,7 +34,7 @@
                     android:textStyle="bold" />
 
                 <ImageButton
-                    android:id="@+id/certifications_delete_button"
+                    android:id="@+id/certification_delete_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
@@ -57,28 +57,20 @@
                     android:text="@string/issuer_name" />
 
                 <TextView
-                    android:id="@+id/award_description_textview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="4dp"
-                    android:textColor="@color/black"
-                    android:text="@string/description" />
-
-                <TextView
                     android:id="@+id/certification_issued_date_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textSize="10dp"
-                    android:text="@string/issued_date_placeholder" />
+                    android:text="@string/issued_date" />
 
                 <TextView
-                    android:id="@+id/certification_expires_date_textview"
+                    android:id="@+id/certification_expiry_date_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textSize="10dp"
-                    android:text="@string/expires_date_placeholder" />
+                    android:text="@string/expiry_date" />
             </LinearLayout>
 
         </LinearLayout>

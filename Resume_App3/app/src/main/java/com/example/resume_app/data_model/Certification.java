@@ -17,6 +17,14 @@ public class Certification {
         this.expiryDate = expiryDate;
     }
 
+    public Certification() {
+        this.certificationTitle = certificationTitle;
+        this.issuer = issuer;
+        this.issuedOn = issuedOn;
+        this.expiryDate = expiryDate;
+    }
+
+
     @NonNull
     public String toString() {
         return "<p>" + certificationTitle + " • " + issuer + "<br>" + issuedOn + " - " + expiryDate + "</p>";

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="0dp"
         android:layout_marginBottom="16dp"
@@ -63,7 +63,7 @@
                         android:layout_height="wrap_content"
                         android:paddingBottom="4dp"
                         android:textColor="@color/black"
-                        android:text="@string/description" />
+                        android:text="@string/placeholder_text" />
 
                     <TextView
                         android:id="@+id/job_start_end_date_textview"
@@ -71,7 +71,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:textSize="10dp"
-                        android:text="@string/job_start_end_date" />
+                        android:text="@string/start_date" />
                 </LinearLayout>
 
         </LinearLayout>
