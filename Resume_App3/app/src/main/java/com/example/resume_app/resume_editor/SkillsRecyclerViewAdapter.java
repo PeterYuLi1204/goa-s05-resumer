@@ -28,14 +28,14 @@ public class SkillsRecyclerViewAdapter extends RecyclerView.Adapter<SkillsRecycl
 
     @Override
     public void onBindViewHolder(SkillsRecyclerViewAdapter.ViewHolder holder, int position) {
-        holder.positionTitle.setText(skills.get(position).skillName);
-        holder.editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO
-                //make edit pop-up pop up
-            }
-        });
+        //holder.positionTitle.setText(skills.get(position).skillName);
+//        holder.editButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //TODO
+//                //make edit pop-up pop up
+//            }
+//        });
 //        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -52,16 +52,16 @@ public class SkillsRecyclerViewAdapter extends RecyclerView.Adapter<SkillsRecycl
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView positionTitle;
+      //  TextView positionTitle;
         TextView description;
         Button editButton;
         Button deleteButton;
 
         ViewHolder(View itemView) {
             super(itemView);
-            positionTitle = itemView.findViewById(R.id.position_title);
-            description = itemView.findViewById(R.id.description);
-            editButton = itemView.findViewById(R.id.edit_button);
+            //positionTitle = itemView.findViewById(R.id.position_title);
+           // description = itemView.findViewById(R.id.description);
+          //  editButton = itemView.findViewById(R.id.edit_button);
          // deleteButton = itemView.findViewById(R.id.delete_button);
         }
 

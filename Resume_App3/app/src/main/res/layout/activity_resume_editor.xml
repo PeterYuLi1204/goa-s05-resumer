@@ -2,6 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:style="http://schemas.android.com/apk/res-auto"
+    android:background="@color/light_blue"
     tools:context=".resume_editor.ResumeEditorActivity">
 
     <ScrollView
@@ -14,23 +17,32 @@
             android:orientation="vertical">
 
             <LinearLayout
+                style="@style/ResumeApp.Toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingStart="24dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp">
 
                 <Button
                     android:id="@+id/back_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    android:layout_width="25dp"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:text="arrow" />
+                    app:icon="@drawable/arrow_left" />
 
                 <TextView
                     android:id="@+id/fill_in"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Fill in" />
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:text="Fill In"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/save_button"
@@ -47,7 +59,7 @@
 
                 <TextView
                     android:id="@+id/introduction"
-                    android:layout_width="wrap_content"
+                    android:layout_width="331dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Introduction" />
@@ -55,9 +67,13 @@
                 <Button
                     android:id="@+id/edit_introduction_button"
                     android:layout_width="wrap_content"
+                    app:icon="@drawable/ic_baseline_add_24"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
                     android:layout_height="wrap_content"
+
                     android:layout_weight="1"
-                    android:text="edit" />
+                    android:textColor="@color/black"
+                    />
             </LinearLayout>
 
             <TextView
@@ -74,17 +90,21 @@
 
                 <TextView
                     android:id="@+id/experience"
-                    android:layout_width="wrap_content"
+                    android:layout_width="331dp"
                     android:layout_height="wrap_content"
+
                     android:layout_weight="1"
                     android:text="Experience" />
 
                 <Button
                     android:id="@+id/edit_experience_button"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:text="edit" />
+                    android:textColor="@color/black"
+                    app:icon="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -99,17 +119,20 @@
 
                 <TextView
                     android:id="@+id/education"
-                    android:layout_width="wrap_content"
+                    android:layout_width="331dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Education" />
 
                 <Button
                     android:id="@+id/edit_education_button"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:text="edit" />
+                    android:textColor="@color/black"
+                    app:icon="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -124,17 +147,20 @@
 
                 <TextView
                     android:id="@+id/Certifications"
-                    android:layout_width="wrap_content"
+                    android:layout_width="331dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Certifications" />
 
                 <Button
                     android:id="@+id/edit_certifications_button"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:text="edit" />
+                    android:textColor="@color/black"
+                    app:icon="@drawable/ic_baseline_add_24"/>
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -149,17 +175,20 @@
 
                 <TextView
                     android:id="@+id/awards"
-                    android:layout_width="wrap_content"
+                    android:layout_width="331dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Awards and Honors" />
 
                 <Button
                     android:id="@+id/edit_awards_button"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:textColor="@color/black"
+                    app:icon="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -174,17 +203,20 @@
 
                 <TextView
                     android:id="@+id/skills"
-                    android:layout_width="wrap_content"
+                    android:layout_width="331dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Skills" />
 
                 <Button
                     android:id="@+id/edit_skills_button"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:text="edit" />
+                    android:textColor="@color/black"
+                    app:icon="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView

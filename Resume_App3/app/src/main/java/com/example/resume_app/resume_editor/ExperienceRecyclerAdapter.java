@@ -29,16 +29,16 @@ public class ExperienceRecyclerAdapter extends RecyclerView.Adapter<ExperienceRe
 
     @Override
     public void onBindViewHolder(ExperienceRecyclerAdapter.ViewHolder holder, int position) {
-        holder.positionTitle.setText(experiences.get(position).jobPosition);
+       // holder.positionTitle.setText(experiences.get(position).jobPosition);
         //the description
 //        holder.description.setText(experiences.get(position).jobPosition);
-        holder.editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO
-                //make edit pop-up pop up
-            }
-        });
+//        holder.editButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //TODO
+//                //make edit pop-up pop up
+//            }
+//        });
 
     }
 
@@ -56,9 +56,9 @@ public class ExperienceRecyclerAdapter extends RecyclerView.Adapter<ExperienceRe
 
         ViewHolder(View itemView) {
             super(itemView);
-            positionTitle = itemView.findViewById(R.id.position_title);
-            description = itemView.findViewById(R.id.description);
-            editButton = itemView.findViewById(R.id.edit_button);
+         //   positionTitle = itemView.findViewById(R.id.position_title);
+           // description = itemView.findViewById(R.id.description);
+          //editButton = itemView.findViewById(R.id.edit_button);
 
         }
 

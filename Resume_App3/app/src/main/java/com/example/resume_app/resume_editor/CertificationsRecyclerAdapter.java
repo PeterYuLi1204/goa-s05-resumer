@@ -29,16 +29,16 @@ public class CertificationsRecyclerAdapter extends RecyclerView.Adapter<Certific
 
     @Override
     public void onBindViewHolder(CertificationsRecyclerAdapter.ViewHolder holder, int position) {
-        holder.positionTitle.setText(certifications.get(position).certificationTitle);
+        //holder.positionTitle.setText(certifications.get(position).certificationTitle);
         //the description
 //        holder.description.setText(experiences.get(position).jobPosition);
-        holder.editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO
-                //make edit pop-up pop up
-            }
-        });
+//        holder.editButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //TODO
+//                //make edit pop-up pop up
+//            }
+//        });
 
         }
 
@@ -57,9 +57,9 @@ public class CertificationsRecyclerAdapter extends RecyclerView.Adapter<Certific
 
         ViewHolder(View itemView) {
             super(itemView);
-            positionTitle = itemView.findViewById(R.id.position_title);
-            description = itemView.findViewById(R.id.description);
-            editButton = itemView.findViewById(R.id.edit_button);
+           // positionTitle = itemView.findViewById(R.id.position_title);
+           // description = itemView.findViewById(R.id.description);
+            //editButton = itemView.findViewById(R.id.edit_button);
         }
 
     }

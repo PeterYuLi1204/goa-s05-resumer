@@ -28,16 +28,16 @@ public class EducationRecyclerAdapter extends RecyclerView.Adapter<EducationRecy
 
     @Override
     public void onBindViewHolder(EducationRecyclerAdapter.ViewHolder holder, int position) {
-        holder.positionTitle.setText(education.get(position).schoolName);
+        //holder.positionTitle.setText(education.get(position).schoolName);
         //the description
 //        holder.description.setText(experiences.get(position).jobPosition);
-        holder.editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO
-                //make edit pop-up pop up
-            }
-        });
+//        holder.editButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //TODO
+//                //make edit pop-up pop up
+//            }
+//        });
 //        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -61,9 +61,9 @@ public class EducationRecyclerAdapter extends RecyclerView.Adapter<EducationRecy
 
         ViewHolder(View itemView) {
             super(itemView);
-            positionTitle = itemView.findViewById(R.id.position_title);
-            description = itemView.findViewById(R.id.description);
-            editButton = itemView.findViewById(R.id.edit_button);
+           // positionTitle = itemView.findViewById(R.id.position_title);
+            //description = itemView.findViewById(R.id.description);
+           //editButton = itemView.findViewById(R.id.edit_button);
             //deleteButton = itemView.findViewById(R.id.delete_button);
         }
 

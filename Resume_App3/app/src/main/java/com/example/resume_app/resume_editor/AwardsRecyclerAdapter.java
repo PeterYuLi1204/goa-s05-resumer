@@ -28,16 +28,16 @@ public class AwardsRecyclerAdapter extends RecyclerView.Adapter<AwardsRecyclerAd
 
     @Override
     public void onBindViewHolder(AwardsRecyclerAdapter.ViewHolder holder, int position) {
-        holder.positionTitle.setText(awards.get(position).awardName);
+        //holder.positionTitle.setText(awards.get(position).awardName);
         //the description
 //        holder.description.setText(experiences.get(position).jobPosition);
-        holder.editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO
-                //make edit pop-up pop up
-            }
-        });
+//        holder.editButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //TODO
+//                //make edit pop-up pop up
+//            }
+//        });
 //        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -54,16 +54,16 @@ public class AwardsRecyclerAdapter extends RecyclerView.Adapter<AwardsRecyclerAd
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView positionTitle;
+        //TextView positionTitle;
         TextView description;
         Button editButton;
         Button deleteButton;
 
         ViewHolder(View itemView) {
             super(itemView);
-            positionTitle = itemView.findViewById(R.id.position_title);
-            description = itemView.findViewById(R.id.description);
-            editButton = itemView.findViewById(R.id.edit_button);
+           // positionTitle = itemView.findViewById(R.id.position_title);
+           // description = itemView.findViewById(R.id.description);
+            //editButton = itemView.findViewById(R.id.edit_button);
             //deleteButton = itemView.findViewById(R.id.delete_button);
         }
 
