@@ -1,13 +1,16 @@
 package com.example.resume_app.profile;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -46,6 +49,8 @@ public class InfoTabFragment extends Fragment {
     Dialog editEducationDialog;
     Dialog editCertificationDialog;
     Dialog editSkillsDialog;
+    Dialog confirmEraseProgressDialog;
+    Dialog confirmCardEraseDialog;
 
     TextView nameTextView;
     TextView currentJobTextView;
@@ -204,6 +209,9 @@ public class InfoTabFragment extends Fragment {
         });
 
         editSkillsDialog = new Dialog(getContext());
+
+        confirmEraseProgressDialog = new Dialog(getContext());
+        confirmCardEraseDialog = new Dialog(getContext());
     }
 
     private void createExperienceCard(Experience experience) {
@@ -330,7 +338,9 @@ public class InfoTabFragment extends Fragment {
         ImageButton closeEditInformation = editInformationDialog.findViewById(R.id.close_edit_information_button);
         Button saveButton = editInformationDialog.findViewById(R.id.information_save_button);
 
-        closeEditInformation.setOnClickListener(v -> editInformationDialog.dismiss());
+        closeEditInformation.setOnClickListener(v -> {
+            confirmEraseProgressDialog(editInformationDialog);
+        });
 
         saveButton.setOnClickListener(v -> {
 
@@ -384,11 +394,36 @@ public class InfoTabFragment extends Fragment {
         Button saveButton = editExperienceDialog.findViewById(R.id.experience_save_button);
 
         closeEditExperience.setOnClickListener(v -> {
-            if (createNew) {
-                userData.experience.remove(experience);
-                experienceLinearLayout.removeView(card);
-            }
-            editExperienceDialog.dismiss();
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+            View alert = getLayoutInflater().inflate(R.layout.dialogue_confirm_delete, null);
+            Button continueButton = alert.findViewById(R.id.continue_working);
+            Button eraseButton = alert.findViewById(R.id.erase_progress);
+
+            dialogBuilder.setView(alert);
+            AlertDialog dialog = dialogBuilder.create();
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+            dialog.show();
+
+            continueButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            eraseButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    if (createNew) {
+                        userData.experience.remove(experience);
+                        experienceLinearLayout.removeView(card);
+                    }
+                    editExperienceDialog.dismiss();
+                }
+            });
+
         });
 
         saveButton.setOnClickListener(v -> {
@@ -684,6 +719,30 @@ public class InfoTabFragment extends Fragment {
         });
 
         editSkillsDialog.show();
+    }
+
+    private void confirmEraseProgressDialog(Dialog dialog) {
+        confirmEraseProgressDialog.setContentView(R.layout.dialogue_confirm_delete);
+        confirmEraseProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        Button continueButton = confirmEraseProgressDialog.findViewById(R.id.continue_working);
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmEraseProgressDialog.dismiss();
+            }
+        });
+
+        Button eraseButton = confirmEraseProgressDialog.findViewById(R.id.erase_progress);
+        eraseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmEraseProgressDialog.dismiss();
+                dialog.dismiss();
+            }
+        });
+
+        confirmEraseProgressDialog.show();
     }
 }
 
