@@ -19,7 +19,7 @@
             <LinearLayout
                 style="@style/ResumeApp.Toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="68dp"
                 android:orientation="horizontal"
                 android:paddingStart="24dp"
                 android:paddingTop="16dp"
@@ -29,7 +29,7 @@
                     android:id="@+id/back_button"
                     style="@style/Widget.MaterialComponents.Button.Icon"
                     android:layout_width="25dp"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     app:icon="@drawable/arrow_left" />
 
@@ -39,6 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingStart="20dp"
+
                     android:paddingTop="8dp"
                     android:text="Fill In"
                     android:textColor="@color/white"
@@ -48,8 +49,10 @@
                     android:id="@+id/save_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:text="save" />
+                    android:textAllCaps="false"
+                    android:text="Save" />
             </LinearLayout>
 
             <LinearLayout
@@ -62,7 +65,8 @@
                     android:layout_width="331dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Introduction" />
+                    android:text="Introduction"
+                    style="@style/ResumeApp.Editor"/>
 
                 <Button
                     android:id="@+id/edit_introduction_button"
@@ -70,18 +74,13 @@
                     app:icon="@drawable/ic_baseline_add_24"
                     style="@style/Widget.MaterialComponents.Button.Icon"
                     android:layout_height="wrap_content"
-
+                    android:background="?android:attr/selectableItemBackground"
                     android:layout_weight="1"
                     android:textColor="@color/black"
                     />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/introduction_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -92,18 +91,20 @@
                     android:id="@+id/experience"
                     android:layout_width="331dp"
                     android:layout_height="wrap_content"
-
+                    style="@style/ResumeApp.Editor"
                     android:layout_weight="1"
                     android:text="Experience" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/edit_experience_button"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
+                    android:background="?android:attr/selectableItemBackground"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    app:iconGravity="textEnd"
+                    android:textAlignment="center"
+                    app:iconTint="@color/black"
                     app:icon="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
@@ -122,16 +123,20 @@
                     android:layout_width="331dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    style="@style/ResumeApp.Editor"
                     android:text="Education" />
 
                 <Button
                     android:id="@+id/edit_education_button"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
+                    android:background="?android:attr/selectableItemBackground"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    app:iconGravity="textEnd"
+                    android:textAlignment="center"
+                    app:iconTint="@color/black"
                     app:icon="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
@@ -150,16 +155,21 @@
                     android:layout_width="331dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    style="@style/ResumeApp.Editor"
                     android:text="Certifications" />
 
                 <Button
                     android:id="@+id/edit_certifications_button"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:textColor="@color/black"
+                    android:background="?android:attr/selectableItemBackground"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    app:iconGravity="textEnd"
+                    android:textAlignment="center"
+                    app:iconTint="@color/black"
                     app:icon="@drawable/ic_baseline_add_24"/>
             </LinearLayout>
 
@@ -178,16 +188,21 @@
                     android:layout_width="331dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    style="@style/ResumeApp.Editor"
                     android:text="Awards and Honors" />
 
                 <Button
                     android:id="@+id/edit_awards_button"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:textColor="@color/black"
+                    android:background="?android:attr/selectableItemBackground"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    app:iconGravity="textEnd"
+                    android:textAlignment="center"
+                    app:iconTint="@color/black"
                     app:icon="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
@@ -206,16 +221,21 @@
                     android:layout_width="331dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    style="@style/ResumeApp.Editor"
                     android:text="Skills" />
 
                 <Button
                     android:id="@+id/edit_skills_button"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:textColor="@color/black"
+                    android:background="?android:attr/selectableItemBackground"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    app:iconGravity="textEnd"
+                    android:textAlignment="center"
+                    app:iconTint="@color/black"
                     app:icon="@drawable/ic_baseline_add_24" />
             </LinearLayout>
 
@@ -234,6 +254,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    style="@style/ResumeApp.Editor"
                     android:text="Choose a Template" />
 
                 <ImageView
@@ -258,11 +279,6 @@
                 android:layout_height="wrap_content"
                 android:text="Download" />
 
-            <Button
-                android:id="@+id/button_get_feedback"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Get Feedback" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

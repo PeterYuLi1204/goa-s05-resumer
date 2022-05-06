@@ -58,4 +58,19 @@
         <item name="android:elevation">12dp</item>
     </style>
 
+    <style name="ResumeApp.Editor" parent="">
+        <item name="android:fontFamily">@font/oxygen</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ResumeApp.EditorButton" parent="">
+        <item name="android:fontFamily">@font/oxygen</item>
+
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
