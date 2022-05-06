@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.resume_app.R;
@@ -30,21 +32,15 @@ public class ProfileActivity extends AppCompatActivity {
 
     void connectXml() {
 
-        ViewPager2 viewPager2 = findViewById(R.id.view_pager);
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        // Adding the fragment to the activity
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(this);
-        viewPager2.setAdapter(adapter);
+        Fragment infoTabFragment = new InfoTabFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        String[] tabTitles = {getString(R.string.tab_info), getString(R.string.tab_posts_comments)};
+        transaction.replace(R.id.frame, infoTabFragment);
+        transaction.addToBackStack(null);
 
-        new TabLayoutMediator(tabLayout, viewPager2,
-                new TabLayoutMediator.TabConfigurationStrategy() {
-                    @Override
-                    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                        tab.setText(tabTitles[position]);
-                    }
-                }).attach();
+        transaction.commit();
 
         View bottomNavigation = findViewById(R.id.bottom_navigation);
 
