@@ -6,11 +6,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -32,6 +30,7 @@ import com.google.gson.GsonBuilder;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
 
 public class InfoTabFragment extends Fragment {
 
@@ -50,7 +49,7 @@ public class InfoTabFragment extends Fragment {
     Dialog editCertificationDialog;
     Dialog editSkillsDialog;
     Dialog confirmEraseProgressDialog;
-    Dialog confirmCardEraseDialog;
+    Dialog confirmEraseCardDialog;
 
     TextView nameTextView;
     TextView currentJobTextView;
@@ -60,7 +59,6 @@ public class InfoTabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_info_tab, container, false);
 
         userData = loadFromJson("user_data");
@@ -115,6 +113,15 @@ public class InfoTabFragment extends Fragment {
         certificationsLinearLayout = view.findViewById(R.id.certifications_linear_layout);
         skillsLinearLayout = view.findViewById(R.id.skills_linear_layout);
 
+        editInformationDialog = new Dialog(getContext());
+        editExperienceDialog = new Dialog(getContext());
+        editAwardDialog = new Dialog(getContext());
+        editEducationDialog = new Dialog(getContext());
+        editCertificationDialog = new Dialog(getContext());
+        editSkillsDialog = new Dialog(getContext());
+        confirmEraseProgressDialog = new Dialog(getContext());
+        confirmEraseCardDialog = new Dialog(getContext());
+
         for (Experience experience : userData.experience) {
             createExperienceCard(experience);
         }
@@ -150,9 +157,6 @@ public class InfoTabFragment extends Fragment {
         ImageButton informationEditButton = view.findViewById(R.id.information_edit_button);
         informationEditButton.setOnClickListener(v -> openEditInformationDialog());
 
-        editInformationDialog = new Dialog(getContext());
-
-
         // Experience section of the profile
 
         ImageButton experienceAddButton = view.findViewById(R.id.experience_add_button);
@@ -161,9 +165,6 @@ public class InfoTabFragment extends Fragment {
             createExperienceCard(userData.experience.get(userData.experience.size() - 1));
             openEditExperienceDialog(experienceLinearLayout.getChildAt(experienceLinearLayout.getChildCount() - 1), userData.experience.get(userData.experience.size() - 1), true);
         });
-
-        editExperienceDialog = new Dialog(getContext());
-
 
         // Awards section of the profile
 
@@ -174,9 +175,6 @@ public class InfoTabFragment extends Fragment {
             openEditAwardDialog(awardsLinearLayout.getChildAt(awardsLinearLayout.getChildCount() - 1), userData.awards.get(userData.awards.size() - 1), true);
         });
 
-        editAwardDialog = new Dialog(getContext());
-
-
         // Education section of the profile
 
         ImageButton educationAddButton = view.findViewById(R.id.education_add_button);
@@ -185,8 +183,6 @@ public class InfoTabFragment extends Fragment {
             createEducationCard(userData.education.get(userData.education.size() - 1));
             openEditEducationDialog(educationLinearLayout.getChildAt(educationLinearLayout.getChildCount() - 1), userData.education.get(userData.education.size() - 1), true);
         });
-
-        editEducationDialog = new Dialog(getContext());
 
         // Certifications section of the profile
 
@@ -197,8 +193,6 @@ public class InfoTabFragment extends Fragment {
             openEditCertificationDialog(certificationsLinearLayout.getChildAt(certificationsLinearLayout.getChildCount() - 1), userData.certifications.get(userData.certifications.size() - 1), true);
         });
 
-        editCertificationDialog = new Dialog(getContext());
-
         // Skills section of the profile
 
         ImageButton skillsAddButton = view.findViewById(R.id.skills_add_button);
@@ -207,11 +201,6 @@ public class InfoTabFragment extends Fragment {
             createSkillCard(userData.skills.get(userData.skills.size() - 1));
             openEditSkillDialog(skillsLinearLayout.getChildAt(skillsLinearLayout.getChildCount() - 1), userData.skills.get(userData.skills.size() - 1), true);
         });
-
-        editSkillsDialog = new Dialog(getContext());
-
-        confirmEraseProgressDialog = new Dialog(getContext());
-        confirmCardEraseDialog = new Dialog(getContext());
     }
 
     private void createExperienceCard(Experience experience) {
@@ -229,10 +218,7 @@ public class InfoTabFragment extends Fragment {
         jobStartEndDateTextView.setText(experience.startDate + " - " + experience.endDate);
 
         ImageButton experienceDeleteButton = card.findViewById(R.id.experience_delete_button);
-        experienceDeleteButton.setOnClickListener(v -> {
-            userData.experience.remove(experience);
-            experienceLinearLayout.removeView(card);
-        });
+        experienceDeleteButton.setOnClickListener(v -> ConfirmEraseCardDialog(userData.experience, experience, experienceLinearLayout, card));
 
         card.setOnClickListener(v -> openEditExperienceDialog(card, experience, false));
     }
@@ -252,10 +238,7 @@ public class InfoTabFragment extends Fragment {
         awardedDateTextView.setText(award.dateAwarded);
 
         ImageButton awardDeleteButton = card.findViewById(R.id.award_delete_button);
-        awardDeleteButton.setOnClickListener(v -> {
-            userData.awards.remove(award);
-            awardsLinearLayout.removeView(card);
-        });
+        awardDeleteButton.setOnClickListener(v -> ConfirmEraseCardDialog(userData.awards, award, awardsLinearLayout, card));
 
         card.setOnClickListener(v -> openEditAwardDialog(card, award, false));
     }
@@ -273,10 +256,7 @@ public class InfoTabFragment extends Fragment {
         educationStartEndDateTextView.setText(education.startDate + " - " + education.endDate);
 
         ImageButton educationDeleteButton = card.findViewById(R.id.education_delete_button);
-        educationDeleteButton.setOnClickListener(v -> {
-            userData.education.remove(education);
-            educationLinearLayout.removeView(card);
-        });
+        educationDeleteButton.setOnClickListener(v -> ConfirmEraseCardDialog(userData.education, education, educationLinearLayout, card));
 
         card.setOnClickListener(v -> openEditEducationDialog(card, education, false));
     }
@@ -292,14 +272,11 @@ public class InfoTabFragment extends Fragment {
 
         certificationTitleTextView.setText(certification.certificationTitle);
         certificationIssuerNameTextView.setText(certification.issuer);
-        issuedDateTextView.setText("Issued: " + certification.issuedOn);
-        expiryDateTextView.setText("Expires: " + certification.expiryDate);
+        issuedDateTextView.setText(getString(R.string.issued, certification.issuedOn));
+        expiryDateTextView.setText(getString(R.string.expires, certification.expiryDate));
 
         ImageButton certificationDeleteButton = card.findViewById(R.id.certification_delete_button);
-        certificationDeleteButton.setOnClickListener(v -> {
-            userData.certifications.remove(certification);
-            certificationsLinearLayout.removeView(card);
-        });
+        certificationDeleteButton.setOnClickListener(v -> ConfirmEraseCardDialog(userData.certifications, certification, certificationsLinearLayout, card));
 
         card.setOnClickListener(v -> openEditCertificationDialog(card, certification, false));
     }
@@ -313,10 +290,7 @@ public class InfoTabFragment extends Fragment {
         skillNameTextView.setText(skill.skillName);
 
         ImageButton skillDeleteButton = card.findViewById(R.id.skill_delete_button);
-        skillDeleteButton.setOnClickListener(v -> {
-            userData.skills.remove(skill);
-            skillsLinearLayout.removeView(card);
-        });
+        skillDeleteButton.setOnClickListener(v -> ConfirmEraseCardDialog(userData.skills, skill, skillsLinearLayout, card));
 
         card.setOnClickListener(v -> openEditSkillDialog(card, skill, false));
     }
@@ -339,7 +313,7 @@ public class InfoTabFragment extends Fragment {
         Button saveButton = editInformationDialog.findViewById(R.id.information_save_button);
 
         closeEditInformation.setOnClickListener(v -> {
-            confirmEraseProgressDialog(editInformationDialog);
+            //editInformationDialog
         });
 
         saveButton.setOnClickListener(v -> {
@@ -393,38 +367,7 @@ public class InfoTabFragment extends Fragment {
         ImageButton closeEditExperience = editExperienceDialog.findViewById(R.id.close_edit_experience_button);
         Button saveButton = editExperienceDialog.findViewById(R.id.experience_save_button);
 
-        closeEditExperience.setOnClickListener(v -> {
-            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
-            View alert = getLayoutInflater().inflate(R.layout.dialogue_confirm_delete, null);
-            Button continueButton = alert.findViewById(R.id.continue_working);
-            Button eraseButton = alert.findViewById(R.id.erase_progress);
-
-            dialogBuilder.setView(alert);
-            AlertDialog dialog = dialogBuilder.create();
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-            dialog.show();
-
-            continueButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
-
-            eraseButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                    if (createNew) {
-                        userData.experience.remove(experience);
-                        experienceLinearLayout.removeView(card);
-                    }
-                    editExperienceDialog.dismiss();
-                }
-            });
-
-        });
+        closeEditExperience.setOnClickListener(v -> confirmEraseProgressDialog(editExperienceDialog, createNew, userData.experience, experience, experienceLinearLayout, card));
 
         saveButton.setOnClickListener(v -> {
 
@@ -496,13 +439,7 @@ public class InfoTabFragment extends Fragment {
         ImageButton closeEditAward = editAwardDialog.findViewById(R.id.close_edit_award_button);
         Button saveButton = editAwardDialog.findViewById(R.id.award_save_button);
 
-        closeEditAward.setOnClickListener(v -> {
-            if (createNew) {
-                userData.awards.remove(award);
-                awardsLinearLayout.removeView(card);
-            }
-            editAwardDialog.dismiss();
-        });
+        closeEditAward.setOnClickListener(v -> confirmEraseProgressDialog(editAwardDialog, createNew, userData.awards, award, awardsLinearLayout, card));
 
         saveButton.setOnClickListener(v -> {
             if (editTextAwardTitle.getText().length() == 0) {
@@ -566,13 +503,7 @@ public class InfoTabFragment extends Fragment {
         ImageButton closeEditEducation = editEducationDialog.findViewById(R.id.close_edit_education_button);
         Button saveButton = editEducationDialog.findViewById(R.id.education_save_button);
 
-        closeEditEducation.setOnClickListener(v -> {
-            if (createNew) {
-                userData.education.remove(education);
-                educationLinearLayout.removeView(card);
-            }
-            editEducationDialog.dismiss();
-        });
+        closeEditEducation.setOnClickListener(v -> confirmEraseProgressDialog(editEducationDialog, createNew, userData.education, education, educationLinearLayout, card));
 
         saveButton.setOnClickListener(v -> {
             if (editTextSchoolName.getText().length() == 0) {
@@ -636,13 +567,7 @@ public class InfoTabFragment extends Fragment {
         ImageButton closeEditCertification = editCertificationDialog.findViewById(R.id.close_edit_certification_button);
         Button saveButton = editCertificationDialog.findViewById(R.id.certification_save_button);
 
-        closeEditCertification.setOnClickListener(v -> {
-            if (createNew) {
-                userData.certifications.remove(certification);
-                certificationsLinearLayout.removeView(card);
-            }
-            editCertificationDialog.dismiss();
-        });
+        closeEditCertification.setOnClickListener(v -> confirmEraseProgressDialog(editCertificationDialog, createNew, userData.certifications, certification, certificationsLinearLayout, card));
 
         saveButton.setOnClickListener(v -> {
             if (editTextCertificationTitle.getText().length() == 0) {
@@ -672,8 +597,8 @@ public class InfoTabFragment extends Fragment {
 
             certificationTitleTextView.setText(certification.certificationTitle);
             certificationIssuerNameTextView.setText(certification.issuer);
-            issuedDateTextView.setText("Issued: " + certification.issuedOn);
-            expiryDateTextView.setText("Expires: " + certification.expiryDate);
+            issuedDateTextView.setText(getString(R.string.issued, certification.issuedOn));
+            expiryDateTextView.setText(getString(R.string.expires, certification.expiryDate));
 
             editCertificationDialog.dismiss();
         });
@@ -698,13 +623,7 @@ public class InfoTabFragment extends Fragment {
         ImageButton closeEditSkill = editSkillsDialog.findViewById(R.id.close_edit_skill_button);
         Button saveButton = editSkillsDialog.findViewById(R.id.skill_save_button);
 
-        closeEditSkill.setOnClickListener(v -> {
-            if (createNew) {
-                userData.skills.remove(skill);
-                skillsLinearLayout.removeView(card);
-            }
-            editSkillsDialog.dismiss();
-        });
+        closeEditSkill.setOnClickListener(v -> confirmEraseProgressDialog(editSkillsDialog, createNew, userData.skills, skill, skillsLinearLayout, card));
 
         saveButton.setOnClickListener(v -> {
             if (editTextSkillName.getText().length() == 0) {
@@ -721,31 +640,44 @@ public class InfoTabFragment extends Fragment {
         editSkillsDialog.show();
     }
 
-    private void confirmEraseProgressDialog(Dialog dialog) {
-        confirmEraseProgressDialog.setContentView(R.layout.dialogue_confirm_delete);
-        confirmEraseProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    private void confirmEraseProgressDialog(Dialog originalDialog, Boolean createNew, ArrayList arrayListOfObject, Object objectToDelete, LinearLayout linearLayoutOfCard, View cardToDelete) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+        View alert = getLayoutInflater().inflate(R.layout.dialog_confirm_erase_progress, null);
+        dialogBuilder.setView(alert);
+        AlertDialog dialog = dialogBuilder.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
 
-        Button continueButton = confirmEraseProgressDialog.findViewById(R.id.continue_working);
-        continueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                confirmEraseProgressDialog.dismiss();
+        Button continueButton = alert.findViewById(R.id.continue_working);
+        continueButton.setOnClickListener(v -> dialog.dismiss());
+
+        Button eraseButton = alert.findViewById(R.id.erase_progress);
+        eraseButton.setOnClickListener(v -> {
+            if (createNew) {
+                arrayListOfObject.remove(objectToDelete);
+                linearLayoutOfCard.removeView(cardToDelete);
             }
+            originalDialog.dismiss();
+            dialog.dismiss();
         });
+    }
 
-        Button eraseButton = confirmEraseProgressDialog.findViewById(R.id.erase_progress);
-        eraseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                confirmEraseProgressDialog.dismiss();
-                dialog.dismiss();
-            }
+    private void ConfirmEraseCardDialog(ArrayList arrayListOfObject, Object objectToDelete, LinearLayout linearLayoutOfCard, View cardToDelete) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+        View alert = getLayoutInflater().inflate(R.layout.dialog_confirm_erase_card, null);
+        dialogBuilder.setView(alert);
+        AlertDialog dialog = dialogBuilder.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        Button cancelDelete = alert.findViewById(R.id.cancel_delete);
+        cancelDelete.setOnClickListener(v -> dialog.dismiss());
+
+        Button eraseButton = alert.findViewById(R.id.erase_card);
+        eraseButton.setOnClickListener(v -> {
+            arrayListOfObject.remove(objectToDelete);
+            linearLayoutOfCard.removeView(cardToDelete);
+            dialog.dismiss();
         });
-
-        confirmEraseProgressDialog.show();
     }
 }
-
-
-
-
