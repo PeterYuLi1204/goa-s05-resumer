@@ -215,7 +215,7 @@ public class InfoTabFragment extends Fragment {
         positionTitleTextView.setText(experience.jobPosition);
         organizationNameTextView.setText(experience.companyName);
         experienceDescriptionTextView.setText(experience.description);
-        jobStartEndDateTextView.setText(experience.startDate + " - " + experience.endDate);
+        jobStartEndDateTextView.setText(getString(R.string.start_date_to_end_date, experience.startDate, experience.endDate));
 
         ImageButton experienceDeleteButton = card.findViewById(R.id.experience_delete_button);
         experienceDeleteButton.setOnClickListener(v -> ConfirmEraseCardDialog(userData.experience, experience, experienceLinearLayout, card));
@@ -253,7 +253,7 @@ public class InfoTabFragment extends Fragment {
 
         schoolNameTextView.setText(education.schoolName);
         educationDescriptionTextView.setText(education.description);
-        educationStartEndDateTextView.setText(education.startDate + " - " + education.endDate);
+        educationStartEndDateTextView.setText(getString(R.string.start_date_to_end_date, education.startDate, education.endDate));
 
         ImageButton educationDeleteButton = card.findViewById(R.id.education_delete_button);
         educationDeleteButton.setOnClickListener(v -> ConfirmEraseCardDialog(userData.education, education, educationLinearLayout, card));
@@ -405,7 +405,7 @@ public class InfoTabFragment extends Fragment {
             positionTitleTextView.setText(experience.jobPosition);
             organizationNameTextView.setText(experience.companyName);
             experienceDescriptionTextView.setText(experience.description);
-            jobStartEndDateTextView.setText(experience.startDate + " - " + experience.endDate);
+            jobStartEndDateTextView.setText(getString(R.string.start_date_to_end_date, experience.startDate, experience.endDate));
 
             editExperienceDialog.dismiss();
         });
@@ -533,7 +533,7 @@ public class InfoTabFragment extends Fragment {
 
             schoolNameTextView.setText(education.schoolName);
             educationDescriptionTextView.setText(education.description);
-            educationStartEndDateTextView.setText(education.startDate + " - " + education.endDate);
+            educationStartEndDateTextView.setText(getString(R.string.start_date_to_end_date, education.startDate, education.endDate));
 
             editEducationDialog.dismiss();
         });
