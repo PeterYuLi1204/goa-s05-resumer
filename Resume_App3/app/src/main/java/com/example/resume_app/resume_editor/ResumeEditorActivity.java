@@ -76,12 +76,12 @@ public class ResumeEditorActivity extends AppCompatActivity {
         SkillsRecyclerViewAdapter skillsRecyclerViewAdapter = new SkillsRecyclerViewAdapter(skills);
         skillsRecyclerView.setAdapter(skillsRecyclerViewAdapter);
 
-        Button buttonPreview = findViewById(R.id.button_preview);
-        buttonPreview.setOnClickListener(view -> {
-            // TODO: pass user input for render
-            startActivity(new Intent(this, ResumePreviewActivity.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        });
+
+//        buttonPreview.setOnClickListener(view -> {
+//            // TODO: pass user input for render
+//            startActivity(new Intent(this, ResumePreviewActivity.class));
+//            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+//        });
     }
 }
 
