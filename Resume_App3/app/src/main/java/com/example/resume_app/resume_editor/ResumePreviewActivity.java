@@ -33,8 +33,8 @@ import java.io.FileReader;
 /**
  * Displays a print preview of the resume given the appropriate data via Intent:
  * <p>
- * - An int corresponding to the XML template to use,
- * - A String corresponding to the JSON file to load resume data from.
+ *     - An int corresponding to the XML template to use,
+ *     - A String corresponding to the JSON file to load resume data from.
  * <p>
  * Currently NOT null-safe! Incomplete ResumeData will cause a CRASH!
  */

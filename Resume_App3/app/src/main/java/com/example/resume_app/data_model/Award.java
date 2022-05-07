@@ -17,15 +17,10 @@ public class Award {
         this.dateAwarded = dateAwarded;
     }
 
-    public Award() {
-        this.awardName = awardName;
-        this.issuer = issuer;
-        this.description = description;
-        this.dateAwarded = dateAwarded;
-    }
+    public Award() {}
 
     @NonNull
     public String toString() {
         return "<p><b>" + awardName + "</b><br>" + description + "<br>" + issuer + " • " + dateAwarded + "</p>";
-    }//testingtesteijesef
+    }
 }

@@ -12,8 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginHorizontal="24dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="16dp">
 
         <include layout="@layout/item_information_cardview" />
 
@@ -27,21 +28,19 @@
 
             <TextView
                 android:id="@+id/experience_title"
-                android:layout_width="wrap_content"
+                style="@style/ResumeApp.Header"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="@string/header_experience"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:text="@string/header_experience" />
 
             <ImageButton
                 android:id="@+id/experience_add_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/transparent"
-                android:src="@drawable/ic_baseline_add_24" />
+                android:background="@drawable/ic_baseline_add_24"
+                android:backgroundTint="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -49,7 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:animateLayoutChanges="true"
-            android:orientation="vertical"/>
+            android:clipToPadding="false"
+            android:orientation="vertical" />
 
         <LinearLayout
             android:id="@+id/awards_title_linear_layout"
@@ -60,21 +60,19 @@
 
             <TextView
                 android:id="@+id/awards_title"
-                android:layout_width="wrap_content"
+                style="@style/ResumeApp.Header"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="@string/header_awards"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:text="@string/header_awards" />
 
             <ImageButton
                 android:id="@+id/awards_add_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/transparent"
-                android:src="@drawable/ic_baseline_add_24" />
+                android:background="@drawable/ic_baseline_add_24"
+                android:backgroundTint="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -82,7 +80,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:animateLayoutChanges="true"
-            android:orientation="vertical"/>
+            android:clipToPadding="false"
+            android:orientation="vertical" />
 
         <LinearLayout
             android:id="@+id/education_title_linear_layout"
@@ -93,21 +92,19 @@
 
             <TextView
                 android:id="@+id/education_title"
-                android:layout_width="wrap_content"
+                style="@style/ResumeApp.Header"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="@string/header_education"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:text="@string/header_education" />
 
             <ImageButton
                 android:id="@+id/education_add_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/transparent"
-                android:src="@drawable/ic_baseline_add_24" />
+                android:background="@drawable/ic_baseline_add_24"
+                android:backgroundTint="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -115,7 +112,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:animateLayoutChanges="true"
-            android:orientation="vertical"/>
+            android:clipToPadding="false"
+            android:orientation="vertical" />
 
         <LinearLayout
             android:id="@+id/certifications_title_linear_layout"
@@ -126,21 +124,19 @@
 
             <TextView
                 android:id="@+id/certifications_title"
-                android:layout_width="wrap_content"
+                style="@style/ResumeApp.Header"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="@string/header_certifications"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:text="@string/header_certifications" />
 
             <ImageButton
                 android:id="@+id/certifications_add_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/transparent"
-                android:src="@drawable/ic_baseline_add_24" />
+                android:background="@drawable/ic_baseline_add_24"
+                android:backgroundTint="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -148,7 +144,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:animateLayoutChanges="true"
-            android:orientation="vertical"/>
+            android:clipToPadding="false"
+            android:orientation="vertical" />
 
         <LinearLayout
             android:id="@+id/skills_title_linear_layout"
@@ -159,21 +156,19 @@
 
             <TextView
                 android:id="@+id/skills_title"
-                android:layout_width="wrap_content"
+                style="@style/ResumeApp.Header"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="@string/header_skills"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:text="@string/header_skills" />
 
             <ImageButton
                 android:id="@+id/skills_add_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/transparent"
-                android:src="@drawable/ic_baseline_add_24" />
+                android:background="@drawable/ic_baseline_add_24"
+                android:backgroundTint="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -181,7 +176,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:animateLayoutChanges="true"
-            android:orientation="vertical"/>
+            android:clipToPadding="false"
+            android:orientation="vertical" />
 
     </LinearLayout>
 

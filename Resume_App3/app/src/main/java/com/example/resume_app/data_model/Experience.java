@@ -21,14 +21,7 @@ public class Experience {
         selected = false;
     }
 
-    public Experience() {
-        this.jobPosition = null;
-        this.companyName = "";
-        this.description = "";
-        this.startDate = "";
-        this.endDate = "";
-        selected = false;
-    }
+    public Experience() {}
 
     @NonNull
     public String toString() {

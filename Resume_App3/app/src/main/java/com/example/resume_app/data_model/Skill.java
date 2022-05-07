@@ -11,9 +11,7 @@ public class Skill {
         this.skillName = skillName;
     }
 
-    public Skill() {
-        this.skillName = skillName;
-    }
+    public Skill() {}
 
     @NonNull
     public String toString() {

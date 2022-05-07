@@ -17,13 +17,7 @@ public class Education {
         this.endDate = endDate;
     }
 
-    public Education() {
-        this.schoolName = schoolName;
-        this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-
+    public Education() {}
 
     @NonNull
     public String toString() {

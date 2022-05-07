@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,11 +24,44 @@
 
     </LinearLayout>
 
-    <include
+    <LinearLayout
         android:id="@+id/bottom_navigation"
-        layout="@layout/item_bottom_navigation"
+        style="@style/ResumeApp.Toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_resume_builder"
+            style="@style/ResumeApp.Button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingHorizontal="0dp"
+            android:paddingVertical="16dp"
+            android:text="@string/title_your_resumes"
+            app:cornerRadius="0dp"
+            app:icon="@drawable/file_text"
+            app:iconGravity="top"
+            app:iconPadding="2dp"
+            app:iconSize="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_profile"
+            style="@style/ResumeApp.Button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingHorizontal="0dp"
+            android:paddingVertical="16dp"
+            android:text="@string/title_profile"
+            app:cornerRadius="0dp"
+            app:icon="@drawable/user"
+            app:iconGravity="top"
+            app:iconPadding="2dp"
+            app:iconSize="16dp" />
+
+    </LinearLayout>
 
 </RelativeLayout>

@@ -25,53 +25,81 @@
 
     <string name="toast_file_saved">File downloaded successfully!</string>
 
-    <!--INPUT-RELATED-->
+    <string name="issued_date_to_expiry_date">Issued: %1$s | Expires: %2$s</string>
+    <string name="start_date_to_end_date">%1$s to %2$s</string>
 
-    <string name="issuer_name">Issuer Name</string>
-    <string name="short_description">Short Description</string>
-    <string name="start_date">Start Date</string>
-    <string name="end_date">End Date</string>
-    <string name="start_date_to_end_date">%1$s - %2$s</string>
 
+    <!--edit text hints below-->
+    <!--shared-->
+    <string name="short_description">Short description</string>
+    <string name="issuer_name">Issuer</string>
+    <string name="issued_date">Date issued</string>
+    <string name="expiry_date">Expiry date</string>
+    <string name="start_date">Date started</string>
+    <string name="end_date">Date ended</string>
+
+    <!--information card-->
     <string name="edit_information">Edit Information</string>
     <string name="name">Name</string>
-    <string name="current_job">Current Job</string>
-    <string name="phone_number">Phone Number</string>
+    <string name="current_job">Current job</string>
+    <string name="phone_number">Phone</string>
     <string name="email">Email</string>
 
+    <!--experience card-->
     <string name="add_experience">Add Experience</string>
     <string name="edit_experience">Edit Experience</string>
-    <string name="position_title">Position Title</string>
-    <string name="organization_name">Organization Name</string>
+    <string name="position_title">Position</string>
+    <string name="organization_name">Company</string>
 
-    <string name="add_award">Add Award</string>
-    <string name="edit_award">Edit Award</string>
-    <string name="award_honour_title">Award/Honour Title</string>
-    <string name="date_awarded">Date Awarded</string>
+    <!--award card-->
+    <string name="add_award">Add Award or Honour</string>
+    <string name="edit_award">Edit Award or Honour</string>
+    <string name="award_honour_title">Award or honour</string>
 
+    <!--education card-->
     <string name="add_education">Add Education</string>
     <string name="edit_education">Edit Education</string>
-    <string name="school_name">School Name</string>
+    <string name="school_name">School</string>
 
+    <!--certification card-->
     <string name="add_certification">Add Certification</string>
     <string name="edit_certification">Edit Certification</string>
-    <string name="certification_license_title">Certification/License Title</string>
-    <string name="issued_date">Issued Date</string>
-    <string name="expiry_date">Expiry Date</string>
-    <string name="issued">Issued: %1$s</string>
-    <string name="expires">Expires: %1$s</string>
+    <string name="certification_license_title">Certification</string>
 
-    <string name="edit_skill">Edit Skill</string>
+    <!--skill card-->
     <string name="add_skill">Add Skill</string>
+    <string name="edit_skill">Edit Skill</string>
     <string name="skill">Skill</string>
 
     <string name="lose_progress_warning">You will lose all your progress if you exit now.</string>
-    <string name="continue_working">Continue working</string>
-    <string name="erase_progress">Erase progress</string>
+    <string name="continue_working">Continue</string>
+    <string name="erase_progress">Exit</string>
 
     <string name="delete_card_warning">Are you sure you want to delete this item?</string>
     <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
 
+    <string name="not_sure_what_to_write">Not sure what to write?</string>
+    <string name="experience_writing_tips">
+        This is one of the most important sections of your resume,
+        as it shows employers that you\'re qualified for the job.
+        Here are some things you might write about…\n\n
+
+        \t• Outline your responsibilities at the job;\n
+        \t• Describe some of the things you worked on;\n
+        \t• Highlight any achievements.\n\n
+
+        Still feeling stuck? Try looking at some examples for inspiration!
+    </string>
+    <string name="introduction_writing_tips">
+        This is the first thing employers will read,
+        so it’s important to make a good first impression!
+        For example, you can write about…\n\n
+
+        \t• Any relevant experience or skills;\n
+        \t• Any career highlights and achievements.\n\n
+
+        Still feeling stuck? Try looking at some examples for inspiration!
+    </string>
 
 </resources>

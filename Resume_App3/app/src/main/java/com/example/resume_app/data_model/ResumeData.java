@@ -55,5 +55,5 @@ public class ResumeData {
         this.education = userData.education;
         this.experience = userData.experience;
         this.skills = userData.skills;
-    } //even even more test
+    }
 }

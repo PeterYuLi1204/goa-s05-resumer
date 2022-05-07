@@ -17,22 +17,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@string/delete_card_warning"
-                android:textAlignment="center" />
+                android:text="@string/introduction_writing_tips" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/cancel_delete"
+                android:id="@+id/button_continue"
                 style="@style/ResumeApp.Button"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/white_button"
-                android:text="@string/cancel"
+                android:backgroundTint="@color/green"
+                android:text="@string/continue_working"
                 android:textColor="@color/black" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/erase_card"
-                style="@style/ResumeApp.Button"
-                android:backgroundTint="@color/red"
-                android:text="@string/delete" />
 
         </LinearLayout>
 
