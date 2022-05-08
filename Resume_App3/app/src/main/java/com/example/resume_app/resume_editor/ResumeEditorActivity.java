@@ -2,7 +2,6 @@ package com.example.resume_app.resume_editor;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +14,6 @@ import com.example.resume_app.data_model.Certification;
 import com.example.resume_app.data_model.Education;
 import com.example.resume_app.data_model.Experience;
 import com.example.resume_app.data_model.Skill;
-import com.example.resume_app.profile.ProfileActivity;
 import com.example.resume_app.your_resumes.YourResumesActivity;
 
 import java.util.ArrayList;
@@ -63,21 +61,6 @@ public class ResumeEditorActivity extends AppCompatActivity {
 
         RecyclerView skillsRecyclerView = findViewById(R.id.skills_recyclerview);
         skillsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        ExperienceRecyclerAdapter experienceRecyclerAdapter = new ExperienceRecyclerAdapter(experiences);
-        experienceRecyclerView.setAdapter(experienceRecyclerAdapter);
-
-        EducationRecyclerAdapter educationRecyclerAdapter = new EducationRecyclerAdapter(education);
-        educationRecyclerView.setAdapter(educationRecyclerAdapter);
-
-        CertificationsRecyclerAdapter certificationsRecyclerAdapter = new CertificationsRecyclerAdapter(certifications);
-        certificationsRecyclerView.setAdapter(certificationsRecyclerAdapter);
-
-        AwardsRecyclerAdapter awardsRecyclerAdapter = new AwardsRecyclerAdapter(awards);
-        awardsRecyclerView.setAdapter(awardsRecyclerAdapter);
-
-        SkillsRecyclerAdapter skillsRecyclerViewAdapter = new SkillsRecyclerAdapter(skills);
-        skillsRecyclerView.setAdapter(skillsRecyclerViewAdapter);
 
         Button backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(view -> {

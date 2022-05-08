@@ -28,6 +28,9 @@
             android:name=".resume_editor.ResumeEditorActivity"
             android:exported="false" />
         <activity
+            android:name=".resume_editor.AddStuffActivityOne"
+            android:exported="false" />
+        <activity
             android:name=".resume_editor.AddStuffActivity"
             android:exported="false" />
         <activity

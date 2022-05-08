@@ -10,7 +10,8 @@
         android:id="@+id/top_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/back_button"
@@ -26,50 +27,13 @@
             android:text="@string/header_certifications" />
     </LinearLayout>
 
-    <ScrollView
+    <FrameLayout
+        android:id="@+id/frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/top_navigation">
 
-        <LinearLayout
-            android:id="@+id/experience_linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <LinearLayout
-                android:id="@+id/awards_linear_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"></LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/education_linear_layout"
-                app:layout_constraintTop_toBottomOf="@id/top_navigation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"></LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/certifications_linear_layout"
-                app:layout_constraintTop_toBottomOf="@id/top_navigation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"></LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/skills_linear_layout"
-                app:layout_constraintTop_toBottomOf="@id/top_navigation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"></LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
+    </FrameLayout>
 
     <Button
         android:id="@+id/add_thing_button"
