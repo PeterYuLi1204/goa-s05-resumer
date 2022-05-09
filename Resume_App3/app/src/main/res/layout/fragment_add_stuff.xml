@@ -10,53 +10,48 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/experience_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                android:clipToPadding="false"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:id="@+id/awards_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                android:clipToPadding="false"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:id="@+id/education_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                android:clipToPadding="false"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:id="@+id/certifications_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                android:clipToPadding="false"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:id="@+id/skills_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                android:clipToPadding="false"
+                android:orientation="vertical" />
+        </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/experience_linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:animateLayoutChanges="true"
-            android:clipToPadding="false"
-            android:orientation="vertical" />
-
-        <LinearLayout
-            android:id="@+id/awards_linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:animateLayoutChanges="true"
-            android:clipToPadding="false"
-            android:orientation="vertical" />
-
-        <LinearLayout
-            android:id="@+id/education_linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:animateLayoutChanges="true"
-            android:clipToPadding="false"
-            android:orientation="vertical" />
-
-        <LinearLayout
-            android:id="@+id/certifications_linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:animateLayoutChanges="true"
-            android:clipToPadding="false"
-            android:orientation="vertical" />
-
-        <LinearLayout
-            android:id="@+id/skills_linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:animateLayoutChanges="true"
-            android:clipToPadding="false"
-            android:orientation="vertical" />
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

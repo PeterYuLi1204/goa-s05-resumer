@@ -2,6 +2,7 @@ package com.example.resume_app.resume_editor;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.resume_app.ExampleDataGeneratorThrowaway;
 import com.example.resume_app.R;
 import com.example.resume_app.data_model.Award;
 import com.example.resume_app.data_model.Certification;
@@ -34,13 +36,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-public class AddStuffFragment extends Fragment {
+public class ResumeEditorFragment extends Fragment {
 
-
-    UserData userData;
     ResumeData resumeData;
-
-    String thingToBeAdded = AddStuffActivity.thingToBeAdded;
 
     LinearLayout experienceLinearLayout;
     LinearLayout awardsLinearLayout;
@@ -56,14 +54,12 @@ public class AddStuffFragment extends Fragment {
     Dialog confirmEraseProgressDialog;
     Dialog confirmEraseCardDialog;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_stuff, container, false);
+        View view = inflater.inflate(R.layout.fragment_resume_editor_lists, container, false);
 
-        userData = loadUserFromJson("user_data");
-        resumeData = loadResumeFromJson("resume_data");
+        resumeData = loadResumeFromJson("resume_Data");
 
         connectXml(view);
 
@@ -75,33 +71,9 @@ public class AddStuffFragment extends Fragment {
         super.onPause();
 
         saveResumeToJson(resumeData, "resume_data");
-        saveUserToJson(userData, "user_data");
     }
 
-    void saveUserToJson(UserData data, String fileName) {
-        File file = new File(requireContext().getExternalFilesDir(null), fileName + ".json");
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        try (FileWriter writer = new FileWriter(file)) {
-            gson.toJson(data, writer);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    UserData loadUserFromJson(String fileName) {
-        File file = new File(requireContext().getExternalFilesDir(null), fileName + ".json");
-        Gson gson = new Gson();
-        UserData data = null;
-
-        try (FileReader reader = new FileReader(file)) {
-            data = gson.fromJson(reader, UserData.class);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return data;
-    }
     void saveResumeToJson(ResumeData data, String fileName) {
         File file = new File(requireContext().getExternalFilesDir(null), fileName + ".json");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -112,6 +84,7 @@ public class AddStuffFragment extends Fragment {
             e.printStackTrace();
         }
     }
+
     ResumeData loadResumeFromJson(String fileName) {
         File file = new File(requireContext().getExternalFilesDir(null), fileName + ".json");
         Gson gson = new Gson();
@@ -122,9 +95,14 @@ public class AddStuffFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return data;
+        //TODO: figure out what to do when user hasn't chosen any experiences for their resume
+        if (data != null) {
+            return data;
+        } else {
+            return ExampleDataGeneratorThrowaway.exampleResumeData(ExampleDataGeneratorThrowaway.exampleUserData());
+        }
     }
+
 
     void connectXml(View view) {
         experienceLinearLayout = view.findViewById(R.id.experience_linear_layout);
@@ -141,80 +119,80 @@ public class AddStuffFragment extends Fragment {
         confirmEraseProgressDialog = new Dialog(getContext());
         confirmEraseCardDialog = new Dialog(getContext());
 
-        if (thingToBeAdded == "experience") {
-            for (Experience experience : userData.experience) {
+        if (resumeData.experience != null) {
+            for (Experience experience : resumeData.experience) {
                 createExperienceCard(experience);
             }
         }
 
-        if (thingToBeAdded == "award") {
-            for (Award award : userData.awards) {
+        if (resumeData.experience != null) {
+            for (Award award : resumeData.awards) {
                 createAwardCard(award);
             }
         }
 
-        if (thingToBeAdded == "education") {
-            for (Education education : userData.education) {
+        if (resumeData.experience != null) {
+            for (Education education : resumeData.education) {
                 createEducationCard(education);
             }
         }
 
-        if (thingToBeAdded == "certification") {
-            for (Certification certification : userData.certifications) {
+        if (resumeData.experience != null) {
+            for (Certification certification : resumeData.certifications) {
                 createCertificationCard(certification);
             }
         }
 
-        if (thingToBeAdded == "skill") {
-            for (Skill skill : userData.skills) {
+        if (resumeData.experience != null) {
+            for (Skill skill : resumeData.skills) {
                 createSkillCard(skill);
             }
         }
 
         // Experience section of the profile
 
-//        ImageButton experienceAddButton = view.findViewById(R.id.experience_add_button);
-//        experienceAddButton.setOnClickListener(v -> {
-//            userData.experience.add(new Experience());
-//            createExperienceCard(userData.experience.get(userData.experience.size() - 1));
-//            openEditExperienceDialog(experienceLinearLayout.getChildAt(experienceLinearLayout.getChildCount() - 1), userData.experience.get(userData.experience.size() - 1), true);
-//        });
+        ImageButton experienceAddButton = view.findViewById(R.id.experience_add_button);
+        experienceAddButton.setOnClickListener(v -> {
+            Intent i = new Intent(getContext(), AddStuffActivity.class);
+            i.putExtra("thing", "experience");
+            startActivity(i);
+        });
 
         // Awards section of the profile
 
-//        ImageButton awardsAddButton = view.findViewById(R.id.awards_add_button);
-//        awardsAddButton.setOnClickListener(v -> {
-//            userData.awards.add(new Award());
-//            createAwardCard(userData.awards.get(userData.awards.size() - 1));
-//            openEditAwardDialog(awardsLinearLayout.getChildAt(awardsLinearLayout.getChildCount() - 1), userData.awards.get(userData.awards.size() - 1), true);
-//        });
+        ImageButton awardsAddButton = view.findViewById(R.id.awards_add_button);
+        awardsAddButton.setOnClickListener(v -> {
+            Intent i = new Intent(getContext(), AddStuffActivity.class);
+            i.putExtra("thing", "award");
+            startActivity(i);
+        });
 
         // Education section of the profile
 
-//        ImageButton educationAddButton = view.findViewById(R.id.education_add_button);
-//        educationAddButton.setOnClickListener(v -> {
-//            userData.education.add(new Education());
-//            createEducationCard(userData.education.get(userData.education.size() - 1));
-//            openEditEducationDialog(educationLinearLayout.getChildAt(educationLinearLayout.getChildCount() - 1), userData.education.get(userData.education.size() - 1), true);
-//        });
+        ImageButton educationAddButton = view.findViewById(R.id.education_add_button);
+        educationAddButton.setOnClickListener(v -> {
+            Intent i = new Intent(getContext(), AddStuffActivity.class);
+            i.putExtra("thing", "education");
+            startActivity(i);
+        });
 
         // Certifications section of the profile
 
-//        ImageButton certificationsAddButton = view.findViewById(R.id.certifications_add_button);
-//        certificationsAddButton.setOnClickListener(v -> {
-//            userData.certifications.add(new Certification());
-//            createCertificationCard(userData.certifications.get(userData.certifications.size() - 1));
-//            openEditCertificationDialog(certificationsLinearLayout.getChildAt(certificationsLinearLayout.getChildCount() - 1), userData.certifications.get(userData.certifications.size() - 1), true);
-//        });
+        ImageButton certificationsAddButton = view.findViewById(R.id.certifications_add_button);
+        certificationsAddButton.setOnClickListener(v -> {
+            Intent i = new Intent(getContext(), AddStuffActivity.class);
+            i.putExtra("thing", "certification");
+            startActivity(i);
+        });
 
         // Skills section of the profile
 
-//        ImageButton skillsAddButton = view.findViewById(R.id.skills_add_button);
-//        skillsAddButton.setOnClickListener(v -> {
-//            userData.skills.add(new Skill());
-//            createSkillCard(userData.skills.get(userData.skills.size() - 1));
-//            openEditSkillDialog(skillsLinearLayout.getChildAt(skillsLinearLayout.getChildCount() - 1), userData.skills.get(userData.skills.size() - 1), true);
-//        });
+        ImageButton skillsAddButton = view.findViewById(R.id.skills_add_button);
+        skillsAddButton.setOnClickListener(v -> {
+            Intent i = new Intent(getContext(), AddStuffActivity.class);
+            i.putExtra("thing", "skill");
+            startActivity(i);
+        });
     }
 
     private void createExperienceCard(Experience experience) {
@@ -232,9 +210,9 @@ public class AddStuffFragment extends Fragment {
         jobStartEndDateTextView.setText(getString(R.string.start_date_to_end_date, experience.startDate, experience.endDate));
 
         ImageButton experienceDeleteButton = card.findViewById(R.id.experience_delete_button);
-        experienceDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(userData.experience, experience, experienceLinearLayout, card));
+        experienceDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(resumeData.experience, experience, experienceLinearLayout, card));
 
-//        card.setOnClickListener(v -> openEditExperienceDialog(card, experience, false));
+        card.setOnClickListener(v -> openEditExperienceDialog(card, experience, false));
     }
 
     private void createAwardCard(Award award) {
@@ -252,9 +230,9 @@ public class AddStuffFragment extends Fragment {
         awardedDateTextView.setText(award.dateAwarded);
 
         ImageButton awardDeleteButton = card.findViewById(R.id.award_delete_button);
-        awardDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(userData.awards, award, awardsLinearLayout, card));
+        awardDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(resumeData.awards, award, awardsLinearLayout, card));
 
-//        card.setOnClickListener(v -> openEditAwardDialog(card, award, false));
+        card.setOnClickListener(v -> openEditAwardDialog(card, award, false));
     }
 
     private void createEducationCard(Education education) {
@@ -270,9 +248,9 @@ public class AddStuffFragment extends Fragment {
         educationStartEndDateTextView.setText(getString(R.string.start_date_to_end_date, education.startDate, education.endDate));
 
         ImageButton educationDeleteButton = card.findViewById(R.id.education_delete_button);
-        educationDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(userData.education, education, educationLinearLayout, card));
+        educationDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(resumeData.education, education, educationLinearLayout, card));
 
-//        card.setOnClickListener(v -> openEditEducationDialog(card, education, false));
+        card.setOnClickListener(v -> openEditEducationDialog(card, education, false));
     }
 
     private void createCertificationCard(Certification certification) {
@@ -288,9 +266,9 @@ public class AddStuffFragment extends Fragment {
         issuedDateTextView.setText(getString(R.string.issued_date_to_expiry_date, certification.issuedOn, certification.expiryDate));
 
         ImageButton certificationDeleteButton = card.findViewById(R.id.certification_delete_button);
-        certificationDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(userData.certifications, certification, certificationsLinearLayout, card));
+        certificationDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(resumeData.certifications, certification, certificationsLinearLayout, card));
 
-//        card.setOnClickListener(v -> openEditCertificationDialog(card, certification, false));
+        card.setOnClickListener(v -> openEditCertificationDialog(card, certification, false));
     }
 
     private void createSkillCard(Skill skill) {
@@ -302,9 +280,9 @@ public class AddStuffFragment extends Fragment {
         skillNameTextView.setText(skill.skillName);
 
         ImageButton skillDeleteButton = card.findViewById(R.id.skill_delete_button);
-        skillDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(userData.skills, skill, skillsLinearLayout, card));
+        skillDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(resumeData.skills, skill, skillsLinearLayout, card));
 
-//        card.setOnClickListener(v -> openEditSkillDialog(card, skill, false));
+        card.setOnClickListener(v -> openEditSkillDialog(card, skill, false));
     }
 
     private void openEditExperienceDialog(View card, Experience experience, boolean createNew) {
@@ -318,18 +296,28 @@ public class AddStuffFragment extends Fragment {
         TextView experienceDescriptionTextView = card.findViewById(R.id.experience_description_textview);
         TextView jobStartEndDateTextView = card.findViewById(R.id.job_start_end_date_textview);
 
+        TextView title = editExperienceDialog.findViewById(R.id.textView2);
         EditText editTextPositionTitle = editExperienceDialog.findViewById(R.id.edittext_position_title);
         EditText editTextOrganizationName = editExperienceDialog.findViewById(R.id.edittext_organization_name);
         EditText editExperienceDescription = editExperienceDialog.findViewById(R.id.edittext_experience_description);
         EditText editTextExperienceStartDate = editExperienceDialog.findViewById(R.id.edittext_experience_start_date);
         EditText editTextExperienceEndDate = editExperienceDialog.findViewById(R.id.edittext_experience_end_date);
 
+        if (!createNew) {
+            title.setText(R.string.edit_experience);
+            editTextPositionTitle.setText(experience.jobPosition);
+            editTextOrganizationName.setText(experience.companyName);
+            editExperienceDescription.setText(experience.description);
+            editTextExperienceStartDate.setText(experience.startDate);
+            editTextExperienceEndDate.setText(experience.endDate);
+        }
+
         Button writingTipsButton = editExperienceDialog.findViewById(R.id.button_not_sure);
         ImageButton closeEditExperience = editExperienceDialog.findViewById(R.id.close_edit_experience_button);
         Button saveButton = editExperienceDialog.findViewById(R.id.experience_save_button);
 
         writingTipsButton.setOnClickListener(v -> experienceWritingTipsDialog());
-        closeEditExperience.setOnClickListener(v -> confirmEraseProgressDialog(editExperienceDialog, createNew, userData.experience, experience, experienceLinearLayout, card));
+        closeEditExperience.setOnClickListener(v -> confirmEraseProgressDialog(editExperienceDialog, createNew, resumeData.experience, experience, experienceLinearLayout, card));
 
         saveButton.setOnClickListener(v -> {
 
@@ -386,15 +374,24 @@ public class AddStuffFragment extends Fragment {
         TextView awardDescriptionTextView = card.findViewById(R.id.award_description_textview);
         TextView awardedDateTextView = card.findViewById(R.id.awarded_date_textview);
 
+        TextView title = editAwardDialog.findViewById(R.id.textView2);
         EditText editTextAwardTitle = editAwardDialog.findViewById(R.id.edittext_award_title);
         EditText editTextAwardIssuerName = editAwardDialog.findViewById(R.id.edittext_award_issuer_name);
         EditText editTextAwardDescription = editAwardDialog.findViewById(R.id.edittext_award_description);
         EditText editTextAwardedDate = editAwardDialog.findViewById(R.id.edittext_awarded_date);
 
+        if (!createNew) {
+            title.setText(R.string.edit_award);
+            editTextAwardTitle.setText(award.awardName);
+            editTextAwardIssuerName.setText(award.issuer);
+            editTextAwardDescription.setText(award.description);
+            editTextAwardedDate.setText(award.dateAwarded);
+        }
+
         ImageButton closeEditAward = editAwardDialog.findViewById(R.id.close_edit_award_button);
         Button saveButton = editAwardDialog.findViewById(R.id.award_save_button);
 
-        closeEditAward.setOnClickListener(v -> confirmEraseProgressDialog(editAwardDialog, createNew, userData.awards, award, awardsLinearLayout, card));
+        closeEditAward.setOnClickListener(v -> confirmEraseProgressDialog(editAwardDialog, createNew, resumeData.awards, award, awardsLinearLayout, card));
 
         saveButton.setOnClickListener(v -> {
             if (editTextAwardTitle.getText().length() == 0) {
@@ -443,15 +440,24 @@ public class AddStuffFragment extends Fragment {
         TextView educationDescriptionTextView = card.findViewById(R.id.education_description_textview);
         TextView educationStartEndDateTextView = card.findViewById(R.id.education_start_end_date_textview);
 
+        TextView title = editEducationDialog.findViewById(R.id.textView2);
         EditText editTextSchoolName = editEducationDialog.findViewById(R.id.edittext_school_name);
         EditText editTextEducationDescription = editEducationDialog.findViewById(R.id.edittext_education_description);
         EditText editTextEducationStartDate = editEducationDialog.findViewById(R.id.edittext_education_start_date);
         EditText editTextEducationEndDate = editEducationDialog.findViewById(R.id.edittext_education_end_date);
 
+        if (!createNew) {
+            title.setText(R.string.edit_education);
+            editTextSchoolName.setText(education.schoolName);
+            editTextEducationDescription.setText(education.description);
+            editTextEducationStartDate.setText(education.startDate);
+            editTextEducationEndDate.setText(education.endDate);
+        }
+
         ImageButton closeEditEducation = editEducationDialog.findViewById(R.id.close_edit_education_button);
         Button saveButton = editEducationDialog.findViewById(R.id.education_save_button);
 
-        closeEditEducation.setOnClickListener(v -> confirmEraseProgressDialog(editEducationDialog, createNew, userData.education, education, educationLinearLayout, card));
+        closeEditEducation.setOnClickListener(v -> confirmEraseProgressDialog(editEducationDialog, createNew, resumeData.education, education, educationLinearLayout, card));
 
         saveButton.setOnClickListener(v -> {
             if (editTextSchoolName.getText().length() == 0) {
@@ -499,15 +505,24 @@ public class AddStuffFragment extends Fragment {
         TextView certificationIssuerNameTextView = card.findViewById(R.id.certification_issuer_name_textview);
         TextView issuedDateTextView = card.findViewById(R.id.certification_issued_date_textview);
 
+        TextView title = editCertificationDialog.findViewById(R.id.textView2);
         EditText editTextCertificationTitle = editCertificationDialog.findViewById(R.id.edittext_certification_title);
         EditText editTextCertificationIssuerName = editCertificationDialog.findViewById(R.id.edittext_certification_issuer_name);
         EditText editTextIssuedDate = editCertificationDialog.findViewById(R.id.edittext_issued_date);
         EditText editTextExpiryDate = editCertificationDialog.findViewById(R.id.edittext_expiry_date);
 
+        if (!createNew) {
+            title.setText(R.string.edit_certification);
+            editTextCertificationTitle.setText(certification.certificationTitle);
+            editTextCertificationIssuerName.setText(certification.issuer);
+            editTextIssuedDate.setText(certification.issuedOn);
+            editTextExpiryDate.setText(certification.expiryDate);
+        }
+
         ImageButton closeEditCertification = editCertificationDialog.findViewById(R.id.close_edit_certification_button);
         Button saveButton = editCertificationDialog.findViewById(R.id.certification_save_button);
 
-        closeEditCertification.setOnClickListener(v -> confirmEraseProgressDialog(editCertificationDialog, createNew, userData.certifications, certification, certificationsLinearLayout, card));
+        closeEditCertification.setOnClickListener(v -> confirmEraseProgressDialog(editCertificationDialog, createNew, resumeData.certifications, certification, certificationsLinearLayout, card));
 
         saveButton.setOnClickListener(v -> {
             if (editTextCertificationTitle.getText().length() == 0) {
@@ -553,12 +568,18 @@ public class AddStuffFragment extends Fragment {
 
         TextView skillNameTextView = card.findViewById(R.id.skill_name_textview);
 
+        TextView title = editSkillsDialog.findViewById(R.id.textView2);
         EditText editTextSkillName = editSkillsDialog.findViewById(R.id.edittext_skill_title);
+
+        if (!createNew) {
+            title.setText(R.string.edit_skill);
+            editTextSkillName.setText(skill.skillName);
+        }
 
         ImageButton closeEditSkill = editSkillsDialog.findViewById(R.id.close_edit_skill_button);
         Button saveButton = editSkillsDialog.findViewById(R.id.skill_save_button);
 
-        closeEditSkill.setOnClickListener(v -> confirmEraseProgressDialog(editSkillsDialog, createNew, userData.skills, skill, skillsLinearLayout, card));
+        closeEditSkill.setOnClickListener(v -> confirmEraseProgressDialog(editSkillsDialog, createNew, resumeData.skills, skill, skillsLinearLayout, card));
 
         saveButton.setOnClickListener(v -> {
             if (editTextSkillName.getText().length() == 0) {

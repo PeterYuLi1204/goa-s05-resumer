@@ -34,10 +34,17 @@ import java.io.FileWriter;
 public class AddStuffActivity extends AppCompatActivity {
     //screen where you add experiences
 
+    static String thingToBeAdded;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_stuff);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            thingToBeAdded = extras.getString("thing");
+        }
 
         connectXml();
 
