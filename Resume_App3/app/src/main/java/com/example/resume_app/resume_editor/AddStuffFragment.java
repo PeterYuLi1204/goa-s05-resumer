@@ -173,37 +173,36 @@ public class AddStuffFragment extends Fragment {
             }
         }
 
-        LayoutInflater inflater = getLayoutInflater();
-        View view2 = inflater.inflate(R.layout.activity_add_stuff, null);
-        Button addStuffButton = view2.findViewById(R.id.add_thing_button);
+    }
+
+    public void bindButton(Button addStuffButton) {
         addStuffButton.setOnClickListener(v -> {
-            if (thingToBeAdded.equals("experience")) {
+            if (AddStuffActivity.thingToBeAdded.equals("experience")) {
                 userData.experience.add(new Experience());
                 createExperienceCard(userData.experience.get(userData.experience.size() - 1));
                 openEditExperienceDialog(experienceLinearLayout.getChildAt(experienceLinearLayout.getChildCount() - 1), userData.experience.get(userData.experience.size() - 1), true);
             }
-            if (thingToBeAdded.equals("award")) {
+            if (AddStuffActivity.thingToBeAdded.equals("award")) {
                 userData.awards.add(new Award());
                 createAwardCard(userData.awards.get(userData.awards.size() - 1));
                 openEditAwardDialog(awardsLinearLayout.getChildAt(awardsLinearLayout.getChildCount() - 1), userData.awards.get(userData.awards.size() - 1), true);
             }
-            if (thingToBeAdded.equals("education")) {
+            if (AddStuffActivity.thingToBeAdded.equals("education")) {
                 userData.education.add(new Education());
                 createEducationCard(userData.education.get(userData.education.size() - 1));
                 openEditEducationDialog(educationLinearLayout.getChildAt(educationLinearLayout.getChildCount() - 1), userData.education.get(userData.education.size() - 1), true);
             }
-            if (thingToBeAdded.equals("certification")) {
+            if (AddStuffActivity.thingToBeAdded.equals("certification")) {
                 userData.certifications.add(new Certification());
                 createCertificationCard(userData.certifications.get(userData.certifications.size() - 1));
                 openEditCertificationDialog(certificationsLinearLayout.getChildAt(certificationsLinearLayout.getChildCount() - 1), userData.certifications.get(userData.certifications.size() - 1), true);
             }
-            if (thingToBeAdded.equals("skill")) {
+            if (AddStuffActivity.thingToBeAdded.equals("skill")) {
                 userData.skills.add(new Skill());
                 createSkillCard(userData.skills.get(userData.skills.size() - 1));
                 openEditSkillDialog(skillsLinearLayout.getChildAt(skillsLinearLayout.getChildCount() - 1), userData.skills.get(userData.skills.size() - 1), true);
             }
         });
-
     }
 
     private void createExperienceCard(Experience experience) {

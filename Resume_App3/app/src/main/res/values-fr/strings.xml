@@ -21,6 +21,12 @@
     <string name="header_skills">Competences</string>
     <string name="header_introduction">Introduction</string>
 
+    <string name="header_add_experience">Ajouter des expériences</string>
+    <string name="header_add_education">Ajouter des formations</string>
+    <string name="header_add_certifications">Ajouter des certificats</string>
+    <string name="header_add_awards">Ajouter des distinctions</string>
+    <string name="header_add_skills">Ajouter des compétences</string>
+
     <string name="toast_file_saved">Document telecharge !</string>
 
     <string name="issued_date_to_expiry_date">Recu: %1$s | Expirera: %2$s</string>

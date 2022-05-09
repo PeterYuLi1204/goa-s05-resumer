@@ -23,6 +23,12 @@
     <string name="header_skills">Skills</string>
     <string name="header_introduction">Introduction</string>
 
+    <string name="header_add_experience">Add Experiences</string>
+    <string name="header_add_education">Add Education</string>
+    <string name="header_add_certifications">Add Certifications</string>
+    <string name="header_add_awards">Add Awards and Honours</string>
+    <string name="header_add_skills">Add Skills</string>
+
     <string name="toast_file_saved">File downloaded successfully!</string>
 
     <string name="issued_date_to_expiry_date">Issued: %1$s | Expires: %2$s</string>
