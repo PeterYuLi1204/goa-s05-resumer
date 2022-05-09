@@ -19,7 +19,7 @@ public class Award {
         this.selected = false;
     }
 
-    public Award() {}
+    public Award() {selected = false;}
 
     @NonNull
     public String toString() {

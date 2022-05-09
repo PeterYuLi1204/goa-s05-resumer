@@ -19,7 +19,7 @@ public class Certification {
         this.selected = false;
     }
 
-    public Certification() {}
+    public Certification() {selected = false;}
 
     @NonNull
     public String toString() {

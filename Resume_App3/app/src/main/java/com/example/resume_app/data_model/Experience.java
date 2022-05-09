@@ -21,7 +21,7 @@ public class Experience {
         selected = false;
     }
 
-    public Experience() {}
+    public Experience() {selected = false;}
 
     @NonNull
     public String toString() {

@@ -13,7 +13,7 @@ public class Skill {
         this.selected = false;
     }
 
-    public Skill() {}
+    public Skill() {selected = false;}
 
     @NonNull
     public String toString() {

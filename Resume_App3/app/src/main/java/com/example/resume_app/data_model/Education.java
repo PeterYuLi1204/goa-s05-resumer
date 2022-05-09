@@ -19,7 +19,7 @@ public class Education {
         this.selected = false;
     }
 
-    public Education() {}
+    public Education() {selected = false;}
 
     @NonNull
     public String toString() {
