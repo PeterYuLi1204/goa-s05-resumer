@@ -6,9 +6,11 @@ import java.io.Serializable;
 
 public class Skill {
     public String skillName;
+    public boolean selected;
 
     public Skill(String skillName) {
         this.skillName = skillName;
+        this.selected = false;
     }
 
     public Skill() {}

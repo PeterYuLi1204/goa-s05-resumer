@@ -1,7 +1,11 @@
 package com.example.resume_app.resume_editor;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,7 +41,20 @@ public class ResumeEditorActivity extends AppCompatActivity {
 
         Button backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(view -> {
-            startActivity(new Intent(this, YourResumesActivity.class));
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+            View alert = getLayoutInflater().inflate(R.layout.dialog_confirm_erase_progress, null);
+            dialogBuilder.setView(alert);
+            AlertDialog dialog = dialogBuilder.show();
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+            Button continueButton = alert.findViewById(R.id.continue_working);
+            continueButton.setOnClickListener(v -> dialog.dismiss());
+
+            Button eraseButton = alert.findViewById(R.id.erase_progress);
+            eraseButton.setOnClickListener(v -> {
+                startActivity(new Intent(this, YourResumesActivity.class));
+                dialog.dismiss();
+            });
         });
 
         Button buttonPreview = findViewById(R.id.button_preview);

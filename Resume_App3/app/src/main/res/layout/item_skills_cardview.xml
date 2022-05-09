@@ -5,6 +5,7 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/skill_material_cardview"
         style="@style/ResumeApp.Card"
         android:layout_marginHorizontal="0dp">
 

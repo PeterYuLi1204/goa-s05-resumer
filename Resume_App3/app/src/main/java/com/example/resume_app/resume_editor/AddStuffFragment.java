@@ -13,9 +13,11 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.resume_app.R;
@@ -26,6 +28,7 @@ import com.example.resume_app.data_model.Experience;
 import com.example.resume_app.data_model.ResumeData;
 import com.example.resume_app.data_model.Skill;
 import com.example.resume_app.data_model.UserData;
+import com.google.android.material.card.MaterialCardView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -56,6 +59,7 @@ public class AddStuffFragment extends Fragment {
     Dialog confirmEraseProgressDialog;
     Dialog confirmEraseCardDialog;
 
+    ImageView IWantDie;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,6 +70,7 @@ public class AddStuffFragment extends Fragment {
         resumeData = loadResumeFromJson("resume_data");
 
         thingToBeAdded = AddStuffActivity.thingToBeAdded;
+        IWantDie = view.findViewById(R.id.IWantDie);
 
         connectXml(view);
 
@@ -209,6 +214,7 @@ public class AddStuffFragment extends Fragment {
         View card = getLayoutInflater().inflate(R.layout.item_experience_cardview, experienceLinearLayout, false);
         experienceLinearLayout.addView(card);
 
+        MaterialCardView cardView = card.findViewById(R.id.experience_material_cardview);
         TextView positionTitleTextView = card.findViewById(R.id.position_title_textview);
         TextView organizationNameTextView = card.findViewById(R.id.organization_name_textview);
         TextView experienceDescriptionTextView = card.findViewById(R.id.experience_description_textview);
@@ -220,15 +226,34 @@ public class AddStuffFragment extends Fragment {
         jobStartEndDateTextView.setText(getString(R.string.start_date_to_end_date, experience.startDate, experience.endDate));
 
         ImageButton experienceDeleteButton = card.findViewById(R.id.experience_delete_button);
+        experienceDeleteButton.setBackgroundResource(R.drawable.ic_baseline_add_24);
+
         experienceDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(userData.experience, experience, experienceLinearLayout, card));
 
-//        card.setOnClickListener(v -> openEditExperienceDialog(card, experience, false));
+        //TODO make the cards select and save
+        card.setOnClickListener(v -> {
+
+            if (experience.selected) {
+                experienceDeleteButton.setBackgroundResource(R.drawable.ic_baseline_add_24);
+                cardView.setCardBackgroundColor(getResources().getColor(R.color.white));
+                experience.selected = false;
+                resumeData.experience.remove(experience);
+            } else {
+                cardView.setCardBackgroundColor(getResources().getColor(R.color.green));
+                experienceDeleteButton.setBackgroundResource(R.drawable.checkmark);
+                experience.selected = true;
+                resumeData.experience.add(experience);
+            }
+            saveResumeToJson(resumeData, "resume_data");
+
+        });
     }
 
     private void createAwardCard(Award award) {
         View card = getLayoutInflater().inflate(R.layout.item_awards_cardview, awardsLinearLayout, false);
         awardsLinearLayout.addView(card);
 
+        MaterialCardView cardView = card.findViewById(R.id.award_material_cardview);
         TextView awardTitleTextView = card.findViewById(R.id.award_title_textview);
         TextView awardIssuerNameTextView = card.findViewById(R.id.award_issuer_name_textview);
         TextView awardDescriptionTextView = card.findViewById(R.id.award_description_textview);
@@ -240,15 +265,32 @@ public class AddStuffFragment extends Fragment {
         awardedDateTextView.setText(award.dateAwarded);
 
         ImageButton awardDeleteButton = card.findViewById(R.id.award_delete_button);
+        awardDeleteButton.setBackgroundResource(R.drawable.ic_baseline_add_24);
         awardDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(userData.awards, award, awardsLinearLayout, card));
 
-//        card.setOnClickListener(v -> openEditAwardDialog(card, award, false));
+        card.setOnClickListener(v -> {
+
+            if (award.selected) {
+                awardDeleteButton.setBackgroundResource(R.drawable.ic_baseline_add_24);
+                cardView.setCardBackgroundColor(getResources().getColor(R.color.white));
+                award.selected = false;
+                resumeData.awards.remove(award);
+            } else {
+                cardView.setCardBackgroundColor(getResources().getColor(R.color.green));
+                awardDeleteButton.setBackgroundResource(R.drawable.checkmark);
+                award.selected = true;
+                resumeData.awards.add(award);
+            }
+            saveResumeToJson(resumeData, "resume_data");
+
+        });
     }
 
     private void createEducationCard(Education education) {
         View card = getLayoutInflater().inflate(R.layout.item_education_cardview, educationLinearLayout, false);
         educationLinearLayout.addView(card);
 
+        MaterialCardView cardView = card.findViewById(R.id.education_material_cardview);
         TextView schoolNameTextView = card.findViewById(R.id.school_name_textview);
         TextView educationDescriptionTextView = card.findViewById(R.id.education_description_textview);
         TextView educationStartEndDateTextView = card.findViewById(R.id.education_start_end_date_textview);
@@ -258,15 +300,32 @@ public class AddStuffFragment extends Fragment {
         educationStartEndDateTextView.setText(getString(R.string.start_date_to_end_date, education.startDate, education.endDate));
 
         ImageButton educationDeleteButton = card.findViewById(R.id.education_delete_button);
+        educationDeleteButton.setBackgroundResource(R.drawable.ic_baseline_add_24);
         educationDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(userData.education, education, educationLinearLayout, card));
 
-//        card.setOnClickListener(v -> openEditEducationDialog(card, education, false));
+        card.setOnClickListener(v -> {
+
+            if (education.selected) {
+                educationDeleteButton.setBackgroundResource(R.drawable.ic_baseline_add_24);
+                cardView.setCardBackgroundColor(getResources().getColor(R.color.white));
+                education.selected = false;
+                resumeData.education.remove(education);
+            } else {
+                cardView.setCardBackgroundColor(getResources().getColor(R.color.green));
+                educationDeleteButton.setBackgroundResource(R.drawable.checkmark);
+                education.selected = true;
+                resumeData.education.add(education);
+            }
+            saveResumeToJson(resumeData, "resume_data");
+
+        });
     }
 
     private void createCertificationCard(Certification certification) {
         View card = getLayoutInflater().inflate(R.layout.item_certifications_cardview, certificationsLinearLayout, false);
         certificationsLinearLayout.addView(card);
 
+        MaterialCardView cardView = card.findViewById(R.id.certification_material_cardview);
         TextView certificationTitleTextView = card.findViewById(R.id.certification_title_textview);
         TextView certificationIssuerNameTextView = card.findViewById(R.id.certification_issuer_name_textview);
         TextView issuedDateTextView = card.findViewById(R.id.certification_issued_date_textview);
@@ -276,23 +335,56 @@ public class AddStuffFragment extends Fragment {
         issuedDateTextView.setText(getString(R.string.issued_date_to_expiry_date, certification.issuedOn, certification.expiryDate));
 
         ImageButton certificationDeleteButton = card.findViewById(R.id.certification_delete_button);
+        certificationDeleteButton.setBackgroundResource(R.drawable.ic_baseline_add_24);
         certificationDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(userData.certifications, certification, certificationsLinearLayout, card));
 
-//        card.setOnClickListener(v -> openEditCertificationDialog(card, certification, false));
+        card.setOnClickListener(v -> {
+
+            if (certification.selected) {
+                certificationDeleteButton.setBackgroundResource(R.drawable.ic_baseline_add_24);
+                cardView.setCardBackgroundColor(getResources().getColor(R.color.white));
+                certification.selected = false;
+                resumeData.certifications.remove(certification);
+            } else {
+                cardView.setCardBackgroundColor(getResources().getColor(R.color.green));
+                certificationDeleteButton.setBackgroundResource(R.drawable.checkmark);
+                certification.selected = true;
+                resumeData.certifications.add(certification);
+            }
+            saveResumeToJson(resumeData, "resume_data");
+
+        });
     }
 
     private void createSkillCard(Skill skill) {
         View card = getLayoutInflater().inflate(R.layout.item_skills_cardview, skillsLinearLayout, false);
         skillsLinearLayout.addView(card);
 
+        MaterialCardView cardView = card.findViewById(R.id.skill_material_cardview);
         TextView skillNameTextView = card.findViewById(R.id.skill_name_textview);
 
         skillNameTextView.setText(skill.skillName);
 
         ImageButton skillDeleteButton = card.findViewById(R.id.skill_delete_button);
+        skillDeleteButton.setBackgroundResource(R.drawable.ic_baseline_add_24);
         skillDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(userData.skills, skill, skillsLinearLayout, card));
 
-//        card.setOnClickListener(v -> openEditSkillDialog(card, skill, false));
+        card.setOnClickListener(v -> {
+
+            if (skill.selected) {
+                skillDeleteButton.setBackgroundResource(R.drawable.ic_baseline_add_24);
+                cardView.setCardBackgroundColor(getResources().getColor(R.color.white));
+                skill.selected = false;
+                resumeData.skills.remove(skill);
+            } else {
+                cardView.setCardBackgroundColor(getResources().getColor(R.color.green));
+                skillDeleteButton.setBackgroundResource(R.drawable.checkmark);
+                skill.selected = true;
+                resumeData.skills.add(skill);
+            }
+            saveResumeToJson(resumeData, "resume_data");
+
+        });
     }
 
     private void openEditExperienceDialog(View card, Experience experience, boolean createNew) {

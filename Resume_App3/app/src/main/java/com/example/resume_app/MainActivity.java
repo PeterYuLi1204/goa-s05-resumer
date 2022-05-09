@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.resume_app.data_model.ResumeData;
 import com.example.resume_app.data_model.UserData;
 import com.example.resume_app.your_resumes.YourResumesActivity;
 import com.google.gson.Gson;
@@ -28,6 +29,15 @@ public class MainActivity extends AppCompatActivity {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try (FileWriter writer = new FileWriter(file)) {
             gson.toJson(data, writer);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        ResumeData data2 = ExampleDataGeneratorThrowaway.exampleResumeData(ExampleDataGeneratorThrowaway.exampleUserData());
+        File file2 = new File(getExternalFilesDir(null), "resume_data.json");
+        Gson gson2 = new GsonBuilder().setPrettyPrinting().create();
+        try (FileWriter writer = new FileWriter(file2)) {
+            gson2.toJson(data2, writer);
         } catch (Exception e) {
             e.printStackTrace();
         }
