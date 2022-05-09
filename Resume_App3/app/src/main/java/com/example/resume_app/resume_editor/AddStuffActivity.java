@@ -1,6 +1,7 @@
 package com.example.resume_app.resume_editor;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.example.resume_app.data_model.ResumeData;
 import com.example.resume_app.data_model.Skill;
 import com.example.resume_app.data_model.UserData;
 import com.example.resume_app.profile.InfoTabFragment;
+import com.example.resume_app.your_resumes.YourResumesActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -59,6 +61,10 @@ public class AddStuffActivity extends AppCompatActivity {
         transaction.replace(R.id.frame, addStuffFragment);
 
         transaction.commit();
+
+        Button backButton = findViewById(R.id.back_button);
+        backButton.setOnClickListener(v -> startActivity(new Intent(this, ResumeEditorActivity.class)));
+
 
     }
 }
