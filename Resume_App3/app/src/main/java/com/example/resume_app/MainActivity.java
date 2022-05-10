@@ -17,6 +17,8 @@ import com.example.resume_app.your_resumes.YourResumesFragment;
  */
 public class MainActivity extends AppCompatActivity {
 
+    Fragment currentFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     /**
      * Takes care of opening and/or lazily adding fragments to the activity.
      * @param fragment The fragment to open and/or add.
@@ -57,17 +58,17 @@ public class MainActivity extends AppCompatActivity {
      */
     void openFragment(Fragment fragment, String tag) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction()
+                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+
+        // hide whatever is on screen right now
+        if (currentFragment != null) {
+            fragmentTransaction.hide(currentFragment);
+        }
 
         // if the fragment has already been added to the activity, show it
         Fragment f = fragmentManager.findFragmentByTag(tag);
         if (f != null) {
-
-            Fragment c = fragmentManager.findFragmentById(R.id.frame);
-            if (c != null) {
-                fragmentTransaction.hide(c);
-            }
-
             fragmentTransaction.show(f);
         }
 
@@ -77,5 +78,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         fragmentTransaction.commitNow();
+        currentFragment = fragment;
     }
 }

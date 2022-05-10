@@ -25,9 +25,6 @@
             android:name=".discussion.DiscussionActivity"
             android:exported="false" />
         <activity
-            android:name=".your_resumes.YourResumesActivity"
-            android:exported="false" />
-        <activity
             android:name=".resume_editor.ResumePreviewActivity"
             android:exported="false" />
         <activity

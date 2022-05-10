@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_blue"
-    tools:context=".profile.ProfileFragment"
-    tools:ignore="SpeakableTextPresentCheck">
+    tools:context=".profile.ProfileFragment">
 
     <LinearLayout
         android:id="@+id/linear_layout"
@@ -13,7 +11,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingHorizontal="24dp"
         android:paddingTop="16dp">
 
         <include layout="@layout/item_information_cardview" />
@@ -24,7 +21,8 @@
             android:layout_height="match_parent"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingHorizontal="24dp">
 
             <TextView
                 android:id="@+id/experience_title"
@@ -56,7 +54,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingHorizontal="24dp">
 
             <TextView
                 android:id="@+id/awards_title"
@@ -88,7 +87,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingHorizontal="24dp">
 
             <TextView
                 android:id="@+id/education_title"
@@ -120,7 +120,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingHorizontal="24dp">
 
             <TextView
                 android:id="@+id/certifications_title"
@@ -152,7 +153,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingHorizontal="24dp">
 
             <TextView
                 android:id="@+id/skills_title"
