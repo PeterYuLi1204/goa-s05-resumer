@@ -33,4 +33,16 @@ public class UserData {
         this.experience = experience;
         this.skills = skills;
     }
+
+    public UserData() {
+        this.username = "";
+        this.email = "";
+        this.phone = "";
+        this.currentJob = "";
+        this.awards = new ArrayList<>();
+        this.certifications = new ArrayList<>();
+        this.education = new ArrayList<>();
+        this.experience = new ArrayList<>();
+        this.skills = new ArrayList<>();
+    }
 }

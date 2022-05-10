@@ -3,9 +3,11 @@
 
     <string name="app_name" translatable="false">Resume App</string>
 
-    <string name="title_discussion">Discussion</string>
+    <string name="loading_blurb">We\'re setting up…</string>
+
     <string name="title_your_resumes">Your Resumes</string>
     <string name="title_profile">Profile</string>
+    <string name="title_resume_editor">Fill In</string>
     <string name="title_resume_preview">PDF Preview</string>
 
     <string name="button_create_resume">Create Resume</string>
@@ -71,7 +73,9 @@
     <string name="edit_skill">Edit Skill</string>
     <string name="skill">Skill</string>
 
-    <string name="lose_progress_warning">You will lose all your progress if you exit now.</string>
+    <string name="error_fill_field">This field is required</string>
+
+    <string name="lose_progress_warning">You will lose all your progress if you exit now!</string>
     <string name="continue_working">Continue</string>
     <string name="erase_progress">Exit</string>
 
@@ -101,7 +105,5 @@
 
         Still feeling stuck? Try looking at some examples for inspiration!
     </string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -194,9 +194,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
         });
 
         ImageButton buttonBack = findViewById(R.id.button_back);
-        buttonBack.setOnClickListener(view -> {
-            onBackPressed();
-        });
+        buttonBack.setOnClickListener(view -> onBackPressed());
     }
 
     void renderToPdf(File file) {

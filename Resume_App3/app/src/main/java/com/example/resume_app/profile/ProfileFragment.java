@@ -347,7 +347,7 @@ public class ProfileFragment extends Fragment {
             userData.email = editTextEmail.getText().toString();
 
             if (TextUtils.isEmpty(userData.username)) {
-                editTextName.setError("Please type in your name");
+                editTextName.setError(getString(R.string.error_fill_field));
                 return;
             }
 
@@ -399,27 +399,27 @@ public class ProfileFragment extends Fragment {
         saveButton.setOnClickListener(v -> {
 
             if (editTextPositionTitle.getText().length() == 0) {
-                editTextPositionTitle.setError("Please type in the position title");
+                editTextPositionTitle.setError(getString(R.string.error_fill_field));
                 return;
             }
 
             if (editTextOrganizationName.getText().length() == 0) {
-                editTextOrganizationName.setError("Please type in the organization name");
+                editTextOrganizationName.setError(getString(R.string.error_fill_field));
                 return;
             }
 
             if (editExperienceDescription.getText().length() == 0) {
-                editExperienceDescription.setError("Please type in a short description");
+                editExperienceDescription.setError(getString(R.string.error_fill_field));
                 return;
             }
 
             if (editTextExperienceStartDate.getText().length() == 0) {
-                editTextExperienceStartDate.setError("Please type in the start date");
+                editTextExperienceStartDate.setError(getString(R.string.error_fill_field));
                 return;
             }
 
             if (editTextExperienceEndDate.getText().length() == 0) {
-                editTextExperienceEndDate.setError("Please type in the end date");
+                editTextExperienceEndDate.setError(getString(R.string.error_fill_field));
                 return;
             }
 
@@ -472,22 +472,22 @@ public class ProfileFragment extends Fragment {
 
         saveButton.setOnClickListener(v -> {
             if (editTextAwardTitle.getText().length() == 0) {
-                editTextAwardTitle.setError("Please type in the award or honour title");
+                editTextAwardTitle.setError(getString(R.string.error_fill_field));
                 return;
             }
 
             if (editTextAwardIssuerName.getText().length() == 0) {
-                editTextAwardIssuerName.setError("Please type in the award or honour issuer's name");
+                editTextAwardIssuerName.setError(getString(R.string.error_fill_field));
                 return;
             }
 
             if (editTextAwardDescription.getText().length() == 0) {
-                editTextAwardDescription.setError("Please type in a short description");
+                editTextAwardDescription.setError(getString(R.string.error_fill_field));
                 return;
             }
 
             if (editTextAwardedDate.getText().length() == 0) {
-                editTextAwardedDate.setError("Please type in the date the award or honour was issued");
+                editTextAwardedDate.setError(getString(R.string.error_fill_field));
                 return;
             }
 
@@ -538,22 +538,22 @@ public class ProfileFragment extends Fragment {
 
         saveButton.setOnClickListener(v -> {
             if (editTextSchoolName.getText().length() == 0) {
-                editTextSchoolName.setError("Please type in the school name");
+                editTextSchoolName.setError(getString(R.string.error_fill_field));
                 return;
             }
 
             if (editTextEducationDescription.getText().length() == 0) {
-                editTextEducationDescription.setError("Please type in a short description");
+                editTextEducationDescription.setError(getString(R.string.error_fill_field));
                 return;
             }
 
             if (editTextEducationStartDate.getText().length() == 0) {
-                editTextEducationStartDate.setError("Please type in the start date");
+                editTextEducationStartDate.setError(getString(R.string.error_fill_field));
                 return;
             }
 
             if (editTextEducationEndDate.getText().length() == 0) {
-                editTextEducationEndDate.setError("Please type in the end date");
+                editTextEducationEndDate.setError(getString(R.string.error_fill_field));
                 return;
             }
 
@@ -603,22 +603,22 @@ public class ProfileFragment extends Fragment {
 
         saveButton.setOnClickListener(v -> {
             if (editTextCertificationTitle.getText().length() == 0) {
-                editTextCertificationTitle.setError("Please type in the certification or license title");
+                editTextCertificationTitle.setError(getString(R.string.error_fill_field));
                 return;
             }
 
             if (editTextCertificationIssuerName.getText().length() == 0) {
-                editTextCertificationIssuerName.setError("Please type in the certification or license issuer's name");
+                editTextCertificationIssuerName.setError(getString(R.string.error_fill_field));
                 return;
             }
 
             if (editTextIssuedDate.getText().length() == 0) {
-                editTextIssuedDate.setError("Please type in the issuing date");
+                editTextIssuedDate.setError(getString(R.string.error_fill_field));
                 return;
             }
 
             if (editTextExpiryDate.getText().length() == 0) {
-                editTextExpiryDate.setError("Please type in the expiry date");
+                editTextExpiryDate.setError(getString(R.string.error_fill_field));
                 return;
             }
 
@@ -660,7 +660,7 @@ public class ProfileFragment extends Fragment {
 
         saveButton.setOnClickListener(v -> {
             if (editTextSkillName.getText().length() == 0) {
-                editTextSkillName.setError("Please type in the skill");
+                editTextSkillName.setError(getString(R.string.error_fill_field));
                 return;
             }
 

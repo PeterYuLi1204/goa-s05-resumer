@@ -1,261 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:style="http://schemas.android.com/apk/res-auto"
     android:background="@color/light_blue"
     tools:context=".resume_editor.ResumeEditorActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/top_navigation"
+        style="@style/ResumeApp.Toolbar"
+        android:layout_alignParentTop="true"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="16dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:background="@drawable/arrow_left"
+            android:backgroundTint="@color/white"
+            tools:ignore="ContentDescription" />
 
-            <LinearLayout
-                style="@style/ResumeApp.Toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="68dp"
-                android:orientation="horizontal"
-                android:paddingStart="24dp"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp">
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="match_parent" />
 
-                <Button
-                    android:id="@+id/back_button"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:icon="@drawable/arrow_left" />
+        <TextView
+            android:id="@+id/title"
+            style="@style/ResumeApp.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/title_resume_editor"
+            android:textColor="@color/white" />
 
-                <TextView
-                    android:id="@+id/fill_in"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="20dp"
-                    android:paddingTop="8dp"
-                    android:text="Fill In"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
+    </LinearLayout>
 
-                <Button
-                    android:id="@+id/save_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:textAllCaps="false"
-                    android:backgroundTint="#72888E"
-                    android:text="Save" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/introduction"
-                    android:layout_width="331dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Introduction"
-                    style="@style/ResumeApp.Editor"/>
-
-                <Button
-                    android:id="@+id/edit_introduction_button"
-                    android:layout_width="wrap_content"
-                    app:icon="@drawable/ic_baseline_edit_24"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
-                    android:layout_height="wrap_content"
-                    app:iconGravity="textEnd"
-                    android:textAlignment="center"
-                    app:iconTint="@color/black"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:layout_weight="1"
-                    android:textColor="@color/black"
-                    />
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/experience"
-                    android:layout_width="331dp"
-                    android:layout_height="wrap_content"
-                    style="@style/ResumeApp.Editor"
-                    android:layout_weight="1"
-                    android:text="Experience" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/edit_experience_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="?android:attr/selectableItemBackground"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
-                    app:iconGravity="textEnd"
-                    android:textAlignment="center"
-                    app:iconTint="@color/black"
-                    app:icon="@drawable/ic_baseline_add_24" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/experience_recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/education"
-                    android:layout_width="331dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/ResumeApp.Editor"
-                    android:text="Education" />
-
-                <Button
-                    android:id="@+id/edit_education_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:background="?android:attr/selectableItemBackground"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
-                    app:iconGravity="textEnd"
-                    android:textAlignment="center"
-                    app:iconTint="@color/black"
-                    app:icon="@drawable/ic_baseline_add_24" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/education_recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/Certifications"
-                    style="@style/ResumeApp.Editor"
-                    android:layout_width="331dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="Certifications" />
-
-                <Button
-                    android:id="@+id/edit_certifications_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:background="?android:attr/selectableItemBackground"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
-                    app:iconGravity="textEnd"
-                    android:textAlignment="center"
-                    app:iconTint="@color/black"
-                    app:icon="@drawable/ic_baseline_add_24"/>
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/certifications_recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/awards"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    style="@style/ResumeApp.Editor"
-                    android:text="Awards and Honors" />
-
-                <Button
-                    android:id="@+id/edit_awards_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:background="?android:attr/selectableItemBackground"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
-                    app:iconGravity="textEnd"
-                    android:textAlignment="center"
-                    app:iconTint="@color/black"
-                    app:icon="@drawable/ic_baseline_add_24" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/awards_recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/skills"
-                    android:layout_width="331dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/ResumeApp.Editor"
-                    android:text="Skills" />
-
-                <Button
-                    android:id="@+id/edit_skills_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:background="?android:attr/selectableItemBackground"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
-                    app:iconGravity="textEnd"
-                    android:textAlignment="center"
-                    app:iconTint="@color/black"
-                    app:icon="@drawable/ic_baseline_add_24" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/skills_recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-
-
-
-        </LinearLayout>
-    </ScrollView>
-
-
-
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_navigation"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
 
