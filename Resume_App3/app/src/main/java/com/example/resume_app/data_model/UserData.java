@@ -12,6 +12,7 @@ public class UserData {
     public ArrayList<Education> education;
     public ArrayList<Experience> experience;
     public ArrayList<Skill> skills;
+    public ArrayList<String> resumeFiles;
 
     public UserData(
             String username,
@@ -32,5 +33,6 @@ public class UserData {
         this.education = education;
         this.experience = experience;
         this.skills = skills;
+        this.resumeFiles = new ArrayList<>();
     }
 }

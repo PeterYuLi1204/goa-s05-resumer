@@ -59,7 +59,7 @@ public class ResumeEditorFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_resume_editor_lists, container, false);
 
-        resumeData = loadResumeFromJson("resume_Data");
+        resumeData = loadResumeFromJson(ResumeEditorActivity.fileName);
 
         connectXml(view);
 
@@ -70,12 +70,12 @@ public class ResumeEditorFragment extends Fragment {
     public void onPause() {
         super.onPause();
 
-        saveResumeToJson(resumeData, "resume_data");
+        saveResumeToJson(resumeData, ResumeEditorActivity.fileName);
     }
 
 
     void saveResumeToJson(ResumeData data, String fileName) {
-        File file = new File(requireContext().getExternalFilesDir(null), fileName + ".json");
+        File file = new File(requireContext().getExternalFilesDir(null), fileName);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try (FileWriter writer = new FileWriter(file)) {
@@ -86,7 +86,7 @@ public class ResumeEditorFragment extends Fragment {
     }
 
     ResumeData loadResumeFromJson(String fileName) {
-        File file = new File(requireContext().getExternalFilesDir(null), fileName + ".json");
+        File file = new File(requireContext().getExternalFilesDir(null), fileName);
         Gson gson = new Gson();
         ResumeData data = null;
 

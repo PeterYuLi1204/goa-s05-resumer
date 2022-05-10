@@ -20,10 +20,17 @@ import com.example.resume_app.your_resumes.YourResumesActivity;
  */
 public class ResumeEditorActivity extends AppCompatActivity {
 
+    static String fileName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resume_editor);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            fileName = extras.getString("file name");
+        }
 
         connectXml();
     }
@@ -33,6 +40,10 @@ public class ResumeEditorActivity extends AppCompatActivity {
 
         Fragment resumeEditorFragment = new ResumeEditorFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+//        Bundle bundle = new Bundle();
+//        bundle.putString("file name", fileName);
+//        resumeEditorFragment.setArguments(bundle);
 
         transaction.replace(R.id.frame, resumeEditorFragment);
 

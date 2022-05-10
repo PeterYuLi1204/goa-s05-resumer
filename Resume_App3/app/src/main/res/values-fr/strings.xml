@@ -32,6 +32,8 @@
     <string name="issued_date_to_expiry_date">Recu: %1$s | Expirera: %2$s</string>
     <string name="start_date_to_end_date">%1$s a %2$s</string>
 
+    <string name="header_enter_resume_name">Entrez le nom du CV</string>
+
 
     <!--edit text hints below-->
     <!--shared-->
@@ -41,6 +43,7 @@
     <string name="expiry_date">Date d\'expiration</string>
     <string name="start_date">Date de debut</string>
     <string name="end_date">Date de fin</string>
+    <string name="resume_name">Nom du CV</string>
 
     <!--information card-->
     <string name="edit_information">Modifier l\'information</string>
