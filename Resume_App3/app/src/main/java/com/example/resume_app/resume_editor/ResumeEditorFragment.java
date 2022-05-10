@@ -59,7 +59,11 @@ public class ResumeEditorFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_resume_editor_lists, container, false);
 
-        resumeData = loadResumeFromJson(ResumeEditorActivity.fileName);
+        try {
+            resumeData = loadResumeFromJson(ResumeEditorActivity.fileName);
+        } catch (Exception e) {
+
+        }
 
         connectXml(view);
 
@@ -69,8 +73,11 @@ public class ResumeEditorFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        try {
+            saveResumeToJson(resumeData, ResumeEditorActivity.fileName);
+        } catch (Exception e) {
 
-        saveResumeToJson(resumeData, ResumeEditorActivity.fileName);
+        }
     }
 
 
@@ -119,35 +126,57 @@ public class ResumeEditorFragment extends Fragment {
         confirmEraseProgressDialog = new Dialog(getContext());
         confirmEraseCardDialog = new Dialog(getContext());
 
-        if (resumeData.experience != null) {
+        try {
             for (Experience experience : resumeData.experience) {
                 createExperienceCard(experience);
             }
-        }
+        } catch (Exception e){
 
-        if (resumeData.experience != null) {
+        }
+        try {
             for (Award award : resumeData.awards) {
                 createAwardCard(award);
             }
-        }
+        } catch (Exception e) {
 
-        if (resumeData.experience != null) {
+        }
+        try {
             for (Education education : resumeData.education) {
                 createEducationCard(education);
             }
-        }
+        } catch (Exception e) {
 
-        if (resumeData.experience != null) {
+        }
+        try {
             for (Certification certification : resumeData.certifications) {
                 createCertificationCard(certification);
             }
-        }
+        } catch (Exception e) {
 
-        if (resumeData.experience != null) {
+        }
+        try {
             for (Skill skill : resumeData.skills) {
                 createSkillCard(skill);
             }
+        } catch (Exception e) {
+
         }
+
+//        if (resumeData.experience != null) {
+//
+//        }
+//
+//        if (resumeData.experience != null) {
+//
+//        }
+//
+//        if (resumeData.experience != null) {
+//
+//        }
+//
+//        if (resumeData.experience != null) {
+//
+//        }
 
         // Experience section of the profile
 

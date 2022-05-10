@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,18 +58,19 @@ public class AddStuffFragment extends Fragment {
     Dialog confirmEraseProgressDialog;
     Dialog confirmEraseCardDialog;
 
-    ImageView IWantDie;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_stuff, container, false);
 
         userData = loadUserFromJson("user_data");
-        resumeData = loadResumeFromJson("resume_data");
+        try {
+            resumeData = loadResumeFromJson(ResumeEditorActivity.fileName);
+        } catch (Exception e) {
 
+        }
+        
         thingToBeAdded = AddStuffActivity.thingToBeAdded;
-        IWantDie = view.findViewById(R.id.IWantDie);
 
         connectXml(view);
 
@@ -81,12 +81,12 @@ public class AddStuffFragment extends Fragment {
     public void onPause() {
         super.onPause();
 
-        saveResumeToJson(resumeData, "resume_data");
+        saveResumeToJson(resumeData, ResumeEditorActivity.fileName);
         saveUserToJson(userData, "user_data");
     }
 
     void saveUserToJson(UserData data, String fileName) {
-        File file = new File(requireContext().getExternalFilesDir(null), fileName + ".json");
+        File file = new File(requireContext().getExternalFilesDir(null), fileName);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try (FileWriter writer = new FileWriter(file)) {
@@ -97,7 +97,7 @@ public class AddStuffFragment extends Fragment {
     }
 
     UserData loadUserFromJson(String fileName) {
-        File file = new File(requireContext().getExternalFilesDir(null), fileName + ".json");
+        File file = new File(requireContext().getExternalFilesDir(null), fileName);
         Gson gson = new Gson();
         UserData data = null;
 
@@ -110,7 +110,7 @@ public class AddStuffFragment extends Fragment {
         return data;
     }
     void saveResumeToJson(ResumeData data, String fileName) {
-        File file = new File(requireContext().getExternalFilesDir(null), fileName + ".json");
+        File file = new File(requireContext().getExternalFilesDir(null), fileName);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try (FileWriter writer = new FileWriter(file)) {
@@ -120,7 +120,7 @@ public class AddStuffFragment extends Fragment {
         }
     }
     ResumeData loadResumeFromJson(String fileName) {
-        File file = new File(requireContext().getExternalFilesDir(null), fileName + ".json");
+        File file = new File(requireContext().getExternalFilesDir(null), fileName);
         Gson gson = new Gson();
         ResumeData data = null;
 
@@ -244,7 +244,7 @@ public class AddStuffFragment extends Fragment {
                 experience.selected = true;
                 resumeData.experience.add(experience);
             }
-            saveResumeToJson(resumeData, "resume_data");
+            saveResumeToJson(resumeData, ResumeEditorActivity.fileName);
 
         });
     }
@@ -281,7 +281,7 @@ public class AddStuffFragment extends Fragment {
                 award.selected = true;
                 resumeData.awards.add(award);
             }
-            saveResumeToJson(resumeData, "resume_data");
+            saveResumeToJson(resumeData, ResumeEditorActivity.fileName);
 
         });
     }
@@ -316,7 +316,7 @@ public class AddStuffFragment extends Fragment {
                 education.selected = true;
                 resumeData.education.add(education);
             }
-            saveResumeToJson(resumeData, "resume_data");
+            saveResumeToJson(resumeData, ResumeEditorActivity.fileName);
 
         });
     }
@@ -351,7 +351,7 @@ public class AddStuffFragment extends Fragment {
                 certification.selected = true;
                 resumeData.certifications.add(certification);
             }
-            saveResumeToJson(resumeData, "resume_data");
+            saveResumeToJson(resumeData, ResumeEditorActivity.fileName);
 
         });
     }
@@ -382,7 +382,7 @@ public class AddStuffFragment extends Fragment {
                 skill.selected = true;
                 resumeData.skills.add(skill);
             }
-            saveResumeToJson(resumeData, "resume_data");
+            saveResumeToJson(resumeData, ResumeEditorActivity.fileName);
 
         });
     }

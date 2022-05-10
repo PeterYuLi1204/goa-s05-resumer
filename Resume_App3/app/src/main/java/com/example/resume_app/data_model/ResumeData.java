@@ -57,5 +57,11 @@ public class ResumeData {
         this.skills = userData.skills;
     }
 
-    public ResumeData() {}
+    public ResumeData() {
+        this.awards = new ArrayList<>();
+        this.certifications = new ArrayList<>();
+        this.education = new ArrayList<>();
+        this.experience = new ArrayList<>();
+        this.skills = new ArrayList<>();
+    }
 }
