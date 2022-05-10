@@ -24,4 +24,9 @@
         android:paddingTop="16dp"
         tools:listitem="@layout/item_resume_builder_recycler_container" />
 
+    <include
+        android:id="@+id/loader"
+        layout="@layout/item_loader"
+        android:visibility="gone" />
+
 </RelativeLayout>

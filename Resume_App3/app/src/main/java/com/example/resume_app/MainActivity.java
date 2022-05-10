@@ -32,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
         Fragment yourResumesFragment = new YourResumesFragment();
         Fragment profileFragment = new ProfileFragment();
 
-        // by default open the your resumes fragment
-        openFragment(yourResumesFragment, YourResumesFragment.ID);
-
         TextView title = findViewById(R.id.title);
 
         Button buttonResumeBuilder = findViewById(R.id.button_resume_builder);
@@ -49,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
             openFragment(profileFragment, ProfileFragment.ID);
         });
 
+        // by default open the your resumes fragment
+        buttonResumeBuilder.callOnClick();
     }
 
     /**
@@ -57,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
      * @param tag A String used to identify the fragment.
      */
     void openFragment(Fragment fragment, String tag) {
+        if (fragment == currentFragment) {
+            return;
+        }
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction()
                 .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);

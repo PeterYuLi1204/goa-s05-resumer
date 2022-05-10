@@ -21,10 +21,28 @@ public class YourResumesFragment extends Fragment implements YourResumesRecycler
 
     public static final String ID = "YOUR_RESUMES";
 
+    ArrayList<String> data;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_your_resumes, container, false);
+
+        View loader = view.findViewById(R.id.loader);
+        loader.setVisibility(View.VISIBLE);
+
+        new Thread(() -> {
+            data = new ArrayList<>();
+
+            // TODO: load saved resumes
+            data.add("PLACEHOLDER ITEM 1");
+            data.add("PLACEHOLDER ITEM 2");
+
+            requireActivity().runOnUiThread(() -> {
+                connectXml(view);
+                loader.setVisibility(View.GONE);
+            });
+        }).start();
 
         connectXml(view);
 
@@ -32,12 +50,6 @@ public class YourResumesFragment extends Fragment implements YourResumesRecycler
     }
 
     void connectXml(View view) {
-        ArrayList<String> data = new ArrayList<>();
-
-        // TODO: load saved resumes
-        data.add("PLACEHOLDER ITEM 1");
-        data.add("PLACEHOLDER ITEM 2");
-
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(new YourResumesRecyclerAdapter(getContext(), data, this));

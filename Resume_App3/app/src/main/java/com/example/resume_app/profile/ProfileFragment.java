@@ -32,6 +32,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
 
 public class ProfileFragment extends Fragment {
 
@@ -64,8 +65,17 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        userData = loadFromJson("user_data");
-        connectXml(view);
+        View loader = view.findViewById(R.id.loader);
+        loader.setVisibility(View.VISIBLE);
+
+        new Thread(() -> {
+            userData = loadFromJson("user_data");
+
+            requireActivity().runOnUiThread(() -> {
+                connectXml(view);
+                loader.setVisibility(View.GONE);
+            });
+        }).start();
 
         return view;
     }

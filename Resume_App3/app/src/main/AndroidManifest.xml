@@ -22,9 +22,6 @@
         </activity>
 
         <activity
-            android:name=".discussion.DiscussionActivity"
-            android:exported="false" />
-        <activity
             android:name=".resume_editor.ResumePreviewActivity"
             android:exported="false" />
         <activity
