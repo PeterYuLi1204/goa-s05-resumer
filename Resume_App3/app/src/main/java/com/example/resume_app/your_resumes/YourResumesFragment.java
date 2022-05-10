@@ -60,7 +60,7 @@ public class YourResumesFragment extends Fragment implements YourResumesRecycler
 
     @Override
     public void onItemClick(View view, int position) {
-        Intent intent = new Intent(getContext(), MainActivity.class);
+        Intent intent = new Intent(getContext(), ResumeEditorActivity.class);
         intent.putExtra("FILE_NAME", "PLACEHOLDER_TEXT");
         startActivity(intent);
     }

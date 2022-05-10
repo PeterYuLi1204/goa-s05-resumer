@@ -2,9 +2,15 @@ package com.example.resume_app.resume_editor;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,13 +20,22 @@ import com.example.resume_app.data_model.Certification;
 import com.example.resume_app.data_model.Education;
 import com.example.resume_app.data_model.Experience;
 import com.example.resume_app.data_model.Skill;
+import com.example.resume_app.data_model.UserData;
+import com.example.resume_app.profile.ProfileFragment;
+import com.example.resume_app.your_resumes.YourResumesFragment;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 /**
  * Takes user input for resume creation.
  */
 public class ResumeEditorActivity extends AppCompatActivity {
+
+    Fragment currentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,57 +46,45 @@ public class ResumeEditorActivity extends AppCompatActivity {
     }
 
     void connectXml() {
-        ArrayList<Experience> experiences = new ArrayList<>();
-        experiences.add(new Experience("Cashier", "Starbucks", "Worked from 9 to 5 doing stuff", "May 4, 2012", "Jan 30, 2020"));
 
-        ArrayList<Education> education = new ArrayList<>();
-        education.add(new Education("McMath", "No, we don't only learn math", "2018", "2023"));
+        TextView title = findViewById(R.id.title);
 
-        ArrayList<Certification> certifications = new ArrayList<>();
-        certifications.add(new Certification("Certified awesome", "me, myself, and I", "everyday", "never"));
+        ImageButton buttonBack = findViewById(R.id.button_back);
+        buttonBack.setOnClickListener(view -> onBackPressed());
+    }
 
-        ArrayList<Award> awards = new ArrayList<>();
-        awards.add(new Award("Honour roll", "McMath", "I get da good grades", "every year"));
+    /**
+     * Takes care of opening and/or lazily adding fragments to the activity.
+     * @param fragment The fragment to open and/or add.
+     * @param tag A String used to identify the fragment.
+     */
+    void openFragment(Fragment fragment, String tag) {
+        if (fragment == currentFragment) {
+            return;
+        }
 
-        ArrayList<Skill> skills = new ArrayList<>();
-        skills.add(new Skill("determination"));
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction()
+                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
 
-        RecyclerView experienceRecyclerView = findViewById(R.id.experience_recyclerview);
-        experienceRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // hide whatever is on screen right now
+        if (currentFragment != null) {
+            fragmentTransaction.hide(currentFragment);
+        }
 
-        RecyclerView educationRecyclerView = findViewById(R.id.education_recyclerview);
-        educationRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // if the fragment has already been added to the activity, show it
+        Fragment f = fragmentManager.findFragmentByTag(tag);
+        if (f != null) {
+            fragmentTransaction.show(f);
+        }
 
-        RecyclerView certificationsRecyclerView = findViewById(R.id.certifications_recyclerview);
-        certificationsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // otherwise add it to the activity
+        else {
+            fragmentTransaction.add(R.id.frame, fragment, tag);
+        }
 
-        RecyclerView awardsRecyclerView = findViewById(R.id.awards_recyclerview);
-        awardsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        RecyclerView skillsRecyclerView = findViewById(R.id.skills_recyclerview);
-        skillsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        ExperienceRecyclerAdapter experienceRecyclerAdapter = new ExperienceRecyclerAdapter(experiences);
-        experienceRecyclerView.setAdapter(experienceRecyclerAdapter);
-
-        EducationRecyclerAdapter educationRecyclerAdapter = new EducationRecyclerAdapter(education);
-        educationRecyclerView.setAdapter(educationRecyclerAdapter);
-
-        CertificationsRecyclerAdapter certificationsRecyclerAdapter = new CertificationsRecyclerAdapter(certifications);
-        certificationsRecyclerView.setAdapter(certificationsRecyclerAdapter);
-
-        AwardsRecyclerAdapter awardsRecyclerAdapter = new AwardsRecyclerAdapter(awards);
-        awardsRecyclerView.setAdapter(awardsRecyclerAdapter);
-
-        SkillsRecyclerViewAdapter skillsRecyclerViewAdapter = new SkillsRecyclerViewAdapter(skills);
-        skillsRecyclerView.setAdapter(skillsRecyclerViewAdapter);
-
-
-//        buttonPreview.setOnClickListener(view -> {
-//            // TODO: pass user input for render
-//            startActivity(new Intent(this, ResumePreviewActivity.class));
-//            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-//        });
+        fragmentTransaction.commitNow();
+        currentFragment = fragment;
     }
 }
 

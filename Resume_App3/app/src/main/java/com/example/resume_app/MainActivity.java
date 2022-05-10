@@ -1,6 +1,7 @@
 package com.example.resume_app;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -9,8 +10,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.resume_app.data_model.UserData;
 import com.example.resume_app.profile.ProfileFragment;
 import com.example.resume_app.your_resumes.YourResumesFragment;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Random;
 
 /**
  * Home for profile-related actions including editing information and viewing post history.
@@ -24,7 +33,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        connectXml();
+        View splash = findViewById(R.id.loader);
+        splash.setVisibility(View.VISIBLE);
+
+        new Thread(() -> {
+            // if there is no UserData save file, create one
+            File file = new File(getExternalFilesDir(null), "user_data.json");
+            if (!file.exists() || file.length() == 0) {
+                Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
+
+                try (FileWriter writer = new FileWriter(file)) {
+                    gson.toJson(new UserData(), writer);
+
+                    // maybe let that soak in a little bit...? just for some flair --arthur
+                    Thread.sleep(2500);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            runOnUiThread(() -> {
+                connectXml();
+                splash.setVisibility(View.GONE);
+            });
+        }).start();
     }
 
     void connectXml() {
@@ -80,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.add(R.id.frame, fragment, tag);
         }
 
-        fragmentTransaction.commitNow();
+        fragmentTransaction.commit();
         currentFragment = fragment;
     }
 }

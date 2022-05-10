@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     tools:context=".profile.ProfileFragment">
 
     <ScrollView
@@ -51,7 +52,6 @@
                 android:id="@+id/experience_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:animateLayoutChanges="true"
                 android:clipToPadding="false"
                 android:orientation="vertical" />
 
@@ -84,7 +84,6 @@
                 android:id="@+id/awards_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:animateLayoutChanges="true"
                 android:clipToPadding="false"
                 android:orientation="vertical" />
 
@@ -117,7 +116,6 @@
                 android:id="@+id/education_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:animateLayoutChanges="true"
                 android:clipToPadding="false"
                 android:orientation="vertical" />
 
@@ -150,7 +148,6 @@
                 android:id="@+id/certifications_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:animateLayoutChanges="true"
                 android:clipToPadding="false"
                 android:orientation="vertical" />
 
@@ -183,7 +180,6 @@
                 android:id="@+id/skills_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:animateLayoutChanges="true"
                 android:clipToPadding="false"
                 android:orientation="vertical" />
 
