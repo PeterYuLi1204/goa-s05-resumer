@@ -13,9 +13,6 @@
     <string name="button_download">Telecharger</string>
     <string name="button_save">Confirmer</string>
 
-    <string name="tab_info">Infos</string>
-    <string name="tab_posts_comments">Messages</string>
-
     <string name="header_experience">Experiences</string>
     <string name="header_education">Education</string>
     <string name="header_certifications">Certifications</string>

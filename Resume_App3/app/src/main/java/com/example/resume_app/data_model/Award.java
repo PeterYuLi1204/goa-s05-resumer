@@ -9,14 +9,6 @@ public class Award {
     public String dateAwarded;
     public boolean selected;
 
-    public Award(String awardName, String issuer, String description, String dateAwarded) {
-        this.awardName = awardName;
-        this.issuer = issuer;
-        this.description = description;
-        this.dateAwarded = dateAwarded;
-        this.selected = false;
-    }
-
     public Award() {
         this.awardName = "";
         this.issuer = "";

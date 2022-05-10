@@ -10,15 +10,6 @@ public class Experience {
     public String endDate;
     public boolean selected;
 
-    public Experience(String jobPosition, String companyName, String description, String startDate, String endDate) {
-        this.jobPosition = jobPosition;
-        this.companyName = companyName;
-        this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        selected = false;
-    }
-
     public Experience() {
         this.jobPosition = "";
         this.companyName = "";

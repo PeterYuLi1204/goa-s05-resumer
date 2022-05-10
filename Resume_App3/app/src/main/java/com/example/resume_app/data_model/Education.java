@@ -9,14 +9,6 @@ public class Education {
     public String endDate;
     public boolean selected;
 
-    public Education(String schoolName, String description, String startDate, String endDate) {
-        this.schoolName = schoolName;
-        this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.selected = false;
-    }
-
     public Education() {
         this.schoolName = "";
         this.description = "";

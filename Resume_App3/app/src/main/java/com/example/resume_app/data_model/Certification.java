@@ -9,14 +9,6 @@ public class Certification {
     public String expiryDate;
     public boolean selected;
 
-    public Certification(String certificationTitle, String issuer, String issuedOn, String expiryDate) {
-        this.certificationTitle = certificationTitle;
-        this.issuer = issuer;
-        this.issuedOn = issuedOn;
-        this.expiryDate = expiryDate;
-        this.selected = false;
-    }
-
     public Certification() {
         this.certificationTitle = "";
         this.issuer = "";
