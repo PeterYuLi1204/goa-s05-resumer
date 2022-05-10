@@ -13,29 +13,29 @@ import com.example.resume_app.data_model.Skill;
 
 import java.util.ArrayList;
 
-public class SkillsRecyclerAdapter extends RecyclerView.Adapter<SkillsRecyclerAdapter.ViewHolder> {
+public class SkillsRecyclerViewAdapter extends RecyclerView.Adapter<SkillsRecyclerViewAdapter.ViewHolder> {
     static ArrayList<Skill> skills;
 
-    SkillsRecyclerAdapter(ArrayList<Skill> skills) {
-        SkillsRecyclerAdapter.skills = skills;
+    SkillsRecyclerViewAdapter(ArrayList<Skill> skills) {
+        SkillsRecyclerViewAdapter.skills = skills;
     }
 
     @Override
-    public SkillsRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SkillsRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_experience_recycler_container, parent, false);
-        return new SkillsRecyclerAdapter.ViewHolder(view);
+        return new SkillsRecyclerViewAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(SkillsRecyclerAdapter.ViewHolder holder, int position) {
-        holder.positionTitle.setText(skills.get(position).skillName);
-        holder.editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO
-                //make edit pop-up pop up
-            }
-        });
+    public void onBindViewHolder(SkillsRecyclerViewAdapter.ViewHolder holder, int position) {
+        //holder.positionTitle.setText(skills.get(position).skillName);
+//        holder.editButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //TODO
+//                //make edit pop-up pop up
+//            }
+//        });
 //        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -52,16 +52,16 @@ public class SkillsRecyclerAdapter extends RecyclerView.Adapter<SkillsRecyclerAd
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView positionTitle;
+      //  TextView positionTitle;
         TextView description;
         Button editButton;
         Button deleteButton;
 
         ViewHolder(View itemView) {
             super(itemView);
-            positionTitle = itemView.findViewById(R.id.position_title);
-            description = itemView.findViewById(R.id.description);
-            editButton = itemView.findViewById(R.id.edit_button);
+            //positionTitle = itemView.findViewById(R.id.position_title);
+           // description = itemView.findViewById(R.id.description);
+          //  editButton = itemView.findViewById(R.id.edit_button);
          // deleteButton = itemView.findViewById(R.id.delete_button);
         }
 
