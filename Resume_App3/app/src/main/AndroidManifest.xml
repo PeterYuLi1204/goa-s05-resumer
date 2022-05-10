@@ -33,9 +33,6 @@
         <activity
             android:name=".resume_editor.ResumeEditorActivity"
             android:exported="false" />
-        <activity
-            android:name=".resume_editor.AddStuffActivity"
-            android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -56,8 +56,4 @@ public class ResumeData {
         this.experience = userData.experience;
         this.skills = userData.skills;
     }
-    //temporary for testing resume saving
-    public ResumeData(String hi) {
-        this.email = hi;
-    }
 }

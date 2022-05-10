@@ -2,7 +2,6 @@ package com.example.resume_app.resume_editor;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,8 +14,6 @@ import com.example.resume_app.data_model.Certification;
 import com.example.resume_app.data_model.Education;
 import com.example.resume_app.data_model.Experience;
 import com.example.resume_app.data_model.Skill;
-import com.example.resume_app.profile.ProfileActivity;
-import com.example.resume_app.your_resumes.YourResumesActivity;
 
 import java.util.ArrayList;
 
@@ -76,25 +73,15 @@ public class ResumeEditorActivity extends AppCompatActivity {
         AwardsRecyclerAdapter awardsRecyclerAdapter = new AwardsRecyclerAdapter(awards);
         awardsRecyclerView.setAdapter(awardsRecyclerAdapter);
 
-        SkillsRecyclerAdapter skillsRecyclerViewAdapter = new SkillsRecyclerAdapter(skills);
+        SkillsRecyclerViewAdapter skillsRecyclerViewAdapter = new SkillsRecyclerViewAdapter(skills);
         skillsRecyclerView.setAdapter(skillsRecyclerViewAdapter);
 
-        Button backButton = findViewById(R.id.back_button);
-        backButton.setOnClickListener(view -> {
-            startActivity(new Intent(this, YourResumesActivity.class));
-        });
 
-        Button addExperienceButton = findViewById(R.id.add_experience_button);
-        addExperienceButton.setOnClickListener(view -> {
-            startActivity(new Intent(this, AddStuffActivity.class));
-        });
-
-        Button buttonPreview = findViewById(R.id.button_preview);
-        buttonPreview.setOnClickListener(view -> {
-            // TODO: pass user input for render
-            startActivity(new Intent(this, ResumePreviewActivity.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        });
+//        buttonPreview.setOnClickListener(view -> {
+//            // TODO: pass user input for render
+//            startActivity(new Intent(this, ResumePreviewActivity.class));
+//            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+//        });
     }
 }
 
