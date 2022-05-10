@@ -15,7 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
-import com.example.resume_app.ExampleDataGeneratorThrowaway;
+import com.example.resume_app.JsonTools;
 import com.example.resume_app.R;
 import com.example.resume_app.data_model.Award;
 import com.example.resume_app.data_model.Certification;
@@ -24,11 +24,9 @@ import com.example.resume_app.data_model.Experience;
 import com.example.resume_app.data_model.ResumeData;
 import com.example.resume_app.data_model.Skill;
 import com.example.resume_app.data_model.UserData;
-import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 
 /**
  * Displays a print preview of the resume given the appropriate data via Intent:
@@ -40,46 +38,80 @@ import java.io.FileReader;
  */
 public class ResumePreviewActivity extends AppCompatActivity {
 
-    ResumeData resumeData;
     View template;
+
+    JsonTools jsonTools;
+    UserData userData;
+    ResumeData resumeData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        Intent intent = getIntent();
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resume_preview);
 
-        FrameLayout frame = findViewById(R.id.frame);
-        frame.addView(getLayoutInflater().inflate(intent.getIntExtra("TEMPLATE_ID", R.layout.template_resume_classic), frame, false));
+        Intent intent = getIntent();
+        jsonTools = new JsonTools(this);
 
-        // an experiment
-        resumeData = ExampleDataGeneratorThrowaway.exampleResumeData(loadFromJson("user_data"));
+        View loader = findViewById(R.id.loader);
+        loader.setVisibility(View.VISIBLE);
 
-        connectXml();
-        connectTemplate();
+        new Thread(() -> {
+
+            userData = jsonTools.loadUserFromJson();
+            resumeData = jsonTools.loadResumeFromJson(intent.getStringExtra("FILE_NAME"));
+
+            runOnUiThread(() -> {
+
+                FrameLayout frame = findViewById(R.id.frame);
+                frame.addView(getLayoutInflater().inflate(intent.getIntExtra("TEMPLATE_ID",
+                        R.layout.template_resume_classic), frame, false));
+
+                connectXml();
+                connectTemplate();
+
+                loader.setVisibility(View.GONE);
+            });
+        }).start();
     }
 
-    /*
-    TODO:
-        eventually, have this load [ResumeData] instead of [UserData].
-        this is just for debugging. --arthur
-     */
-    UserData loadFromJson(String fileName) {
-        File file = new File(getExternalFilesDir(null), fileName + ".json");
-        Gson gson = new Gson();
-        UserData data = null;
+    void connectXml() {
 
-        try (FileReader reader = new FileReader(file)) {
-            data = gson.fromJson(reader, UserData.class);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ImageButton buttonShare = findViewById(R.id.button_share);
+        buttonShare.setOnClickListener(view -> {
 
-        return data;
+            // create a hidden temporary file
+            File file = new File(getCacheDir(), resumeData.fileName + ".pdf");
+            renderToPdf(file);
+            Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".provider", file);
+
+            // open the android share sheet
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+            shareIntent.setType("application/pdf");
+
+            // the default files app should show up here... why doesn't it?
+            // my best guess is that it's an emulator restriction --arthur
+            startActivity(Intent.createChooser(shareIntent, null));
+        });
+
+        ImageButton buttonDownload = findViewById(R.id.button_download);
+        buttonDownload.setOnClickListener(view -> {
+
+            // create a permanent file
+            File file = new File(getExternalFilesDir(null), resumeData.fileName + ".pdf");
+            renderToPdf(file);
+
+            Toast.makeText(this, R.string.toast_file_saved, Toast.LENGTH_LONG).show();
+        });
+
+        ImageButton buttonBack = findViewById(R.id.button_back);
+        buttonBack.setOnClickListener(view -> onBackPressed());
     }
 
     void connectTemplate() {
+
         // Regrettable...
         template = findViewById(R.id.template);
         TextView textHeaderName = findViewById(R.id.resume_header_name);
@@ -98,11 +130,11 @@ public class ResumePreviewActivity extends AppCompatActivity {
         TextView textHeaderSkills = findViewById(R.id.resume_header_skills);
         TextView textSkills = findViewById(R.id.resume_skills);
 
-        textHeaderName.setText(resumeData.username);
+        textHeaderName.setText(userData.username);
         textIntroduction.setText(resumeData.introduction);
-        textEmail.setText(resumeData.email);
-        textPhone.setText(resumeData.phone);
-        textCurrentJob.setText(resumeData.currentJob);
+        textEmail.setText(userData.email);
+        textPhone.setText(userData.phone);
+        textCurrentJob.setText(userData.currentJob);
 
         if (resumeData.experience.size() > 0) {
             StringBuilder s = new StringBuilder();
@@ -164,40 +196,8 @@ public class ResumePreviewActivity extends AppCompatActivity {
         template.setScaleY(scaleFactor);
     }
 
-    void connectXml() {
-        ImageButton buttonShare = findViewById(R.id.button_share);
-        buttonShare.setOnClickListener(view -> {
-            // create a hidden temporary file
-            File file = new File(getCacheDir(), resumeData.fileName + ".pdf");
-            renderToPdf(file);
-            Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".provider", file);
-
-            // open the android share sheet
-            Intent shareIntent = new Intent();
-            shareIntent.setAction(Intent.ACTION_SEND);
-            shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
-            shareIntent.setType("application/pdf");
-
-            // the default files app should show up here... why doesn't it?
-            // my best guess is that it's an emulator restriction --arthur
-            startActivity(Intent.createChooser(shareIntent, null));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        });
-
-        ImageButton buttonDownload = findViewById(R.id.button_download);
-        buttonDownload.setOnClickListener(view -> {
-            // create a permanent file
-            File file = new File(getExternalFilesDir(null), resumeData.fileName + ".pdf");
-            renderToPdf(file);
-
-            Toast.makeText(this, R.string.toast_file_saved, Toast.LENGTH_LONG).show();
-        });
-
-        ImageButton buttonBack = findViewById(R.id.button_back);
-        buttonBack.setOnClickListener(view -> onBackPressed());
-    }
-
     void renderToPdf(File file) {
+
         PdfDocument pdfDoc = new PdfDocument();
         PdfDocument.PageInfo pdfInfo = new PdfDocument.PageInfo.Builder(612, 792, 1).create();
         PdfDocument.Page pdf = pdfDoc.startPage(pdfInfo);

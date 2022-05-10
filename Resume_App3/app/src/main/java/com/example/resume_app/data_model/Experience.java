@@ -2,15 +2,13 @@ package com.example.resume_app.data_model;
 
 import androidx.annotation.NonNull;
 
-import java.io.Serializable;
-
 public class Experience {
     public String jobPosition;
     public String companyName;
     public String description;
     public String startDate;
     public String endDate;
-    public Boolean selected;
+    public boolean selected;
 
     public Experience(String jobPosition, String companyName, String description, String startDate, String endDate) {
         this.jobPosition = jobPosition;
@@ -21,7 +19,14 @@ public class Experience {
         selected = false;
     }
 
-    public Experience() {}
+    public Experience() {
+        this.jobPosition = "";
+        this.companyName = "";
+        this.description = "";
+        this.startDate = "";
+        this.endDate = "";
+        selected = false;
+    }
 
     @NonNull
     public String toString() {

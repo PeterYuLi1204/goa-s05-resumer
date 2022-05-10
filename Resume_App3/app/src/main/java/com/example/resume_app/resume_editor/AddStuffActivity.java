@@ -1,7 +1,6 @@
 package com.example.resume_app.resume_editor;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -10,66 +9,45 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.resume_app.JsonTools;
 import com.example.resume_app.R;
-import com.example.resume_app.data_model.ResumeData;
-import com.example.resume_app.data_model.UserData;
-import com.google.gson.Gson;
 
-import java.io.File;
-import java.io.FileReader;
-
-/**
- * Takes user input for resume creation.
- */
-public class ResumeEditorActivity extends AppCompatActivity {
+public class AddStuffActivity extends AppCompatActivity {
 
     Fragment currentFragment;
 
-    JsonTools jsonTools;
-    public static UserData userData;
-    public static ResumeData resumeData;
+    public static String category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resume_editor);
-
-        jsonTools = new JsonTools(this);
-
-        View loader = findViewById(R.id.loader);
-        loader.setVisibility(View.VISIBLE);
-
-        new Thread(() -> {
-
-            userData = jsonTools.loadUserFromJson();
-            resumeData = jsonTools.loadResumeFromJson(getIntent().getStringExtra("FILE_NAME"));
-
-            runOnUiThread(() -> {
-                connectXml();
-                loader.setVisibility(View.GONE);
-            });
-        }).start();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        jsonTools.saveResumeToJson(resumeData);
+        setContentView(R.layout.activity_add_stuff);
+        category = getIntent().getStringExtra("CATEGORY");
+        connectXml();
     }
 
     void connectXml() {
 
-        Fragment resumeEditorFragment = new ResumeEditorFragment();
+        Fragment addStuffFragment = new AddStuffFragment();
 
         TextView title = findViewById(R.id.title);
-        title.setText(resumeData.fileName);
+        switch (category) {
+            case "EXPERIENCE":
+                title.setText(R.string.header_add_experience);
+            case "AWARDS":
+                title.setText(R.string.header_add_awards);
+            case "EDUCATION":
+                title.setText(R.string.header_add_education);
+            case "CERTIFICATIONS":
+                title.setText(R.string.header_add_certifications);
+            case "SKILLS":
+                title.setText(R.string.header_add_skills);
+        }
 
-        ImageButton buttonBack = findViewById(R.id.button_back);
-        buttonBack.setOnClickListener(view -> onBackPressed());
+        ImageButton backButton = findViewById(R.id.button_back);
+        backButton.setOnClickListener(v -> onBackPressed());
 
-        openFragment(resumeEditorFragment, ResumeEditorFragment.ID);
+        openFragment(addStuffFragment, AddStuffFragment.ID);
     }
 
     void openFragment(Fragment fragment, String tag) {
@@ -102,6 +80,3 @@ public class ResumeEditorActivity extends AppCompatActivity {
         currentFragment = fragment;
     }
 }
-
-
-

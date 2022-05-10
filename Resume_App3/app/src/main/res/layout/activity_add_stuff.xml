@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@color/slate_blue"
-    tools:context=".resume_editor.ResumePreviewActivity">
+    android:background="@color/light_blue"
+    tools:context=".resume_editor.AddStuffActivity">
 
     <LinearLayout
         android:id="@+id/top_navigation"
         style="@style/ResumeApp.Toolbar"
+        android:background="@color/transparent"
         android:layout_alignParentTop="true"
         android:paddingHorizontal="24dp"
         android:paddingVertical="16dp">
@@ -19,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/arrow_left"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/black"
             tools:ignore="ContentDescription" />
 
         <Space
@@ -32,40 +33,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/title_resume_preview"
-            android:textColor="@color/white" />
-
-        <ImageButton
-            android:id="@+id/button_share"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/share"
-            android:backgroundTint="@color/white"
-            tools:ignore="ContentDescription" />
-
-        <Space
-            android:layout_width="12dp"
-            android:layout_height="match_parent" />
-
-        <ImageButton
-            android:id="@+id/button_download"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/download"
-            android:backgroundTint="@color/white"
-            tools:ignore="ContentDescription" />
+            android:text="@string/title_resume_editor"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/top_navigation">
-
-        <!--templates will be loaded dynamically here-->
-
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_navigation"
+        android:layout_alignParentBottom="true" />
 
     <include
         android:id="@+id/loader"

@@ -13,13 +13,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.resume_app.data_model.UserData;
 import com.example.resume_app.profile.ProfileFragment;
 import com.example.resume_app.your_resumes.YourResumesFragment;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Random;
 
 /**
  * Home for profile-related actions including editing information and viewing post history.
@@ -28,35 +23,49 @@ public class MainActivity extends AppCompatActivity {
 
     Fragment currentFragment;
 
+    JsonTools jsonTools;
+    public static UserData userData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        View splash = findViewById(R.id.loader);
-        splash.setVisibility(View.VISIBLE);
+        jsonTools = new JsonTools(this);
+
+        View loader = findViewById(R.id.loader);
+        loader.setVisibility(View.VISIBLE);
 
         new Thread(() -> {
+
             // if there is no UserData save file, create one
-            File file = new File(getExternalFilesDir(null), "user_data.json");
+            File file = new File(getExternalFilesDir(null), "user_data.nfteam");
             if (!file.exists() || file.length() == 0) {
-                Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
 
-                try (FileWriter writer = new FileWriter(file)) {
-                    gson.toJson(new UserData(), writer);
-
-                    // maybe let that soak in a little bit...? just for some flair --arthur
+                userData = jsonTools.saveUserToJson(new UserData());
+                // maybe let that soak in a little bit...? just for some flair --arthur
+                try {
                     Thread.sleep(2500);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+            } else {
+                userData = jsonTools.loadUserFromJson();
             }
 
             runOnUiThread(() -> {
                 connectXml();
-                splash.setVisibility(View.GONE);
+                loader.setVisibility(View.GONE);
             });
         }).start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        jsonTools.saveUserToJson(userData);
     }
 
     void connectXml() {
@@ -84,10 +93,12 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Takes care of opening and/or lazily adding fragments to the activity.
+     *
      * @param fragment The fragment to open and/or add.
-     * @param tag A String used to identify the fragment.
+     * @param tag      A String used to identify the fragment.
      */
     void openFragment(Fragment fragment, String tag) {
+
         if (fragment == currentFragment) {
             return;
         }

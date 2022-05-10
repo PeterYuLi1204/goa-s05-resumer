@@ -25,10 +25,18 @@
     <string name="header_skills">Skills</string>
     <string name="header_introduction">Introduction</string>
 
+    <string name="header_add_experience">Add Experiences</string>
+    <string name="header_add_education">Add Education</string>
+    <string name="header_add_certifications">Add Certifications</string>
+    <string name="header_add_awards">Add Awards and Honours</string>
+    <string name="header_add_skills">Add Skills</string>
+
     <string name="toast_file_saved">File downloaded successfully!</string>
 
     <string name="issued_date_to_expiry_date">Issued: %1$s | Expires: %2$s</string>
     <string name="start_date_to_end_date">%1$s to %2$s</string>
+
+    <string name="header_enter_resume_name">Enter Resume Name</string>
 
 
     <!--edit text hints below-->
@@ -39,6 +47,7 @@
     <string name="expiry_date">Expiry date</string>
     <string name="start_date">Date started</string>
     <string name="end_date">Date ended</string>
+    <string name="resume_name">Resume name</string>
 
     <!--information card-->
     <string name="edit_information">Edit Information</string>
@@ -46,6 +55,11 @@
     <string name="current_job">Current job</string>
     <string name="phone_number">Phone</string>
     <string name="email">Email</string>
+
+    <!--introduction card-->
+    <string name="edit_introduction">Edit Introduction</string>
+    <string name="introduction">Tell us about yourself…</string>
+    <string name="default_introduction">Hi there! My name is %1$s.</string>
 
     <!--experience card-->
     <string name="add_experience">Add Experience</string>
@@ -73,7 +87,8 @@
     <string name="edit_skill">Edit Skill</string>
     <string name="skill">Skill</string>
 
-    <string name="error_fill_field">This field is required</string>
+    <string name="error_fill_field">This field is required!</string>
+    <string name="error_already_exists">That file already exists!</string>
 
     <string name="lose_progress_warning">You will lose all your progress if you exit now!</string>
     <string name="continue_working">Continue</string>

@@ -12,6 +12,7 @@ public class UserData {
     public ArrayList<Education> education;
     public ArrayList<Experience> experience;
     public ArrayList<Skill> skills;
+    public ArrayList<String> resumeFiles;
 
     public UserData(
             String username,
@@ -22,7 +23,8 @@ public class UserData {
             ArrayList<Certification> certifications,
             ArrayList<Education> education,
             ArrayList<Experience> experience,
-            ArrayList<Skill> skills) {
+            ArrayList<Skill> skills,
+            ArrayList<String> resumeFiles) {
         this.username = username;
         this.email = email;
         this.phone = phone;
@@ -32,6 +34,7 @@ public class UserData {
         this.education = education;
         this.experience = experience;
         this.skills = skills;
+        this.resumeFiles = resumeFiles;
     }
 
     public UserData() {
@@ -44,5 +47,6 @@ public class UserData {
         this.education = new ArrayList<>();
         this.experience = new ArrayList<>();
         this.skills = new ArrayList<>();
+        this.resumeFiles = new ArrayList<>();
     }
 }
