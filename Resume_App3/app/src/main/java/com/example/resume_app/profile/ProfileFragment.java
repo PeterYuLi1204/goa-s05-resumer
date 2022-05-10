@@ -33,7 +33,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-public class InfoTabFragment extends Fragment {
+public class ProfileFragment extends Fragment {
+
+    public static final String ID = "PROFILE";
 
     UserData userData;
 

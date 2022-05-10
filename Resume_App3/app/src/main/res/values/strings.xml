@@ -101,5 +101,7 @@
 
         Still feeling stuck? Try looking at some examples for inspiration!
     </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.resume_app.R;
-import com.example.resume_app.profile.ProfileActivity;
+import com.example.resume_app.MainActivity;
 import com.example.resume_app.resume_editor.ResumeEditorActivity;
 
 import java.util.ArrayList;
@@ -43,12 +43,12 @@ public class YourResumesActivity extends AppCompatActivity implements YourResume
         buttonPlus.setOnClickListener(view -> startActivity(new Intent(this, ResumeEditorActivity.class)));
 
         Button buttonProfile = findViewById(R.id.button_profile);
-        buttonProfile.setOnClickListener(view -> startActivity(new Intent(this, ProfileActivity.class)));
+        buttonProfile.setOnClickListener(view -> startActivity(new Intent(this, MainActivity.class)));
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        Intent intent = new Intent(this, ProfileActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("FILE_NAME", "PLACEHOLDER_TEXT");
         startActivity(intent);
     }
