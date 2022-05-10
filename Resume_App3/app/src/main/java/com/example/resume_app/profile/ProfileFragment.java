@@ -32,7 +32,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.concurrent.Executors;
 
 public class ProfileFragment extends Fragment {
 
@@ -324,7 +323,20 @@ public class ProfileFragment extends Fragment {
         Button saveButton = editInformationDialog.findViewById(R.id.information_save_button);
 
         closeEditInformation.setOnClickListener(v -> {
-            //editInformationDialog
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+            View alert = getLayoutInflater().inflate(R.layout.dialog_confirm_erase_progress, null);
+            dialogBuilder.setView(alert);
+            AlertDialog dialog = dialogBuilder.show();
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+            Button continueButton = alert.findViewById(R.id.continue_working);
+            continueButton.setOnClickListener(v12 -> dialog.dismiss());
+
+            Button eraseButton = alert.findViewById(R.id.erase_progress);
+            eraseButton.setOnClickListener(v1 -> {
+                editInformationDialog.dismiss();
+                dialog.dismiss();
+            });
         });
 
         saveButton.setOnClickListener(v -> {
