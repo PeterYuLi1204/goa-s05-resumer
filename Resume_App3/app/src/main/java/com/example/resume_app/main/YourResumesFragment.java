@@ -29,7 +29,7 @@ import com.example.resume_app.resume_editor.ResumeEditorActivity;
 import java.util.ArrayList;
 
 /**
- * Home for resume-related actions including creating and downloading resumes.
+ * Displays a list of existing resumes from UserData and creates new ones.
  */
 public class YourResumesFragment extends Fragment implements YourResumesRecyclerAdapter.IClickListener {
 

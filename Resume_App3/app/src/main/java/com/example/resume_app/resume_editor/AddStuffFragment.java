@@ -22,6 +22,9 @@ import com.example.resume_app.data_model.Skill;
 import com.example.resume_app.data_model.UserData;
 import com.google.android.material.card.MaterialCardView;
 
+/**
+ * Selects items from UserData and adds them to ResumeData.
+ */
 public class AddStuffFragment extends Fragment {
 
     public static final String ID = "RESUME_EDITOR_ADD";

@@ -29,7 +29,7 @@ import com.example.resume_app.data_model.UserData;
 import java.util.ArrayList;
 
 /**
- * Takes input and modifies UserData.
+ * Creates items from user input and adds them to UserData.
  */
 public class ProfileFragment extends Fragment {
 

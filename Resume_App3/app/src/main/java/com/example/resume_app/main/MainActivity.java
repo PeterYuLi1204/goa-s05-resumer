@@ -15,7 +15,7 @@ import com.example.resume_app.R;
 import com.example.resume_app.data_model.UserData;
 
 /**
- * Home for profile-related actions including editing information and viewing post history.
+ * Contains YourResumesFragment and ProfileFragment, and manages a shared UserData between fragments.
  */
 public class MainActivity extends AppCompatActivity {
 

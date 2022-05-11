@@ -16,7 +16,7 @@ import com.example.resume_app.data_model.ResumeData;
 import com.example.resume_app.data_model.UserData;
 
 /**
- * Takes user input for resume creation.
+ * Contains a ResumeEditorActivity, and manages a shared UserData and ResumeData between fragments.
  */
 public class ResumeEditorActivity extends AppCompatActivity {
 

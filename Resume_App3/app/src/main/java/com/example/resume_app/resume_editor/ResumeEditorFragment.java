@@ -28,6 +28,9 @@ import com.example.resume_app.data_model.Experience;
 import com.example.resume_app.data_model.ResumeData;
 import com.example.resume_app.data_model.Skill;
 
+/**
+ * Displays a list of selected items from ResumeData.
+ */
 public class ResumeEditorFragment extends Fragment {
 
     public static final String ID = "RESUME_EDITOR";

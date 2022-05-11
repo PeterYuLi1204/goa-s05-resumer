@@ -12,6 +12,9 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.resume_app.R;
 import com.example.resume_app.data_model.Category;
 
+/**
+ * Contains an AddStuffFragment.
+ */
 public class AddStuffActivity extends AppCompatActivity {
 
     Fragment currentFragment;
