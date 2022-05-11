@@ -11,7 +11,7 @@ public class Skill implements DataObject {
     }
 
     public String toHtmlString() {
-        return "<p><b>" + skillName + "</b></p>";
+        return "<p>" + skillName + "</p>";
     }
 
     public boolean equals(DataObject o) {
