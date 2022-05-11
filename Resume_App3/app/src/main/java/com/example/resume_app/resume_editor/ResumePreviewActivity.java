@@ -139,7 +139,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
         if (resumeData.experience.size() > 0) {
             StringBuilder s = new StringBuilder();
             for (Experience e : resumeData.experience) {
-                s.append(e.toString());
+                s.append(e.toHtmlString());
             }
             textExperience.setText(Html.fromHtml(s.toString(), 0));
         } else {
@@ -150,7 +150,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
         if (resumeData.education.size() > 0) {
             StringBuilder s = new StringBuilder();
             for (Education e : resumeData.education) {
-                s.append(e.toString());
+                s.append(e.toHtmlString());
             }
             textEducation.setText(Html.fromHtml(s.toString(), 0));
         } else {
@@ -161,7 +161,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
         if (resumeData.certifications.size() > 0) {
             StringBuilder s = new StringBuilder();
             for (Certification e : resumeData.certifications) {
-                s.append(e.toString());
+                s.append(e.toHtmlString());
             }
             textCertifications.setText(Html.fromHtml(s.toString(), 0));
         } else {
@@ -172,7 +172,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
         if (resumeData.awards.size() > 0) {
             StringBuilder s = new StringBuilder();
             for (Award e : resumeData.awards) {
-                s.append(e.toString());
+                s.append(e.toHtmlString());
             }
             textAwards.setText(Html.fromHtml(s.toString(), 0));
         } else {
@@ -183,7 +183,7 @@ public class ResumePreviewActivity extends AppCompatActivity {
         if (resumeData.skills.size() > 0) {
             StringBuilder s = new StringBuilder();
             for (Skill e : resumeData.skills) {
-                s.append(e.toString());
+                s.append(e.toHtmlString());
             }
             textSkills.setText(Html.fromHtml(s.toString(), 0));
         } else {

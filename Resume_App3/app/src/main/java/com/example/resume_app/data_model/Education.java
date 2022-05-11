@@ -1,8 +1,7 @@
 package com.example.resume_app.data_model;
 
-import androidx.annotation.NonNull;
+public class Education implements DataObject {
 
-public class Education {
     public String schoolName;
     public String description;
     public String startDate;
@@ -17,8 +16,7 @@ public class Education {
         selected = false;
     }
 
-    @NonNull
-    public String toString() {
+    public String toHtmlString() {
         return "<p><b>" + schoolName + "</b><br>" + description + "<br>" + startDate + " - " + endDate + "</p>";
     }
 }

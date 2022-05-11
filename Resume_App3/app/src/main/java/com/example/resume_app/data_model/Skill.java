@@ -1,8 +1,7 @@
 package com.example.resume_app.data_model;
 
-import androidx.annotation.NonNull;
+public class Skill implements DataObject {
 
-public class Skill {
     public String skillName;
     public boolean selected;
 
@@ -11,8 +10,7 @@ public class Skill {
         selected = false;
     }
 
-    @NonNull
-    public String toString() {
+    public String toHtmlString() {
         return "<p>" + skillName + "</p>";
     }
 }

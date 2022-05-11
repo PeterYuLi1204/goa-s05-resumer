@@ -1,8 +1,7 @@
 package com.example.resume_app.data_model;
 
-import androidx.annotation.NonNull;
+public class Experience implements DataObject {
 
-public class Experience {
     public String jobPosition;
     public String companyName;
     public String description;
@@ -19,8 +18,7 @@ public class Experience {
         selected = false;
     }
 
-    @NonNull
-    public String toString() {
+    public String toHtmlString() {
         return "<p><b>" + jobPosition + " • " + companyName + "</b><br>" + description + "<br>" + startDate + " - " + endDate + "</p>";
     }
 }

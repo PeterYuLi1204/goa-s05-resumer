@@ -3,6 +3,7 @@ package com.example.resume_app.data_model;
 import java.util.ArrayList;
 
 public class ResumeData {
+
     public String fileName;
     public String introduction;
     public ArrayList<Award> awards;

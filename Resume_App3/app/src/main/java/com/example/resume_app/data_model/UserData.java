@@ -3,6 +3,7 @@ package com.example.resume_app.data_model;
 import java.util.ArrayList;
 
 public class UserData {
+
     public String username;
     public String email;
     public String phone;

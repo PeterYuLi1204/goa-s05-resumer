@@ -1,8 +1,7 @@
 package com.example.resume_app.data_model;
 
-import androidx.annotation.NonNull;
+public class Certification implements DataObject {
 
-public class Certification {
     public String certificationTitle;
     public String issuer;
     public String issuedOn;
@@ -17,8 +16,7 @@ public class Certification {
         selected = false;
     }
 
-    @NonNull
-    public String toString() {
+    public String toHtmlString() {
         return "<p>" + certificationTitle + " • " + issuer + "<br>" + issuedOn + " - " + expiryDate + "</p>";
     }
 }
