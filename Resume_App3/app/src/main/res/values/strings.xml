@@ -95,6 +95,7 @@
     <string name="delete_card_warning">Are you sure you want to delete this item?</string>
     <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
+    <string name="remove">Remove</string>
 
     <string name="not_sure_what_to_write">Not sure what to write?</string>
     <string name="experience_writing_tips">

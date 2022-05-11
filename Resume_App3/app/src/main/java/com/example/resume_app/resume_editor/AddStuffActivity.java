@@ -34,14 +34,19 @@ public class AddStuffActivity extends AppCompatActivity {
         switch (category) {
             case "EXPERIENCE":
                 title.setText(R.string.header_add_experience);
+                break;
             case "AWARDS":
                 title.setText(R.string.header_add_awards);
+                break;
             case "EDUCATION":
                 title.setText(R.string.header_add_education);
+                break;
             case "CERTIFICATIONS":
                 title.setText(R.string.header_add_certifications);
+                break;
             case "SKILLS":
                 title.setText(R.string.header_add_skills);
+                break;
         }
 
         ImageButton backButton = findViewById(R.id.button_back);

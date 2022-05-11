@@ -2,6 +2,8 @@ package com.example.resume_app.data_model;
 
 import androidx.annotation.NonNull;
 
+import java.util.Objects;
+
 public class Certification {
     public String certificationTitle;
     public String issuer;
@@ -15,6 +17,19 @@ public class Certification {
         this.issuedOn = "";
         this.expiryDate = "";
         selected = false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Certification that = (Certification) o;
+        return certificationTitle.equals(that.certificationTitle) && issuer.equals(that.issuer) && issuedOn.equals(that.issuedOn) && expiryDate.equals(that.expiryDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(certificationTitle, issuer, issuedOn, expiryDate);
     }
 
     @NonNull

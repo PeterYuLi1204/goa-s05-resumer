@@ -2,6 +2,8 @@ package com.example.resume_app.data_model;
 
 import androidx.annotation.NonNull;
 
+import java.util.Objects;
+
 public class Experience {
     public String jobPosition;
     public String companyName;
@@ -17,6 +19,19 @@ public class Experience {
         this.startDate = "";
         this.endDate = "";
         selected = false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Experience that = (Experience) o;
+        return jobPosition.equals(that.jobPosition) && companyName.equals(that.companyName) && description.equals(that.description) && startDate.equals(that.startDate) && endDate.equals(that.endDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(jobPosition, companyName, description, startDate, endDate);
     }
 
     @NonNull
