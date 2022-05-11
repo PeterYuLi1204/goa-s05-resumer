@@ -21,6 +21,8 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp"
         tools:context=".main.ProfileFragment">
 
         <LinearLayout
@@ -46,12 +48,19 @@
                     android:layout_weight="1"
                     android:text="@string/header_introduction" />
 
+                <ImageButton
+                    android:id="@+id/introduction_edit_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit"
+                    android:backgroundTint="@color/black" />
+
             </LinearLayout>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/introduction_cardview"
-                app:rippleColor="@color/transparent"
-                style="@style/ResumeApp.Card">
+                style="@style/ResumeApp.Card"
+                app:rippleColor="@color/transparent">
 
                 <LinearLayout
                     android:layout_width="match_parent"

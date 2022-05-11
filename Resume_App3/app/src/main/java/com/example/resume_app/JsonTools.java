@@ -22,9 +22,11 @@ public class JsonTools {
     static final String FILE_EXTENSION = ".nfteam";
 
     Context context;
+    Gson gson;
 
     public JsonTools(Context context) {
         this.context = context;
+        this.gson = new Gson();
     }
 
     /**
@@ -33,7 +35,6 @@ public class JsonTools {
      */
     public UserData saveUserToJson(UserData userData) {
         File file = new File(context.getExternalFilesDir(null), USER_FILE_NAME + FILE_EXTENSION);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try (FileWriter writer = new FileWriter(file)) {
             gson.toJson(userData, writer);
@@ -53,7 +54,6 @@ public class JsonTools {
             return null;
         }
 
-        Gson gson = new Gson();
         UserData u = null;
 
         try (FileReader reader = new FileReader(file)) {
@@ -73,7 +73,6 @@ public class JsonTools {
         String formattedFileName = resumeData.fileName.toLowerCase(Locale.ROOT).replaceAll("\\s+", "_");
 
         File file = new File(context.getExternalFilesDir(null), formattedFileName + FILE_EXTENSION);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try (FileWriter writer = new FileWriter(file)) {
             gson.toJson(resumeData, writer);
@@ -92,7 +91,6 @@ public class JsonTools {
         String formattedFileName = fileName.toLowerCase(Locale.ROOT).replaceAll("\\s+", "_");
 
         File file = new File(context.getExternalFilesDir(null), formattedFileName + FILE_EXTENSION);
-        Gson gson = new Gson();
         ResumeData r = null;
 
         try (FileReader reader = new FileReader(file)) {

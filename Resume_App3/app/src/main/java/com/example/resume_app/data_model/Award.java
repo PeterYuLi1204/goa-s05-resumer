@@ -17,6 +17,13 @@ public class Award implements DataObject {
     }
 
     public String toHtmlString() {
-        return "<p><b>" + awardName + "</b><br>" + description + "<br>" + issuer + " • " + dateAwarded + "</p>";
+        return "<p><b>" + awardName + "</b><br>" + issuer + "<br>" + description + "<br><i>" + dateAwarded + "</i></p>";
+    }
+
+    public boolean equals(DataObject o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Award award = (Award) o;
+        return awardName.equals(award.awardName) && issuer.equals(award.issuer) && description.equals(award.description) && dateAwarded.equals(award.dateAwarded);
     }
 }

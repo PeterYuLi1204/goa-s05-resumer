@@ -45,6 +45,7 @@ public class YourResumesRecyclerAdapter extends RecyclerView.Adapter<YourResumes
 
     public interface IClickListener {
         void onItemClick(View view, int position);
+
         void onDeleteClick(View view, int position);
     }
 

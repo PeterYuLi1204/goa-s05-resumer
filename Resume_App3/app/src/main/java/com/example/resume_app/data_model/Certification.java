@@ -17,6 +17,13 @@ public class Certification implements DataObject {
     }
 
     public String toHtmlString() {
-        return "<p>" + certificationTitle + " • " + issuer + "<br>" + issuedOn + " - " + expiryDate + "</p>";
+        return "<p><b>" + certificationTitle + "</b><br>" + issuer + "<br><i>" + issuedOn + " - " + expiryDate + "</i></p>";
+    }
+
+    public boolean equals(DataObject o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Certification that = (Certification) o;
+        return certificationTitle.equals(that.certificationTitle) && issuer.equals(that.issuer) && issuedOn.equals(that.issuedOn) && expiryDate.equals(that.expiryDate);
     }
 }

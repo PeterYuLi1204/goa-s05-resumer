@@ -19,6 +19,13 @@ public class Experience implements DataObject {
     }
 
     public String toHtmlString() {
-        return "<p><b>" + jobPosition + " • " + companyName + "</b><br>" + description + "<br>" + startDate + " - " + endDate + "</p>";
+        return "<p><b>" + jobPosition + " • " + companyName + "</b><br>" + description + "<br><i>" + startDate + " - " + endDate + "</i></p>";
+    }
+
+    public boolean equals(DataObject o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Experience that = (Experience) o;
+        return jobPosition.equals(that.jobPosition) && companyName.equals(that.companyName) && description.equals(that.description) && startDate.equals(that.startDate) && endDate.equals(that.endDate);
     }
 }

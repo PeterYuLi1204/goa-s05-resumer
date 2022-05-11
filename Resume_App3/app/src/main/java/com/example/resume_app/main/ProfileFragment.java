@@ -116,7 +116,12 @@ public class ProfileFragment extends Fragment {
         phoneNumberTextView = view.findViewById(R.id.phone_number_textview);
         emailTextView = view.findViewById(R.id.email_textview);
 
-        nameTextView.setText(data.username);
+        if (data.username.length() == 0) {
+            nameTextView.setText(R.string.name);
+        } else {
+            nameTextView.setText(data.username);
+        }
+
         currentJobTextView.setText(data.currentJob);
         phoneNumberTextView.setText(data.phone);
         emailTextView.setText(data.email);
@@ -355,36 +360,36 @@ public class ProfileFragment extends Fragment {
 
         saveButton.setOnClickListener(v -> {
 
-            if (editTextPositionTitle.getText().length() == 0) {
+            if (editTextPositionTitle.getText().toString().trim().length() == 0) {
                 editTextPositionTitle.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            if (editTextOrganizationName.getText().length() == 0) {
+            if (editTextOrganizationName.getText().toString().trim().length() == 0) {
                 editTextOrganizationName.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            if (editExperienceDescription.getText().length() == 0) {
+            if (editExperienceDescription.getText().toString().trim().length() == 0) {
                 editExperienceDescription.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            if (editTextExperienceStartDate.getText().length() == 0) {
+            if (editTextExperienceStartDate.getText().toString().trim().length() == 0) {
                 editTextExperienceStartDate.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            if (editTextExperienceEndDate.getText().length() == 0) {
+            if (editTextExperienceEndDate.getText().toString().trim().length() == 0) {
                 editTextExperienceEndDate.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            experience.jobPosition = editTextPositionTitle.getText().toString();
-            experience.companyName = editTextOrganizationName.getText().toString();
-            experience.description = editExperienceDescription.getText().toString();
-            experience.startDate = editTextExperienceStartDate.getText().toString();
-            experience.endDate = editTextExperienceEndDate.getText().toString();
+            experience.jobPosition = editTextPositionTitle.getText().toString().trim();
+            experience.companyName = editTextOrganizationName.getText().toString().trim();
+            experience.description = editExperienceDescription.getText().toString().trim();
+            experience.startDate = editTextExperienceStartDate.getText().toString().trim();
+            experience.endDate = editTextExperienceEndDate.getText().toString().trim();
 
             positionTitleTextView.setText(experience.jobPosition);
             organizationNameTextView.setText(experience.companyName);
@@ -428,30 +433,30 @@ public class ProfileFragment extends Fragment {
         closeEditAward.setOnClickListener(v -> confirmEraseProgressDialog(editAwardDialog, createNew, data.awards, award, awardsLinearLayout, card));
 
         saveButton.setOnClickListener(v -> {
-            if (editTextAwardTitle.getText().length() == 0) {
+            if (editTextAwardTitle.getText().toString().trim().length() == 0) {
                 editTextAwardTitle.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            if (editTextAwardIssuerName.getText().length() == 0) {
+            if (editTextAwardIssuerName.getText().toString().trim().length() == 0) {
                 editTextAwardIssuerName.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            if (editTextAwardDescription.getText().length() == 0) {
+            if (editTextAwardDescription.getText().toString().trim().length() == 0) {
                 editTextAwardDescription.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            if (editTextAwardedDate.getText().length() == 0) {
+            if (editTextAwardedDate.getText().toString().trim().length() == 0) {
                 editTextAwardedDate.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            award.awardName = editTextAwardTitle.getText().toString();
-            award.issuer = editTextAwardIssuerName.getText().toString();
-            award.description = editTextAwardDescription.getText().toString();
-            award.dateAwarded = editTextAwardedDate.getText().toString();
+            award.awardName = editTextAwardTitle.getText().toString().trim();
+            award.issuer = editTextAwardIssuerName.getText().toString().trim();
+            award.description = editTextAwardDescription.getText().toString().trim();
+            award.dateAwarded = editTextAwardedDate.getText().toString().trim();
 
             awardTitleTextView.setText(award.awardName);
             awardIssuerNameTextView.setText(award.issuer);
@@ -494,30 +499,30 @@ public class ProfileFragment extends Fragment {
         closeEditEducation.setOnClickListener(v -> confirmEraseProgressDialog(editEducationDialog, createNew, data.education, education, educationLinearLayout, card));
 
         saveButton.setOnClickListener(v -> {
-            if (editTextSchoolName.getText().length() == 0) {
+            if (editTextSchoolName.getText().toString().trim().length() == 0) {
                 editTextSchoolName.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            if (editTextEducationDescription.getText().length() == 0) {
+            if (editTextEducationDescription.getText().toString().trim().length() == 0) {
                 editTextEducationDescription.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            if (editTextEducationStartDate.getText().length() == 0) {
+            if (editTextEducationStartDate.getText().toString().trim().length() == 0) {
                 editTextEducationStartDate.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            if (editTextEducationEndDate.getText().length() == 0) {
+            if (editTextEducationEndDate.getText().toString().trim().length() == 0) {
                 editTextEducationEndDate.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            education.schoolName = editTextSchoolName.getText().toString();
-            education.description = editTextEducationDescription.getText().toString();
-            education.startDate = editTextEducationStartDate.getText().toString();
-            education.endDate = editTextEducationEndDate.getText().toString();
+            education.schoolName = editTextSchoolName.getText().toString().trim();
+            education.description = editTextEducationDescription.getText().toString().trim();
+            education.startDate = editTextEducationStartDate.getText().toString().trim();
+            education.endDate = editTextEducationEndDate.getText().toString().trim();
 
             schoolNameTextView.setText(education.schoolName);
             educationDescriptionTextView.setText(education.description);
@@ -559,30 +564,30 @@ public class ProfileFragment extends Fragment {
         closeEditCertification.setOnClickListener(v -> confirmEraseProgressDialog(editCertificationDialog, createNew, data.certifications, certification, certificationsLinearLayout, card));
 
         saveButton.setOnClickListener(v -> {
-            if (editTextCertificationTitle.getText().length() == 0) {
+            if (editTextCertificationTitle.getText().toString().trim().length() == 0) {
                 editTextCertificationTitle.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            if (editTextCertificationIssuerName.getText().length() == 0) {
+            if (editTextCertificationIssuerName.getText().toString().trim().length() == 0) {
                 editTextCertificationIssuerName.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            if (editTextIssuedDate.getText().length() == 0) {
+            if (editTextIssuedDate.getText().toString().trim().length() == 0) {
                 editTextIssuedDate.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            if (editTextExpiryDate.getText().length() == 0) {
+            if (editTextExpiryDate.getText().toString().trim().length() == 0) {
                 editTextExpiryDate.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            certification.certificationTitle = editTextCertificationTitle.getText().toString();
-            certification.issuer = editTextCertificationIssuerName.getText().toString();
-            certification.issuedOn = editTextIssuedDate.getText().toString();
-            certification.expiryDate = editTextExpiryDate.getText().toString();
+            certification.certificationTitle = editTextCertificationTitle.getText().toString().trim();
+            certification.issuer = editTextCertificationIssuerName.getText().toString().trim();
+            certification.issuedOn = editTextIssuedDate.getText().toString().trim();
+            certification.expiryDate = editTextExpiryDate.getText().toString().trim();
 
             certificationTitleTextView.setText(certification.certificationTitle);
             certificationIssuerNameTextView.setText(certification.issuer);
@@ -616,12 +621,12 @@ public class ProfileFragment extends Fragment {
         closeEditSkill.setOnClickListener(v -> confirmEraseProgressDialog(editSkillsDialog, createNew, data.skills, skill, skillsLinearLayout, card));
 
         saveButton.setOnClickListener(v -> {
-            if (editTextSkillName.getText().length() == 0) {
+            if (editTextSkillName.getText().toString().trim().length() == 0) {
                 editTextSkillName.setError(getString(R.string.error_fill_field));
                 return;
             }
 
-            skill.skillName = editTextSkillName.getText().toString();
+            skill.skillName = editTextSkillName.getText().toString().trim();
             skillNameTextView.setText(skill.skillName);
 
             editSkillsDialog.dismiss();

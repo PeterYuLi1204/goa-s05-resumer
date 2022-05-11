@@ -1,5 +1,6 @@
 package com.example.resume_app.main;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -23,6 +25,8 @@ import com.example.resume_app.R;
 import com.example.resume_app.data_model.ResumeData;
 import com.example.resume_app.data_model.UserData;
 import com.example.resume_app.resume_editor.ResumeEditorActivity;
+
+import java.util.ArrayList;
 
 /**
  * Home for resume-related actions including creating and downloading resumes.
@@ -93,7 +97,7 @@ public class YourResumesFragment extends Fragment implements YourResumesRecycler
             }
 
             data.resumeFiles.add(fileName);
-            ResumeData resumeData = new ResumeData(fileName, getString(R.string.default_introduction, data.username));
+            ResumeData resumeData = new ResumeData(fileName);
             jsonTools.saveResumeToJson(resumeData);
 
             d.dismiss();
@@ -117,11 +121,26 @@ public class YourResumesFragment extends Fragment implements YourResumesRecycler
     @Override
     public void onDeleteClick(View view, int position) {
 
-        if (jsonTools.deleteJson(data.resumeFiles.get(position))) {
-            data.resumeFiles.remove(data.resumeFiles.get(position));
-            adapter.notifyItemRemoved(position);
-        } else {
-            Toast.makeText(getContext(), R.string.error_generic, Toast.LENGTH_LONG).show();
-        }
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+        View alert = getLayoutInflater().inflate(R.layout.dialog_confirm_erase_card, null);
+        dialogBuilder.setView(alert);
+        AlertDialog dialog = dialogBuilder.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        Button cancelDelete = alert.findViewById(R.id.cancel_delete);
+        cancelDelete.setOnClickListener(v -> dialog.dismiss());
+
+        Button eraseButton = alert.findViewById(R.id.erase_card);
+        eraseButton.setOnClickListener(v -> {
+
+            if (jsonTools.deleteJson(data.resumeFiles.get(position))) {
+                data.resumeFiles.remove(data.resumeFiles.get(position));
+                adapter.notifyItemRemoved(position);
+            } else {
+                Toast.makeText(getContext(), R.string.error_generic, Toast.LENGTH_LONG).show();
+            }
+
+            dialog.dismiss();
+        });
     }
 }

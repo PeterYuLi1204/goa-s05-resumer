@@ -18,14 +18,14 @@
     <string name="header_experience">Experience</string>
     <string name="header_education">Education</string>
     <string name="header_certifications">Certifications</string>
-    <string name="header_awards">Awards and Honours</string>
+    <string name="header_awards">Awards</string>
     <string name="header_skills">Skills</string>
     <string name="header_introduction">Introduction</string>
 
     <string name="header_add_experience">Add Experiences</string>
     <string name="header_add_education">Add Education</string>
     <string name="header_add_certifications">Add Certifications</string>
-    <string name="header_add_awards">Add Awards and Honours</string>
+    <string name="header_add_awards">Add Awards</string>
     <string name="header_add_skills">Add Skills</string>
 
     <string name="toast_file_saved">File downloaded successfully!</string>
@@ -48,7 +48,7 @@
 
     <!--information card-->
     <string name="edit_information">Edit Information</string>
-    <string name="name">Name</string>
+    <string name="name">What\'s your name?</string>
     <string name="current_job">Current job</string>
     <string name="phone_number">Phone</string>
     <string name="email">Email</string>
@@ -56,7 +56,6 @@
     <!--introduction card-->
     <string name="edit_introduction">Edit Introduction</string>
     <string name="introduction">Tell us about yourself…</string>
-    <string name="default_introduction">Hi there! My name is %1$s.</string>
 
     <!--experience card-->
     <string name="add_experience">Add Experience</string>
@@ -65,9 +64,9 @@
     <string name="organization_name">Company</string>
 
     <!--award card-->
-    <string name="add_award">Add Award or Honour</string>
-    <string name="edit_award">Edit Award or Honour</string>
-    <string name="award_honour_title">Award or honour</string>
+    <string name="add_award">Add Award</string>
+    <string name="edit_award">Edit Award</string>
+    <string name="award_honour_title">Award</string>
 
     <!--education card-->
     <string name="add_education">Add Education</string>

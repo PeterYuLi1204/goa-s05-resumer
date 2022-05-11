@@ -44,17 +44,16 @@
     <string name="end_date">完成日</string>
     <string name="resume_name">文件名</string>
 
-    <!--introduction card-->
-    <string name="edit_introduction">改变介绍</string>
-    <string name="introduction">向我们介绍你自己</string>
-    <string name="default_introduction">您好，我是%1$s</string>
-
     <!--information card-->
     <string name="edit_information">改变资料</string>
     <string name="name">名字</string>
     <string name="current_job">当前工作</string>
     <string name="phone_number">电话号码</string>
     <string name="email">电子邮件</string>
+
+    <!--introduction card-->
+    <string name="edit_introduction">改变介绍</string>
+    <string name="introduction">向我们介绍你自己</string>
 
     <!--experience card-->
     <string name="add_experience">加入工作</string>

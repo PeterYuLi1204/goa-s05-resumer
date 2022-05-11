@@ -12,9 +12,9 @@ public class ResumeData {
     public ArrayList<Experience> experience;
     public ArrayList<Skill> skills;
 
-    public ResumeData(String fileName, String introduction) {
+    public ResumeData(String fileName) {
         this.fileName = fileName;
-        this.introduction = introduction;
+        this.introduction = "";
         this.awards = new ArrayList<>();
         this.certifications = new ArrayList<>();
         this.education = new ArrayList<>();

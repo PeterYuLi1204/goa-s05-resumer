@@ -14,10 +14,6 @@ import com.example.resume_app.JsonTools;
 import com.example.resume_app.R;
 import com.example.resume_app.data_model.ResumeData;
 import com.example.resume_app.data_model.UserData;
-import com.google.gson.Gson;
-
-import java.io.File;
-import java.io.FileReader;
 
 /**
  * Takes user input for resume creation.
@@ -51,12 +47,6 @@ public class ResumeEditorActivity extends AppCompatActivity {
                 loader.setVisibility(View.GONE);
             });
         }).start();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        jsonTools.saveResumeToJson(resumeData);
     }
 
     void connectXml() {

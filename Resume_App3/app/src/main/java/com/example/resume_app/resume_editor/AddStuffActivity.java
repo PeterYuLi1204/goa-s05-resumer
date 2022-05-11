@@ -10,19 +10,20 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.resume_app.R;
+import com.example.resume_app.data_model.Category;
 
 public class AddStuffActivity extends AppCompatActivity {
 
     Fragment currentFragment;
 
-    public static String category;
+    public static Category category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_stuff);
-        category = getIntent().getStringExtra("CATEGORY");
+        category = (Category) getIntent().getSerializableExtra("CATEGORY");
         connectXml();
     }
 
@@ -32,16 +33,21 @@ public class AddStuffActivity extends AppCompatActivity {
 
         TextView title = findViewById(R.id.title);
         switch (category) {
-            case "EXPERIENCE":
+            case EXPERIENCE:
                 title.setText(R.string.header_add_experience);
-            case "AWARDS":
+                break;
+            case AWARD:
                 title.setText(R.string.header_add_awards);
-            case "EDUCATION":
+                break;
+            case EDUCATION:
                 title.setText(R.string.header_add_education);
-            case "CERTIFICATIONS":
+                break;
+            case CERTIFICATION:
                 title.setText(R.string.header_add_certifications);
-            case "SKILLS":
+                break;
+            case SKILL:
                 title.setText(R.string.header_add_skills);
+                break;
         }
 
         ImageButton backButton = findViewById(R.id.button_back);

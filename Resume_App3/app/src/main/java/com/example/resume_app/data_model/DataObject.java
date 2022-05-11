@@ -5,4 +5,5 @@ package com.example.resume_app.data_model;
  */
 public interface DataObject {
     String toHtmlString();
+    boolean equals(DataObject dataObject);
 }

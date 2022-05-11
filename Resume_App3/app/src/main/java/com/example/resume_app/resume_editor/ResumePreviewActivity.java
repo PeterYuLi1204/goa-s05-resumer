@@ -31,8 +31,8 @@ import java.io.FileOutputStream;
 /**
  * Displays a print preview of the resume given the appropriate data via Intent:
  * <p>
- *     - An int corresponding to the XML template to use,
- *     - A String corresponding to the JSON file to load resume data from.
+ * - An int corresponding to the XML template to use,
+ * - A String corresponding to the JSON file to load resume data from.
  * <p>
  * Currently NOT null-safe! Incomplete ResumeData will cause a CRASH!
  */
@@ -118,7 +118,6 @@ public class ResumePreviewActivity extends AppCompatActivity {
         TextView textIntroduction = findViewById(R.id.resume_introduction);
         TextView textEmail = findViewById(R.id.resume_email);
         TextView textPhone = findViewById(R.id.resume_phone);
-        TextView textCurrentJob = findViewById(R.id.resume_current_job);
         TextView textHeaderExperience = findViewById(R.id.resume_header_experience);
         TextView textExperience = findViewById(R.id.resume_experience);
         TextView textHeaderEducation = findViewById(R.id.resume_header_education);
@@ -134,7 +133,6 @@ public class ResumePreviewActivity extends AppCompatActivity {
         textIntroduction.setText(resumeData.introduction);
         textEmail.setText(userData.email);
         textPhone.setText(userData.phone);
-        textCurrentJob.setText(userData.currentJob);
 
         if (resumeData.experience.size() > 0) {
             StringBuilder s = new StringBuilder();

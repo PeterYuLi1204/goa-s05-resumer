@@ -44,17 +44,16 @@
     <string name="end_date">Date de fin</string>
     <string name="resume_name">Nom du CV</string>
 
-    <!--introduction card-->
-    <string name="edit_introduction">Modifier l\'introduction</string>
-    <string name="introduction">Parlez-nous de vous…</string>
-    <string name="default_introduction">Bonjour ! Je m\'appelle %1$s.</string>
-
     <!--information card-->
     <string name="edit_information">Modifier l\'information</string>
-    <string name="name">Nom</string>
+    <string name="name">Comment vous appelez-vous ?</string>
     <string name="current_job">Travail actuel</string>
     <string name="phone_number">Telephone</string>
     <string name="email">Email</string>
+
+    <!--introduction card-->
+    <string name="edit_introduction">Modifier l\'introduction</string>
+    <string name="introduction">Parlez-nous de vous…</string>
 
     <!--experience card-->
     <string name="add_experience">Ajouter une experience</string>
