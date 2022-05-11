@@ -1,9 +1,10 @@
-package com.example.resume_app.your_resumes;
+package com.example.resume_app.main;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,15 +45,20 @@ public class YourResumesRecyclerAdapter extends RecyclerView.Adapter<YourResumes
 
     public interface IClickListener {
         void onItemClick(View view, int position);
+        void onDeleteClick(View view, int position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView textName;
+        ImageButton buttonDelete;
 
         ViewHolder(View itemView) {
             super(itemView);
             textName = itemView.findViewById(R.id.name);
+            buttonDelete = itemView.findViewById(R.id.delete_button);
+            buttonDelete.setOnClickListener(view -> clickListener.onDeleteClick(view, getAdapterPosition()));
+
             itemView.setOnClickListener(this);
         }
 

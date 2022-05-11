@@ -1,4 +1,4 @@
-package com.example.resume_app.your_resumes;
+package com.example.resume_app.main;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -12,13 +12,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.resume_app.JsonTools;
-import com.example.resume_app.MainActivity;
 import com.example.resume_app.R;
 import com.example.resume_app.data_model.ResumeData;
 import com.example.resume_app.data_model.UserData;
@@ -29,23 +29,35 @@ import com.example.resume_app.resume_editor.ResumeEditorActivity;
  */
 public class YourResumesFragment extends Fragment implements YourResumesRecyclerAdapter.IClickListener {
 
-    public static final String ID = "YOUR_RESUMES";
+    static final String ID = "YOUR_RESUMES";
 
+    JsonTools jsonTools;
     UserData data = MainActivity.userData;
+
+    YourResumesRecyclerAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_your_resumes, container, false);
         connectXml(view);
+        jsonTools = new JsonTools(getContext());
         return view;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        new JsonTools(getContext()).saveUserToJson(data);
     }
 
     void connectXml(View view) {
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new YourResumesRecyclerAdapter(getContext(), data.resumeFiles, this));
+
+        adapter = new YourResumesRecyclerAdapter(getContext(), data.resumeFiles, this);
+        recyclerView.setAdapter(adapter);
 
         Button buttonPlus = view.findViewById(R.id.button_create_resume);
         buttonPlus.setOnClickListener(v -> openCreateResumeDialog());
@@ -82,7 +94,7 @@ public class YourResumesFragment extends Fragment implements YourResumesRecycler
 
             data.resumeFiles.add(fileName);
             ResumeData resumeData = new ResumeData(fileName, getString(R.string.default_introduction, data.username));
-            new JsonTools(getContext()).saveResumeToJson(resumeData);
+            jsonTools.saveResumeToJson(resumeData);
 
             d.dismiss();
 
@@ -100,5 +112,16 @@ public class YourResumesFragment extends Fragment implements YourResumesRecycler
         Intent intent = new Intent(getContext(), ResumeEditorActivity.class);
         intent.putExtra("FILE_NAME", data.resumeFiles.get(position));
         startActivity(intent);
+    }
+
+    @Override
+    public void onDeleteClick(View view, int position) {
+
+        if (jsonTools.deleteJson(data.resumeFiles.get(position))) {
+            data.resumeFiles.remove(data.resumeFiles.get(position));
+            adapter.notifyItemRemoved(position);
+        } else {
+            Toast.makeText(getContext(), R.string.error_generic, Toast.LENGTH_LONG).show();
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.resume_app.profile;
+package com.example.resume_app.main;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.resume_app.MainActivity;
+import com.example.resume_app.JsonTools;
 import com.example.resume_app.R;
 import com.example.resume_app.data_model.Award;
 import com.example.resume_app.data_model.Certification;
@@ -28,10 +28,14 @@ import com.example.resume_app.data_model.UserData;
 
 import java.util.ArrayList;
 
+/**
+ * Takes input and modifies UserData.
+ */
 public class ProfileFragment extends Fragment {
 
-    public static final String ID = "PROFILE";
+    static final String ID = "PROFILE";
 
+    JsonTools jsonTools;
     UserData data = MainActivity.userData;
 
     LinearLayout experienceLinearLayout;
@@ -59,7 +63,14 @@ public class ProfileFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         connectXml(view);
+        jsonTools = new JsonTools(getContext());
         return view;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        jsonTools.saveUserToJson(data);
     }
 
     void connectXml(View view) {

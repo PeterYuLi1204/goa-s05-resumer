@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    tools:context=".profile.ProfileFragment">
+    tools:context=".main.ProfileFragment">
 
     <ScrollView
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".profile.ProfileFragment">
+        tools:context=".main.ProfileFragment">
 
         <LinearLayout
             android:id="@+id/linear_layout"

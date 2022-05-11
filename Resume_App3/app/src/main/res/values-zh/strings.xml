@@ -82,6 +82,7 @@
     <string name="edit_skill">改变技能</string>
     <string name="skill">技能</string>
 
+    <string name="error_generic">出了问题</string>
     <string name="error_fill_field">这个空白是必需的</string>
     <string name="error_already_exists">那个文件已经存在</string>
 

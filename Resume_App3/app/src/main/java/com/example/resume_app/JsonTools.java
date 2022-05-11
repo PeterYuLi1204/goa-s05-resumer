@@ -14,11 +14,12 @@ import java.util.Locale;
 
 /**
  * Helper class to keep all JSON saving- /loading-related functions in one place.
- * Preferably, keep JSON operations in Activities unless necessary.
- *
  * Also, we use .nfteam as a file extension. How proprietary! :] --arthur
  */
 public class JsonTools {
+
+    static final String USER_FILE_NAME = "user_data";
+    static final String FILE_EXTENSION = ".nfteam";
 
     Context context;
 
@@ -31,7 +32,7 @@ public class JsonTools {
      * @return The same UserData that was passed in.
      */
     public UserData saveUserToJson(UserData userData) {
-        File file = new File(context.getExternalFilesDir(null), "user_data.nfteam");
+        File file = new File(context.getExternalFilesDir(null), USER_FILE_NAME + FILE_EXTENSION);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try (FileWriter writer = new FileWriter(file)) {
@@ -44,10 +45,14 @@ public class JsonTools {
     }
 
     /**
-     * @return The UserData that was loaded.
+     * @return The UserData that was loaded, or null if the file was not found.
      */
     public UserData loadUserFromJson() {
-        File file = new File(context.getExternalFilesDir(null), "user_data.nfteam");
+        File file = new File(context.getExternalFilesDir(null), USER_FILE_NAME + FILE_EXTENSION);
+        if (!file.exists() || file.length() == 0) {
+            return null;
+        }
+
         Gson gson = new Gson();
         UserData u = null;
 
@@ -67,7 +72,7 @@ public class JsonTools {
     public ResumeData saveResumeToJson(ResumeData resumeData) {
         String formattedFileName = resumeData.fileName.toLowerCase(Locale.ROOT).replaceAll("\\s+", "_");
 
-        File file = new File(context.getExternalFilesDir(null), formattedFileName + ".nfteam");
+        File file = new File(context.getExternalFilesDir(null), formattedFileName + FILE_EXTENSION);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try (FileWriter writer = new FileWriter(file)) {
@@ -86,7 +91,7 @@ public class JsonTools {
     public ResumeData loadResumeFromJson(String fileName) {
         String formattedFileName = fileName.toLowerCase(Locale.ROOT).replaceAll("\\s+", "_");
 
-        File file = new File(context.getExternalFilesDir(null), formattedFileName + ".nfteam");
+        File file = new File(context.getExternalFilesDir(null), formattedFileName + FILE_EXTENSION);
         Gson gson = new Gson();
         ResumeData r = null;
 
@@ -97,5 +102,16 @@ public class JsonTools {
         }
 
         return r;
+    }
+
+    /**
+     * @param fileName The name of the JSON file to delete.
+     * @return Whether the file was deleted successfully or not.
+     */
+    public boolean deleteJson(String fileName) {
+        String formattedFileName = fileName.toLowerCase(Locale.ROOT).replaceAll("\\s+", "_");
+
+        File file = new File(context.getExternalFilesDir(null), formattedFileName + FILE_EXTENSION);
+        return file.delete();
     }
 }

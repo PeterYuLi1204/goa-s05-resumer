@@ -1,4 +1,4 @@
-package com.example.resume_app;
+package com.example.resume_app.main;
 
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.resume_app.JsonTools;
+import com.example.resume_app.R;
 import com.example.resume_app.data_model.UserData;
-import com.example.resume_app.profile.ProfileFragment;
-import com.example.resume_app.your_resumes.YourResumesFragment;
-
-import java.io.File;
 
 /**
  * Home for profile-related actions including editing information and viewing post history.
@@ -24,14 +22,13 @@ public class MainActivity extends AppCompatActivity {
     Fragment currentFragment;
 
     JsonTools jsonTools;
-    public static UserData userData;
+    static UserData userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         jsonTools = new JsonTools(this);
 
         View loader = findViewById(R.id.loader);
@@ -39,20 +36,16 @@ public class MainActivity extends AppCompatActivity {
 
         new Thread(() -> {
 
-            // if there is no UserData save file, create one
-            File file = new File(getExternalFilesDir(null), "user_data.nfteam");
-            if (!file.exists() || file.length() == 0) {
+            userData = jsonTools.loadUserFromJson();
+            if (userData == null) {
 
                 userData = jsonTools.saveUserToJson(new UserData());
                 // maybe let that soak in a little bit...? just for some flair --arthur
                 try {
                     Thread.sleep(2500);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    // do nothing
                 }
-
-            } else {
-                userData = jsonTools.loadUserFromJson();
             }
 
             runOnUiThread(() -> {
@@ -60,12 +53,6 @@ public class MainActivity extends AppCompatActivity {
                 loader.setVisibility(View.GONE);
             });
         }).start();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        jsonTools.saveUserToJson(userData);
     }
 
     void connectXml() {

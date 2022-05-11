@@ -82,6 +82,7 @@
     <string name="edit_skill">Modifier une competence</string>
     <string name="skill">Competence</string>
 
+    <string name="error_generic">Une erreur s\'est produite…</string>
     <string name="error_fill_field">Cette reponse est obligatoire !</string>
     <string name="error_already_exists">Ce document existe deja !</string>
 
