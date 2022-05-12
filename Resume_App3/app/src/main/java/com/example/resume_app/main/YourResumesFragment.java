@@ -13,7 +13,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -25,8 +24,6 @@ import com.example.resume_app.R;
 import com.example.resume_app.data_model.ResumeData;
 import com.example.resume_app.data_model.UserData;
 import com.example.resume_app.resume_editor.ResumeEditorActivity;
-
-import java.util.ArrayList;
 
 /**
  * Displays a list of existing resumes from UserData and creates new ones.
