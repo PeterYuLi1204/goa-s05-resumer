@@ -27,6 +27,10 @@ import com.example.resume_app.data_model.Education;
 import com.example.resume_app.data_model.Experience;
 import com.example.resume_app.data_model.ResumeData;
 import com.example.resume_app.data_model.Skill;
+import com.example.resume_app.data_model.UserData;
+import com.google.android.material.card.MaterialCardView;
+
+import java.util.ArrayList;
 
 /**
  * Displays a list of selected items from ResumeData.
@@ -36,7 +40,8 @@ public class ResumeEditorFragment extends Fragment {
     public static final String ID = "RESUME_EDITOR";
 
     JsonTools jsonTools;
-    ResumeData data = ResumeEditorActivity.resumeData;
+    UserData userData = ResumeEditorActivity.userData;
+    ResumeData resumeData = ResumeEditorActivity.resumeData;
 
     LinearLayout experienceLinearLayout;
     LinearLayout awardsLinearLayout;
@@ -61,7 +66,7 @@ public class ResumeEditorFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        jsonTools.saveResumeToJson(data);
+        jsonTools.saveResumeToJson(resumeData);
     }
 
     @Override
@@ -74,23 +79,23 @@ public class ResumeEditorFragment extends Fragment {
         certificationsLinearLayout.removeAllViews();
         skillsLinearLayout.removeAllViews();
 
-        for (Experience experience : data.experience) {
+        for (Experience experience : resumeData.experience) {
             createExperienceCard(experience);
         }
 
-        for (Award award : data.awards) {
+        for (Award award : resumeData.awards) {
             createAwardCard(award);
         }
 
-        for (Education education : data.education) {
+        for (Education education : resumeData.education) {
             createEducationCard(education);
         }
 
-        for (Certification certification : data.certifications) {
+        for (Certification certification : resumeData.certifications) {
             createCertificationCard(certification);
         }
 
-        for (Skill skill : data.skills) {
+        for (Skill skill : resumeData.skills) {
             createSkillCard(skill);
         }
     }
@@ -108,19 +113,19 @@ public class ResumeEditorFragment extends Fragment {
 
         introductionTextView = view.findViewById(R.id.introduction_textview);
 
-        if (data.introduction.length() == 0) {
+        if (resumeData.introduction.length() == 0) {
             introductionTextView.setText(R.string.introduction);
         } else {
-            introductionTextView.setText(data.introduction);
+            introductionTextView.setText(resumeData.introduction);
         }
 
         ImageButton introductionEditButton = view.findViewById(R.id.introduction_edit_button);
-        introductionEditButton.setOnClickListener(v -> openEditIntroductionDialog(data.introduction));
+        introductionEditButton.setOnClickListener(v -> openEditIntroductionDialog(resumeData.introduction));
 
         Button buttonPreview = view.findViewById(R.id.button_preview);
         buttonPreview.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), ResumePreviewActivity.class);
-            intent.putExtra("FILE_NAME", data.fileName);
+            intent.putExtra("FILE_NAME", resumeData.fileName);
             intent.putExtra("TEMPLATE_ID", R.layout.template_resume_classic);
             startActivity(intent);
         });
@@ -186,7 +191,22 @@ public class ResumeEditorFragment extends Fragment {
         jobStartEndDateTextView.setText(getString(R.string.start_date_to_end_date, experience.startDate, experience.endDate));
 
         ImageButton experienceDeleteButton = card.findViewById(R.id.experience_delete_button);
-        experienceDeleteButton.setVisibility(View.GONE);
+
+        for (Experience userExperience : userData.experience) {
+            if (userExperience.equals(experience)) {
+                experienceDeleteButton.setVisibility(View.GONE);
+                return;
+            }
+        }
+
+        TextView textWarn = card.findViewById(R.id.not_found_warning);
+        MaterialCardView cardView = card.findViewById(R.id.experience_material_cardview);
+
+        textWarn.setVisibility(View.VISIBLE);
+        cardView.setCardBackgroundColor(getResources().getColor(R.color.yellow));
+
+        experienceDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(resumeData.experience,
+                experience, experienceLinearLayout, card));
     }
 
     private void createAwardCard(Award award) {
@@ -204,7 +224,22 @@ public class ResumeEditorFragment extends Fragment {
         awardedDateTextView.setText(award.dateAwarded);
 
         ImageButton awardDeleteButton = card.findViewById(R.id.award_delete_button);
-        awardDeleteButton.setVisibility(View.GONE);
+
+        for (Award userAward : userData.awards) {
+            if (userAward.equals(award)) {
+                awardDeleteButton.setVisibility(View.GONE);
+                return;
+            }
+        }
+
+        TextView textWarn = card.findViewById(R.id.not_found_warning);
+        MaterialCardView cardView = card.findViewById(R.id.award_material_cardview);
+
+        textWarn.setVisibility(View.VISIBLE);
+        cardView.setCardBackgroundColor(getResources().getColor(R.color.yellow));
+
+        awardDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(resumeData.awards,
+                award, awardsLinearLayout, card));
     }
 
     private void createEducationCard(Education education) {
@@ -220,7 +255,22 @@ public class ResumeEditorFragment extends Fragment {
         educationStartEndDateTextView.setText(getString(R.string.start_date_to_end_date, education.startDate, education.endDate));
 
         ImageButton educationDeleteButton = card.findViewById(R.id.education_delete_button);
-        educationDeleteButton.setVisibility(View.GONE);
+
+        for (Education userEducation : userData.education) {
+            if (userEducation.equals(education)) {
+                educationDeleteButton.setVisibility(View.GONE);
+                return;
+            }
+        }
+
+        TextView textWarn = card.findViewById(R.id.not_found_warning);
+        MaterialCardView cardView = card.findViewById(R.id.education_material_cardview);
+
+        textWarn.setVisibility(View.VISIBLE);
+        cardView.setCardBackgroundColor(getResources().getColor(R.color.yellow));
+
+        educationDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(resumeData.education,
+                education, educationLinearLayout, card));
     }
 
     private void createCertificationCard(Certification certification) {
@@ -236,7 +286,22 @@ public class ResumeEditorFragment extends Fragment {
         issuedDateTextView.setText(getString(R.string.issued_date_to_expiry_date, certification.issuedOn, certification.expiryDate));
 
         ImageButton certificationDeleteButton = card.findViewById(R.id.certification_delete_button);
-        certificationDeleteButton.setVisibility(View.GONE);
+
+        for (Certification userCertification : userData.certifications) {
+            if (userCertification.equals(certification)) {
+                certificationDeleteButton.setVisibility(View.GONE);
+                return;
+            }
+        }
+
+        TextView textWarn = card.findViewById(R.id.not_found_warning);
+        MaterialCardView cardView = card.findViewById(R.id.certification_material_cardview);
+
+        textWarn.setVisibility(View.VISIBLE);
+        cardView.setCardBackgroundColor(getResources().getColor(R.color.yellow));
+
+        certificationDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(resumeData.certifications,
+                certification, certificationsLinearLayout, card));
     }
 
     private void createSkillCard(Skill skill) {
@@ -248,7 +313,22 @@ public class ResumeEditorFragment extends Fragment {
         skillNameTextView.setText(skill.skillName);
 
         ImageButton skillDeleteButton = card.findViewById(R.id.skill_delete_button);
-        skillDeleteButton.setVisibility(View.GONE);
+
+        for (Skill userSkill : userData.skills) {
+            if (userSkill.equals(skill)) {
+                skillDeleteButton.setVisibility(View.GONE);
+                return;
+            }
+        }
+
+        TextView textWarn = card.findViewById(R.id.not_found_warning);
+        MaterialCardView cardView = card.findViewById(R.id.skill_material_cardview);
+
+        textWarn.setVisibility(View.VISIBLE);
+        cardView.setCardBackgroundColor(getResources().getColor(R.color.yellow));
+
+        skillDeleteButton.setOnClickListener(v -> confirmEraseCardDialog(resumeData.skills,
+                skill, skillsLinearLayout, card));
     }
 
     void openEditIntroductionDialog(String introduction) {
@@ -274,9 +354,9 @@ public class ResumeEditorFragment extends Fragment {
                 return;
             }
 
-            data.introduction = editText.getText().toString();
+            resumeData.introduction = editText.getText().toString();
 
-            introductionTextView.setText(data.introduction);
+            introductionTextView.setText(resumeData.introduction);
 
             editIntroductionDialog.dismiss();
         });
@@ -297,6 +377,24 @@ public class ResumeEditorFragment extends Fragment {
         Button eraseButton = alert.findViewById(R.id.erase_progress);
         eraseButton.setOnClickListener(v -> {
             originalDialog.dismiss();
+            dialog.dismiss();
+        });
+    }
+
+    private void confirmEraseCardDialog(ArrayList arrayListOfObject, Object objectToDelete, LinearLayout linearLayoutOfCard, View cardToDelete) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+        View alert = getLayoutInflater().inflate(R.layout.dialog_confirm_erase_card, null);
+        dialogBuilder.setView(alert);
+        AlertDialog dialog = dialogBuilder.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        Button cancelDelete = alert.findViewById(R.id.cancel_delete);
+        cancelDelete.setOnClickListener(v -> dialog.dismiss());
+
+        Button eraseButton = alert.findViewById(R.id.erase_card);
+        eraseButton.setOnClickListener(v -> {
+            arrayListOfObject.remove(objectToDelete);
+            linearLayoutOfCard.removeView(cardToDelete);
             dialog.dismiss();
         });
     }

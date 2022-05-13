@@ -86,6 +86,7 @@
     <string name="error_generic">Something went wrong…</string>
     <string name="error_fill_field">This field is required!</string>
     <string name="error_already_exists">That file already exists!</string>
+    <string name="error_not_found">This item is no longer in your profile. Delete it?</string>
 
     <string name="lose_progress_warning">You will lose all your progress if you exit now!</string>
     <string name="continue_working">Continue</string>

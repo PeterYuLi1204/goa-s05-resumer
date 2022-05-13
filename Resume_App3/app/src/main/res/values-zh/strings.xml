@@ -84,6 +84,7 @@
     <string name="error_generic">出了问题</string>
     <string name="error_fill_field">这个空白是必需的</string>
     <string name="error_already_exists">那个文件已经存在</string>
+    <string name="error_not_found">这张卡不在您的个人资料中. 删除?</string>
 
     <string name="lose_progress_warning">如果您现在退出，您将失去所有进度</string>
     <string name="continue_working">继续</string>

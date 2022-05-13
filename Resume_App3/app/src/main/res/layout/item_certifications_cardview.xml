@@ -51,7 +51,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/issued_date_to_expiry_date"
-                android:textSize="10sp"
+                android:textSize="12sp"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/not_found_warning"
+                style="@style/ResumeApp.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/error_not_found"
+                android:textSize="12sp"
+                android:visibility="gone"
                 tools:ignore="SmallSp" />
 
         </LinearLayout>

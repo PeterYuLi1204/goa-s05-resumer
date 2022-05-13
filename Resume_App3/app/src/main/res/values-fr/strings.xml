@@ -81,15 +81,16 @@
     <string name="edit_skill">Modifier une competence</string>
     <string name="skill">Competence</string>
 
-    <string name="error_generic">Une erreur s\'est produite…</string>
+    <string name="error_generic">Quelque erreur s\'est produite…</string>
     <string name="error_fill_field">Cette reponse est obligatoire !</string>
     <string name="error_already_exists">Ce document existe deja !</string>
+    <string name="error_not_found">Cet article n\'est plus dans votre profil. L\'effacer ?</string>
 
     <string name="lose_progress_warning">Vous perdrez tous vos progres si vous quittez maintenant !</string>
     <string name="continue_working">Continuer</string>
     <string name="erase_progress">Quitter</string>
 
-    <string name="delete_card_warning">Etes-vous certain que vous voulez effacer ca ?</string>
+    <string name="delete_card_warning">Etes-vous certain que vous voulez effacer cet article ?</string>
     <string name="cancel">Annuler</string>
     <string name="delete">Effacer</string>
 
